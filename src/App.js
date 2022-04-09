@@ -1,9 +1,16 @@
-import './App.css';
+/** @format */
+import "./App.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomeScreen from "./screens/HomeScreen";
 
 function App() {
   return (
     <div className="App">
-     <h1 className="text-red-500">react app</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<HomeScreen />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
