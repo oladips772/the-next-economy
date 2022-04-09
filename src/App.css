@@ -6,3 +6,8 @@
   margin:0;
   padding:0;
 }
+.dashboard_icon{
+  font-size:22px !important;
+  color:white;
+  margin-top: 10px;
+}

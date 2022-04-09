@@ -8,8 +8,9 @@ function HomeScreen() {
     <div>
       <div className="flex justify-between">
         <Sidebar />
-              <div className="home-body">
-                  
+        <div className="ml-[250px] mt-4 mb-4">
+          <h1 className="text-3xl mb-4 w-full">Dashboard</h1>
+          <HomeHeader />
         </div>
       </div>
     </div>

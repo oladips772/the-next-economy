@@ -10,16 +10,16 @@ function Sidebar() {
     <div className="h-[100vh] bg-black w-[220px] fixed ">
       <div className="text-center justify-center">
         <img
-          src="/images/site-logo.png"
+          src="/images/site-logo2.png"
           className="object-contain ml-6 "
           alt=""
         />
       </div>
       <div className="mt-6">
-        <div className="my-3 border-l-4 border-green-400 hover:text-green-500">
+        <div className="my-3 border-l-4 border-green-500 hover:text-green-500">
           <NavLink to="/" className="flex items-center hover:text-green-500">
-            <GridViewOutlinedIcon className="mx-4 text-green-400 text-lg" />
-            <p className="text-green-400 text-lg">Dashboard</p>
+            <GridViewOutlinedIcon className="mx-4 text-green-500 text-lg" />
+            <p className="text-green-500 text-lg">Dashboard</p>
           </NavLink>
         </div>
         <div className="my-3">
