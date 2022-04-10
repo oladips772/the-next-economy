@@ -1,13 +1,17 @@
 /** @format */
-import React from "react";
+import React, { useState } from "react";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import PersonPinOutlinedIcon from "@mui/icons-material/PersonPinOutlined";
+import Calendar from "react-calendar";
+// import "react-calendar/dist/Calendar.css";
 
 function HomeHeader() {
+  const [value, onChange] = useState(new Date());
+
   return (
     <div>
-      <div className="grid grid-cols-2 mt-6">
-        <div className="shadow-md h-[100px] w-60 rounded mx-8 relative border-l-2 border-green-400">
+      <div className="grid grid-cols-3 mt-6">
+        <div className="shadow-md h-[100px] w-60 rounded mx-4 relative border-l-2 border-green-400">
           <div className="absolute bg-green-600 rounded h-10 w-10 text-center align-center -top-4 left-4 shadow">
             <PeopleAltOutlinedIcon className="dashboard_icon" />
           </div>
@@ -19,7 +23,7 @@ function HomeHeader() {
           </span>
         </div>
         {/*  */}
-        <div className="shadow-md h-[100px] w-60 rounded mx-8 relative border-l-2 border-green-400">
+        <div className="shadow-md h-[100px] w-60 rounded relative border-l-2 border-green-400">
           <div className="absolute bg-green-600 rounded h-10 w-10 text-center align-center -top-4 left-4 shadow">
             <PersonPinOutlinedIcon className="dashboard_icon" />
           </div>
@@ -29,6 +33,13 @@ function HomeHeader() {
           <span className="absolute right-4 text-3xl font-bold text-gray-700">
             18
           </span>
+        </div>
+        <div className="-mt-6">
+          <Calendar
+            value={value}
+            onChange={onChange}
+            className="react-calendar shadow-md"
+          />
         </div>
       </div>
     </div>
