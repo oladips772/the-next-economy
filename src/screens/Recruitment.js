@@ -1,8 +1,11 @@
 /** @format */
-import React from "react";
+import React, { useRef } from "react";
 import Sidebar from "../components/Sidebar";
+import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
 function HomeScreen() {
+  const filePicker = useRef(null);
+
   return (
     <div>
       <div className="flex justify-between">
@@ -12,45 +15,40 @@ function HomeScreen() {
           <div>
             <h2>Add new recruiter</h2>
           </div>
-          <div className="flex justify-between shadow ml-20 w-[900px] mt-6">
-            <img src="" alt="" className="" />
-            <div className="flex flex-col items-center -ml-14">
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="outline-none h-10 my-4 border-[1px] border-black rounded-sm mx-2 p-2 w-[350px]"
-              />
-              <input
-                type="text"
-                placeholder="Email"
-                className="outline-none h-10 my-4 border-[1px] border-black rounded-sm p-2 w-[350px]"
-              />
-              <select className="w-full shadow outline-none border-none h-10 cursor-pointer bg-white mt-4">
-                <option value="Employment">Employment</option>
-                <option value="Entrepreneur">Entrepreneur</option>
-              </select>
+          {/*  */}
+          <div className="form_container shadow">
+            <div className="flex_div">
+              <div className="image_div">
+                <img
+                  src="https://images.vexels.com/media/users/3/129733/isolated/preview/a558682b158debb6d6f49d07d854f99f-casual-male-avatar-silhouette.png"
+                  alt=""
+                  className=""
+                />
+                <input type="file" hidden ref={filePicker} />
+                <CameraAltOutlinedIcon
+                  className="camera"
+                  onClick={() => filePicker.current.click()}
+                />
+              </div>
+              <div className="input_div">
+                <label>Full Name</label>
+                <input type="text" />
+                <label>Email</label>
+                <input type="text" />
+                <label>Phone</label>
+                <input type="number" />
+              </div>
+              <div className="select_div">
+                <label>Year</label>
+                <input type="number" />
+                <label>Bussiness Type</label>
+                <select>
+                  <option value="Employment">Employment</option>
+                  <option value="Entreprenuer">Entreprenuer</option>
+                </select>
+              </div>
             </div>
-            <div className="flex flex-col items-centerspace-x-4">
-              <input
-                type="text"
-                placeholder="Phone"
-                className="outline-none h-10 my-4 border-[1px] border-black rounded-sm mx-2 p-2 w-[350px]"
-              />
-              <select className="w-full shadow outline-none border-none h-10 cursor-pointer bg-white">
-                <option
-                  value="Registered"
-                  className="border-none h-10 cursor-pointer"
-                >
-                  Registered
-                </option>
-                <option
-                  value="Not Registered"
-                  className="border-none h-10 cursor-pointer"
-                >
-                  Not Registered
-                </option>
-              </select>
-            </div>
+            <button>Create</button>
           </div>
         </div>
       </div>
