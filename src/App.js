@@ -10,7 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<HomeScreen />} />
-          <Route path="/Recruitment" exact element={<Recruitment />} />{" "}
+          <Route path="/New_Entrepreneur" exact element={<Recruitment />} />{" "}
         </Routes>
       </BrowserRouter>
     </div>

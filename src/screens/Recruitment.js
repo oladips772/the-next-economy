@@ -22,9 +22,9 @@ function HomeScreen() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-3xl mb-4 w-full">Recruitment</h1>
+          <h1 className="text-3xl mb-4 w-full">Entrepreneur</h1>
           <div>
-            <h2>Add new recruiter</h2>
+            <h2>Add New Entrepreneur</h2>
           </div>
           {/*  */}
           <div className="form_container shadow">
@@ -64,7 +64,7 @@ function HomeScreen() {
                 <label>Bussiness Type</label>
                 <select>
                   <option value="Employment">Employment</option>
-                  <option value="Entreprenuer">Entreprenuer</option>
+                  <option value="Entreprenuership">Entreprenuership</option>
                 </select>
               </div>
             </div>

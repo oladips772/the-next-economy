@@ -4,9 +4,9 @@ import { staffs } from "../data/staffs";
 
 function HomeScreenStaffs() {
   return (
-    <div className="-mt-[70px] shadow rounded mr-4 w-[600px]">
-      <h1 className="p-2 text-lg font-bold border-b-[1px] border-gray-200 pb-2 mb-4">
-        Some of your staffs
+    <div className=" shadow rounded mr-4 w-[600px] mt-14">
+      <h1 className="p-2 text-lg font-bold border-b-[1px] border-gray-200 pb-2 mb-4 text-gray-900">
+        Some of your Entrepreneurs
       </h1>
       <div className="flex justify-between items-center mx-4 border-b-[1px] border-gray-200 mb-4 pb-2">
         <h3 className="font-bold text-gray-800 text-sm">Full Name</h3>

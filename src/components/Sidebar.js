@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import PersonPinOutlinedIcon from "@mui/icons-material/PersonPinOutlined";
 
 function Sidebar() {
   const status = navigator.onLine;
@@ -30,15 +30,15 @@ function Sidebar() {
           </NavLink>
         </div>
         <div className="my-3">
-          <NavLink to="/Recruitment" className="flex items-center">
-            <PeopleAltOutlinedIcon className="mx-4 text-white text-lg" />
-            <p className="text-white text-lg">Recruitment</p>
+          <NavLink to="/New_Entrepreneur" className="flex items-center">
+            <PersonAddAltOutlinedIcon className="mx-4 text-white text-lg" />
+            <p className="text-white">Add Entrepreneur</p>
           </NavLink>
         </div>
         <div className="my-3">
           <NavLink to="/" className="flex items-center">
-            <PersonPinOutlinedIcon className="mx-4 text-white text-lg" />
-            <p className="text-white text-lg">Staffs</p>
+            <PeopleAltOutlinedIcon className="mx-4 text-white text-lg" />
+            <p className="text-white">Entrepreneurs</p>
           </NavLink>
         </div>
       </div>
