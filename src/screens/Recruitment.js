@@ -1,10 +1,21 @@
 /** @format */
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
 function HomeScreen() {
   const filePicker = useRef(null);
+  const [selectedImage, setSelectedImage] = useState("");
+
+  const handleChange = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onload = (readerEvent) => {
+      setSelectedImage(readerEvent.target.result);
+    };
+  };
 
   return (
     <div>
@@ -20,11 +31,20 @@ function HomeScreen() {
             <div className="flex_div">
               <div className="image_div">
                 <img
-                  src="https://images.vexels.com/media/users/3/129733/isolated/preview/a558682b158debb6d6f49d07d854f99f-casual-male-avatar-silhouette.png"
+                  src={`${
+                    selectedImage
+                      ? selectedImage
+                      : "https://images.vexels.com/media/users/3/129733/isolated/preview/a558682b158debb6d6f49d07d854f99f-casual-male-avatar-silhouette.png"
+                  }`}
                   alt=""
                   className=""
                 />
-                <input type="file" hidden ref={filePicker} />
+                <input
+                  type="file"
+                  hidden
+                  ref={filePicker}
+                  onChange={handleChange}
+                />
                 <CameraAltOutlinedIcon
                   className="camera"
                   onClick={() => filePicker.current.click()}
