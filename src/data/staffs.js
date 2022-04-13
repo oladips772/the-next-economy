@@ -25,22 +25,6 @@ export const staffs = [
     phone: "071 300 090 11",
   },
   {
-    id: 4,
-    name: "Pelumi boluwatife",
-    email: "bolu@gmail.com",
-    image:
-      "https://campusdata.uark.edu/resources/images/articles/2022-02-15_11-14-36-AMChulyndriaLayeDeansSpotlightheadshot.jpg?width=800&mode=max",
-    phone: "090 220 000 99",
-  },
-  {
-    id: 5,
-    name: "Abubakar sanni",
-    email: "abu@gmail.com",
-    image:
-      "https://campusdata.uark.edu/resources/images/articles/2022-02-15_11-14-36-AMChulyndriaLayeDeansSpotlightheadshot.jpg?width=800&mode=max",
-    phone: "090 221 000 68",
-  },
-  {
     id: 6,
     name: "Esther olumide",
     email: "esther@gmail.com",

@@ -1,10 +1,22 @@
 /** @format */
 import React from "react";
 import Sidebar from "../components/Sidebar";
+import User from "../components/User";
 import { entrepreneurs } from "../data/entrepreneurs";
 
 function Entreprenuers() {
-  const [search, setSearch] = React.useState("");
+  const [query, setQuery] = React.useState("");
+
+  const search = (data) => {
+    return data.filter(
+      (person) =>
+        person.name.toLowerCase().includes(query) ||
+        person.email.toLowerCase().includes(query) ||
+        person.bussiness.toLowerCase().includes(query) ||
+            person.phone.includes(query) ||
+        person.year.includes(query)
+    );
+  };
 
   return (
     <div>
@@ -16,9 +28,9 @@ function Entreprenuers() {
             <input
               type="search"
               className=""
-              placeholder="Search by Name , Email ,Year ,Bussiness"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search by Name , Email ,Bussiness , Year"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           {/*  */}
@@ -32,35 +44,7 @@ function Entreprenuers() {
               <p className="font-semibold text-gray-800">Actions</p>
             </div>
             {/*  */}
-            {entrepreneurs
-              .filter((user) => user.name.toLowerCase().includes(search))
-              .map((person) => (
-                <div
-                  className="flex items-center justify-around mx-4 my-4 p-2"
-                  key={person.id}
-                >
-                  <div className="flex items-center">
-                    <img
-                      src={person.image}
-                      alt={person.name}
-                      className="w-10 h-10 object-contain mr-2 rounded-full "
-                    />
-                    <span>{person.name}</span>
-                  </div>
-                  <span className="text-[15px]">{person.email}</span>
-                  <span className="text-[15px]">{person.phone}</span>
-                  <span className="text-[15px]">{person.year}</span>
-                  <span className="">{person.bussiness}</span>
-                  <div>
-                    <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
-                      Edit
-                    </span>
-                    <span className="p-1 bg-red-700 text-white rounded cursor-pointer">
-                      Delete
-                    </span>
-                  </div>
-                </div>
-              ))}
+            <User data={search(entrepreneurs)} />
           </div>
         </div>
       </div>
