@@ -2,6 +2,7 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import { staffs } from "../data/staffs";
 
 function Entreprenuers() {
   return (
@@ -10,13 +11,13 @@ function Entreprenuers() {
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">
           <h1 className="text-3xl mb-4 w-full">Entrepreneurs</h1>
-          <div className="w-full flex items-center h-8 rounded-sm shadow">
+          <div className="search_container">
             <input
               type="search"
               className=""
               placeholder="search by Name , Email ,Year ,Bussiness "
             />
-            <SearchOutlinedIcon className="ml-2" />
+            <button>Search</button>
           </div>
         </div>
       </div>
