@@ -3,6 +3,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import Recruitment from "./screens/Recruitment";
+import Entreprenuers from "./screens/Entreprenuers";
 
 function App() {
   return (
@@ -10,7 +11,12 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<HomeScreen />} />
-          <Route path="/New_Entrepreneur" exact element={<Recruitment />} />{" "}
+          <Route
+            path="/New_Entrepreneur"
+            exact
+            element={<Recruitment />}
+          />{" "}
+          <Route path="/Entrepreneurs" exact element={<Entreprenuers />} />{" "}
         </Routes>
       </BrowserRouter>
     </div>

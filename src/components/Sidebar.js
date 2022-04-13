@@ -17,8 +17,8 @@ function Sidebar() {
     <div className="h-[100vh] bg-black w-[220px] fixed ">
       <div className="text-center justify-center">
         <img
-          src="/images/site-logo2.png"
-          className="object-contain ml-6 "
+          src="http://blackinnovationsafrica.com/wp-content/uploads/2020/02/logo.png"
+          className="object-contain ml-6 mt-4"
           alt=""
         />
       </div>
@@ -36,7 +36,7 @@ function Sidebar() {
           </NavLink>
         </div>
         <div className="my-3">
-          <NavLink to="/" className="flex items-center">
+          <NavLink to="/Entrepreneurs" className="flex items-center">
             <PeopleAltOutlinedIcon className="mx-4 text-white text-lg" />
             <p className="text-white">Entrepreneurs</p>
           </NavLink>
