@@ -1,23 +1,24 @@
 /** @format */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 
 * {
   margin: 0;
   padding: 0;
 }
+
 .dashboard_icon {
   font-size: 22px !important;
   color: white;
   margin-top: 10px;
 }
+
 .react-calendar {
   width: 350px;
   max-width: 100%;
   background: white;
-  /* border: 2px solid green; */
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.125em;
   border-radius: 4px;
@@ -258,11 +259,13 @@
   display: flex;
   align-items: center;
   margin-top: 20px;
-  width: 1100px;
+  max-width: 800px;
+  margin:0 auto;
   justify-content: space-between;
   border: 1px solid black;
   border-radius: 3px;
 }
+
 .search_container input {
   height: 35px;
   border-radius: 3px;
