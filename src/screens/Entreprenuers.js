@@ -11,10 +11,10 @@ function Entreprenuers() {
     return data.filter(
       (person) =>
         person.name.toLowerCase().includes(query) ||
-        person.email.toLowerCase().includes(query) ||
+        person.email.toString().includes(query) ||
         person.bussiness.toLowerCase().includes(query) ||
-            person.phone.includes(query) ||
-        person.year.includes(query)
+        person.phone.toLowerCase().includes(query) ||
+        person.year.toString().includes(query)
     );
   };
 
@@ -28,7 +28,7 @@ function Entreprenuers() {
             <input
               type="search"
               className=""
-              placeholder="Search by Name , Email ,Bussiness , Year"
+              placeholder="Search by Name , Email ,Phone, Year, Bussiness "
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
