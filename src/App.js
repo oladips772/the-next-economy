@@ -5,6 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import Recruitment from "./screens/Recruitment";
 import Entreprenuers from "./screens/Entreprenuers";
 import Login from "./screens/Login";
+import Edit from "./screens/Edit";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path="/New_Entrepreneur" element={<Recruitment />} />{" "}
           <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
           <Route path="/Login" element={<Login />} />{" "}
+          <Route path="/Edit:id" element={<Edit />} />{" "}
         </Routes>
       </BrowserRouter>
     </div>

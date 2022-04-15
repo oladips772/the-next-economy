@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 function Sidebar() {
   const status = navigator.onLine;
@@ -23,22 +26,28 @@ function Sidebar() {
         />
       </div>
       <div className="mt-6">
-        <div className="my-3 border-l-4 border-green-500 hover:text-green-500">
+        <div className="my-4 border-l-4 border-green-500 hover:text-green-500">
           <NavLink to="/" className="flex items-center hover:text-green-500">
             <GridViewOutlinedIcon className="mx-4 text-green-500 text-lg" />
             <p className="text-green-500 text-lg">Dashboard</p>
           </NavLink>
         </div>
-        <div className="my-3">
+        <div className="my-4">
           <NavLink to="/New_Entrepreneur" className="flex items-center">
             <PersonAddAltOutlinedIcon className="mx-4 text-white text-lg" />
             <p className="text-white">Add Entrepreneur</p>
           </NavLink>
         </div>
-        <div className="my-3">
+        <div className="my-4">
           <NavLink to="/Entrepreneurs" className="flex items-center">
             <PeopleAltOutlinedIcon className="mx-4 text-white text-lg" />
             <p className="text-white">Entrepreneurs</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink to="/Entrepreneurs" className="flex items-center">
+            <AdminPanelSettingsIcon className="mx-4 text-white text-lg" />
+            <p className="text-white">New Admin</p>
           </NavLink>
         </div>
       </div>

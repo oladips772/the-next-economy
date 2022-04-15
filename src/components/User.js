@@ -1,7 +1,9 @@
 /** @format */
 import React from "react";
+import { NavLink } from "react-router-dom";
 
-function User({data}) {
+
+function User({ data }) {
   return (
     <>
       {data.map((person) => (
@@ -22,9 +24,11 @@ function User({data}) {
           <span className="text-[15px]">{person.year}</span>
           <span className="">{person.bussiness}</span>
           <div>
+            <NavLink to={`/Edit/${person.id}`}>
             <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
               Edit
             </span>
+            </NavLink>
             <span className="p-1 bg-red-700 text-white rounded cursor-pointer">
               Delete
             </span>
