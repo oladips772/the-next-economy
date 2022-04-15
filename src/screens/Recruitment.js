@@ -61,7 +61,7 @@ function HomeScreen() {
               <div className="select_div">
                 <label>Year</label>
                 <input type="number" />
-                <label>Bussiness Type</label>
+                <label>Bussiness Sector</label>
                 <select>
                   <option value="Employment">Employment</option>
                   <option value="Entreprenuership">Entreprenuership</option>

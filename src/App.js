@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import Recruitment from "./screens/Recruitment";
 import Entreprenuers from "./screens/Entreprenuers";
+import Login from "./screens/Login";
+
 
 function App() {
   return (
@@ -11,12 +13,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<HomeScreen />} />
-          <Route
-            path="/New_Entrepreneur"
-            exact
-            element={<Recruitment />}
-          />{" "}
-          <Route path="/Entrepreneurs" exact element={<Entreprenuers />} />{" "}
+          <Route path="/New_Entrepreneur" element={<Recruitment />} />{" "}
+          <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
+          <Route path="/Login" element={<Login />} />{" "}
         </Routes>
       </BrowserRouter>
     </div>
