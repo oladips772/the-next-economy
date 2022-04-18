@@ -281,3 +281,7 @@
  text-transform: uppercase;
  font-size:14px;
 }
+
+a:active{
+  color: rgb(80, 230, 80);
+}

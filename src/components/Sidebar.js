@@ -5,8 +5,7 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import LogoutIcon from '@mui/icons-material/Logout';
-
+import LogoutIcon from "@mui/icons-material/Logout";
 
 function Sidebar() {
   const status = navigator.onLine;
@@ -14,7 +13,7 @@ function Sidebar() {
 
   useEffect(() => {
     setSystemStatus(status);
-  }, [status, navigator]);
+  }, [status]);
 
   return (
     <div className="h-[100vh] bg-black w-[220px] fixed ">
@@ -26,30 +25,71 @@ function Sidebar() {
         />
       </div>
       <div className="mt-6">
-        <div className="my-4 border-l-4 border-green-500 hover:text-green-500">
-          <NavLink to="/" className="flex items-center hover:text-green-500">
+        <div className="my-4 hover:text-green-500">
+          <NavLink
+            to="/"
+            className="flex items-center hover:text-green-500"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
             <GridViewOutlinedIcon className="mx-4 text-green-500 text-lg" />
-            <p className="text-green-500 text-lg">Dashboard</p>
+            <p className="">Dashboard</p>
           </NavLink>
         </div>
         <div className="my-4">
-          <NavLink to="/New_Entrepreneur" className="flex items-center">
-            <PersonAddAltOutlinedIcon className="mx-4 text-white text-lg" />
-            <p className="text-white">Add Entrepreneur</p>
+          <NavLink
+            to="/New_Entrepreneur"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <PersonAddAltOutlinedIcon className="mx-4 text-green-500 text-lg" />
+            <p className="">Add Entrepreneur</p>
           </NavLink>
         </div>
         <div className="my-4">
-          <NavLink to="/Entrepreneurs" className="flex items-center">
-            <PeopleAltOutlinedIcon className="mx-4 text-white text-lg" />
-            <p className="text-white">Entrepreneurs</p>
+          <NavLink
+            to="/Entrepreneurs"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <PeopleAltOutlinedIcon className="mx-4 text-green-500 text-lg" />
+            <p className="">Entrepreneurs</p>
           </NavLink>
         </div>
         <div className="my-4">
-          <NavLink to="/Entrepreneurs" className="flex items-center">
-            <AdminPanelSettingsIcon className="mx-4 text-white text-lg" />
-            <p className="text-white">New Admin</p>
+          <NavLink
+            to="/CreateAdmin"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AdminPanelSettingsIcon className="mx-4 text-green-500 text-lg" />
+            <p className="">New Admin</p>
           </NavLink>
         </div>
+      </div>
+      {/*  */}
+      <div className="absolute bottom-10 flex items-center mx-2 cursor-pointer">
+        <LogoutIcon className="rotate-180 text-white mr-2 " />
+        <p className="text-white text-sm font-semibold">LOG OUT</p>
       </div>
       <div className="absolute bottom-2 flex items-center mx-2">
         <p className="text-white text-[11px] font-bold">SYSTEM STATUS : </p>
