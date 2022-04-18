@@ -36,8 +36,8 @@ function Sidebar() {
               };
             }}
           >
-            <GridViewOutlinedIcon className="mx-4 text-green-500 text-lg" />
-            <p className="">Dashboard</p>
+            <GridViewOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">DASHBOARD</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -51,8 +51,8 @@ function Sidebar() {
               };
             }}
           >
-            <PersonAddAltOutlinedIcon className="mx-4 text-green-500 text-lg" />
-            <p className="">Add Entrepreneur</p>
+            <PersonAddAltOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">ADD ENTREPRENEUR</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -66,8 +66,8 @@ function Sidebar() {
               };
             }}
           >
-            <PeopleAltOutlinedIcon className="mx-4 text-green-500 text-lg" />
-            <p className="">Entrepreneurs</p>
+            <PeopleAltOutlinedIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">ENTREPRENEURS</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -81,8 +81,8 @@ function Sidebar() {
               };
             }}
           >
-            <AdminPanelSettingsIcon className="mx-4 text-green-500 text-lg" />
-            <p className="">New Admin</p>
+            <AdminPanelSettingsIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">NEW ADMIN</p>
           </NavLink>
         </div>
       </div>
