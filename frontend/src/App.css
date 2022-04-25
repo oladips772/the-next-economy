@@ -4,7 +4,6 @@
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
 * {
   margin: 0;
   padding: 0;
@@ -232,7 +231,7 @@
   flex-direction: column;
 }
 
-.select_div textarea{
+.select_div textarea {
   width: 310px;
   margin: 10px 0;
   display: flex;
@@ -241,11 +240,10 @@
   border: 1px solid black;
   border-radius: 3px;
   resize: none;
-  padding:5px;
+  padding: 5px;
   min-height: 130px;
   overflow-y: scroll;
 }
-
 
 .input_div option {
   height: 30px !important;
@@ -277,7 +275,7 @@
   align-items: center;
   margin-top: 20px;
   max-width: 800px;
-  margin:0 auto;
+  margin: 0 auto;
   justify-content: space-between;
   border: 1px solid black;
   border-radius: 3px;
@@ -294,11 +292,37 @@
 }
 
 .search_container button {
- margin-right:10px;
- text-transform: uppercase;
- font-size:14px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
-a:active{
+a:active {
   color: rgb(80, 230, 80);
+}
+
+table {
+  width: 100%;
+  align-items: center;
+  padding:10px;                                                                              
+}
+
+
+table th {
+  
+}  
+
+
+table tr {
+  display: flex;
+  justify-content: space-around;
+}
+
+table tr td {
+  border-bottom: 1px solid #ddd;
+  margin: 7px 0px !important;
+  padding: 7px;
+  display:flex;
+  align-items: center;
+  width: 100%;
 }

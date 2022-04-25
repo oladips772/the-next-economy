@@ -2,39 +2,47 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-
 function User({ data }) {
   return (
     <>
-      {data.map((person) => (
-        <div
-          className="flex items-center justify-around mx-4 my-4 p-2"
-          key={person.id}
-        >
-          <div className="flex items-center">
-            <img
-              src={person.image}
-              alt={person.name}
-              className="w-10 h-10 object-contain mr-2 rounded-full "
-            />
-            <span>{person.name}</span>
-          </div>
-          <span className="text-[15px]">{person.email}</span>
-          <span className="text-[15px]">{person.phone}</span>
-          <span className="text-[15px]">{person.year}</span>
-          <span className="">{person.bussiness}</span>
-          <div>
-            <NavLink to={`/Edit/${person.id}`}>
-            <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
-              Edit
-            </span>
-            </NavLink>
-            <span className="p-1 bg-red-700 text-white rounded cursor-pointer">
-              Delete
-            </span>
-          </div>
-        </div>
-      ))}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Year</th>
+          <th>Bussiness</th>
+          <th>Actions</th>
+        </tr>
+        {data?.map((person) => (
+          <>
+            <tr>
+              <td>
+                <img
+                  src={person?.image}
+                  alt={person?.name}
+                  className="w-[35px] h-[35px] object-contain ml-2 mr-2 rounded-full "
+                />
+                {person?.name}
+              </td>
+              <td>{person?.email}</td>
+              <td>{person?.phone}</td>
+              <td>{person?.year}</td>
+              <td>{person?.bussiness}</td>
+              <td>
+                <NavLink to={`/Edit/${person?.id}`}>
+                  <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
+                    Edit
+                  </span>
+                </NavLink>
+                <span className="p-1 bg-red-700 text-white rounded cursor-pointer">
+                  Delete
+                </span>
+              </td>
+            </tr>
+          </>
+        ))}
+      </table>
     </>
   );
 }

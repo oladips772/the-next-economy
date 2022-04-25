@@ -1,20 +1,29 @@
 /** @format */
-import React from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
-import { entrepreneurs } from "../data/entrepreneurs";
+import axios from "axios";
 
 function Entreprenuers() {
-  const [query, setQuery] = React.useState("");
+  const [query, setQuery] = useState("");
+  const [entrepreneurs, setEntrepreneurs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("/api/entrepreneurs");
+      setEntrepreneurs(data);
+    };
+    fetchData();
+  }, []);
 
   const search = (data) => {
-    return data.filter(
+    return data?.filter(
       (person) =>
-        person.name.toLowerCase().includes(query) ||
-        person.email.toString().includes(query) ||
-        person.bussiness.toLowerCase().includes(query) ||
-        person.phone.toLowerCase().includes(query) ||
-        person.year.toString().includes(query)
+        person?.name.toLowerCase().includes(query) ||
+        person?.email.toString().includes(query) ||
+        person?.bussiness.toLowerCase().includes(query) ||
+        person?.phone.toLowerCase().includes(query) ||
+        person?.year.toString().includes(query)
     );
   };
 
@@ -35,15 +44,6 @@ function Entreprenuers() {
           </div>
           {/*  */}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            <div className="flex w-full items-center justify-around p-2">
-              <p className="font-semibold text-gray-800">Name</p>
-              <p className="font-semibold text-gray-800">Email</p>
-              <p className="font-semibold text-gray-800">Phone</p>
-              <p className="font-semibold text-gray-800">Year</p>
-              <p className="font-semibold text-gray-800">Bussiness</p>
-              <p className="font-semibold text-gray-800">Actions</p>
-            </div>
-            {/*  */}
             <User data={search(entrepreneurs)} />
           </div>
         </div>
