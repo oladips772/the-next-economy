@@ -3,7 +3,6 @@ import React from "react";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 
-
 function Edit() {
   const filePicker = React.useRef(null);
   const [selectedImage, setSelectedImage] = React.useState("");
@@ -23,14 +22,12 @@ function Edit() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-3xl mb-4 w-full">Edit</h1>
-          <div>
-            <h2>Edit An Entrepreneur</h2>
-          </div>
+          <h1 className="text-3xl mb-4 w-full">Profile</h1>
+          <div></div>
           {/*  */}
-          <div className="form_container shadow">
-            <div className="flex_div">
-              <div className="image_div">
+          <div className="edit_container shadow">
+            <div className="edit_wrapper">
+              <div className="edit_image_div">
                 <img
                   src={`${
                     selectedImage
@@ -41,6 +38,7 @@ function Edit() {
                   className=""
                 />
                 <input
+                  className="display-none"
                   type="file"
                   hidden
                   ref={filePicker}
@@ -51,7 +49,7 @@ function Edit() {
                   onClick={() => filePicker.current.click()}
                 />
               </div>
-              <div className="input_div">
+              <div className="">
                 <label>Full Name</label>
                 <input type="text" />
                 <label>Email</label>
@@ -59,17 +57,23 @@ function Edit() {
                 <label>Phone</label>
                 <input type="number" />
               </div>
-              <div className="select_div">
+              <div className="">
                 <label>Year</label>
                 <input type="number" />
+                <label>Biography</label>
+                <textarea></textarea>
                 <label>Bussiness Sector</label>
                 <select>
                   <option value="Employment">Employment</option>
                   <option value="Entreprenuership">Entreprenuership</option>
                 </select>
+                <button>UPDATE</button>
               </div>
             </div>
-            <button>UPDATE</button>
+            {/*  */}
+            <div className="display_container">
+              kk
+            </div>
           </div>
         </div>
       </div>

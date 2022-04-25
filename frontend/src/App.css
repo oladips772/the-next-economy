@@ -304,14 +304,11 @@ a:active {
 table {
   width: 100%;
   align-items: center;
-  padding:10px;                                                                              
+  padding: 10px;
 }
 
-
 table th {
-  
-}  
-
+}
 
 table tr {
   display: flex;
@@ -322,7 +319,105 @@ table tr td {
   border-bottom: 1px solid #ddd;
   margin: 7px 0px !important;
   padding: 7px;
-  display:flex;
+  display: flex;
   align-items: center;
   width: 100%;
+}
+
+/*  edit screen styling*/
+
+.edit_container{
+  display:flex;
+  justify-content: space-between;
+}
+
+.edit_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 10px;
+  margin-left: 30px;
+}
+
+.edit_wrapper input,
+textarea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  outline: none;
+  border: 1px solid black;
+}
+.edit_wrapper input,
+textarea {
+  height: 35px;
+  padding: 5px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 7px 0;
+  width: 400px;
+}
+
+.edit_wrapper textarea {
+  min-height: 200px;
+  max-height: 200px;
+  width: 400px;
+  overflow-y: scroll;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+.edit_wrapper .display-none {
+  display: none;
+}
+
+.edit_image_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit_image_div img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: contain;
+  border:1px solid lightgray;
+}
+
+.edit_wrapper select {
+  margin-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 400px;
+  outline: none;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: white;
+}
+.edit_wrapper .camera {
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  color: rgb(29, 168, 36);
+  margin-top: 9px;
+}
+
+.edit_wrapper button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align:center;
+  background:green;
+  color:white;
+  height:35px;
+  width:400px;
+  border-radius:4px;
+  font-weight: 600;
+  font-size: 14px;
 }

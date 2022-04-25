@@ -12,10 +12,13 @@ const EntreprenuerSchema = mongoose.Schema(
       require: [true, "entrepreneur email is required"],
       unique: true,
     },
+    image: {
+      type: String,
+      require: [true, "entrepreneur image is required"],
+    },
     phone: {
       type: Number,
       require: [true, "entrepreneur phone Number is required"],
-      unique: true,
     },
     year: {
       type: Number,
@@ -27,13 +30,14 @@ const EntreprenuerSchema = mongoose.Schema(
     },
     bio: {
       type: String,
-      require: [true, "entrepreneur bussiness is required"],
+      require: [true, "entrepreneur bio is required"],
     },
   },
   {
     timestamps: true,
   }
 );
+
 
 const Entrepreneur = mongoose.model("Entrepreneur", EntreprenuerSchema);
 module.exports = Entrepreneur;

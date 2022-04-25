@@ -18,7 +18,7 @@ function App() {
           <Route path="/New_Entrepreneur" element={<Recruitment />} />{" "}
           <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
           <Route path="/Login" element={<Login />} />{" "}
-          <Route path="/Edit:id" element={<Edit />} />{" "}
+          <Route path="/Edit" element={<Edit />} />{" "}
           <Route path="CreateAdmin" element={<CreateAdmin />} />{" "}
         </Routes>
       </BrowserRouter>
