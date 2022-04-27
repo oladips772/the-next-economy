@@ -30,7 +30,7 @@ function User({ data }) {
               <td>{person?.year}</td>
               <td>{person?.bussiness}</td>
               <td>
-                <NavLink to={`/Edit/${person?.id}`}>
+                <NavLink to={`/Profile/${person?.id}`}>
                   <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
                     Edit
                   </span>

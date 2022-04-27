@@ -3,9 +3,10 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import {entrepreneurs} from "../data/entrepreneurs";
+import { entrepreneurs } from "../data/entrepreneurs";
 
 function Edit() {
+  // const [entrepreneur, setEntrepreneur] = React.useState(null);
   let params = useParams();
   const filePicker = React.useRef(null);
   const [selectedImage, setSelectedImage] = React.useState("");
@@ -28,18 +29,14 @@ function Edit() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-3xl mb-4 w-full">Profile {params.id}  {entrepreneur.name}</h1>
+          <h1 className="text-3xl mb-4 w-full">Profile</h1>
           <div></div>
           {/*  */}
           <div className="edit_container shadow">
             <div className="edit_wrapper">
               <div className="edit_image_div">
                 <img
-                  src={`${
-                    selectedImage
-                      ? selectedImage
-                      : "https://images.vexels.com/media/users/3/129733/isolated/preview/a558682b158debb6d6f49d07d854f99f-casual-male-avatar-silhouette.png"
-                  }`}
+                  src={`${selectedImage ? selectedImage : entrepreneur.image}`}
                   alt=""
                   className=""
                 />
@@ -57,20 +54,22 @@ function Edit() {
               </div>
               <div className="">
                 <label>Full Name</label>
-                <input type="text" />
+                <input type="text" value={entrepreneur.name} />
                 <label>Email</label>
-                <input type="text" />
+                <input type="text" value={entrepreneur.email} />
                 <label>Phone</label>
-                <input type="number" />
+                <input type="number" value={entrepreneur.phone} />
               </div>
               <div className="">
                 <label>Year</label>
-                <input type="number" />
+                <input type="number" value={entrepreneur.year} />
                 <label>Biography</label>
                 <textarea></textarea>
                 <label>Bussiness Sector</label>
                 <select>
-                  <option value="Employment">Employment</option>
+                  <option value={entrepreneur.bussiness}>
+                    {entrepreneur.bussiness}
+                  </option>
                   <option value="Entreprenuership">Entreprenuership</option>
                 </select>
                 <button>UPDATE</button>
@@ -79,22 +78,19 @@ function Edit() {
             {/*  */}
             <div className="display_container shadow">
               <div className="top_info">
-                <img
-                  src="https://media.istockphoto.com/photos/portrait-of-smiling-african-american-man-outdoors-in-garden-at-home-picture-id1263789745?b=1&k=20&m=1263789745&s=170667a&w=0&h=JZCqX-ePc-9IoENh9QtcjfYUaEDSC-tvIzyhZvwMmZU="
-                  alt=""
-                />
+                <img src={entrepreneur.image} alt="" />
                 <div className="top_info_side">
                   <span>Full Name</span>
-                  <p>Bolu dele</p>
+                  <p>{entrepreneur.name}</p>
                   <span>Email</span>
-                  <p>delle@gmail.com</p>
+                  <p>{entrepreneur.email}</p>
                 </div>
               </div>
               <div className="bottom_info">
                 <span>Bussiness</span>
-                <p>Enterpreneurship</p>
+                <p>{entrepreneur.bussiness}</p>
                 <span>Phone</span>
-                <p>09038580066</p>
+                <p>{entrepreneur.phone}</p>
                 {/* <span>Year</span>
                 <p>2022</p> */}
               </div>

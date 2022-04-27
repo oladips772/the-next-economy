@@ -5,7 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import Recruitment from "./screens/Recruitment";
 import Entreprenuers from "./screens/Entreprenuers";
 import Login from "./screens/Login";
-import Edit from "./screens/Edit";
+import Profile from "./screens/Profile";
 import CreateAdmin from "./screens/CreateAdmin";
 
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/New_Entrepreneur" element={<Recruitment />} />{" "}
           <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
           <Route path="/Login" element={<Login />} />{" "}
-          <Route path="/Edit/:id" element={<Edit />} />{" "}
+          <Route path="/Profile/:id" element={<Profile />} />{" "}
           <Route path="CreateAdmin" element={<CreateAdmin />} />{" "}
         </Routes>
       </BrowserRouter>
