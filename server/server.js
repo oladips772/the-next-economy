@@ -6,6 +6,7 @@ const { admins } = require("./data/admins");
 const { entrepreneurs } = require("./data/entrepreneurs");
 const cors = require("cors");
 const { connectDatabase } = require("./config/MongoDb");
+const ImportData = require("./DataImport");
 
 
 const PORT = process.env.PORT || 4000;
@@ -17,10 +18,19 @@ app.get("/", (req, res) => {
   res.send(`server is running on port ${PORT}`);
 });
 
+// API
+app.use("/api/import",ImportData)
+
+
 //? get admins from server
-app.get("/api/admins", (req, res) => {
-  res.json(admins);
-});
+// app.get("/api/admins", (req, res) => {
+//   res.json(admins);
+// });
+
+// //? get entrepreneurs from server
+// app.get("/api/entrepreneurs", (req, res) => {
+//   res.json(entrepreneurs);
+// });
 
 //? get admin by id
 app.get("/api/admins/:id", (req, res) => {
@@ -33,10 +43,6 @@ app.get("/api/admins/:id", (req, res) => {
   }
 });
 
-//? get entrepreneurs from server
-app.get("/api/entrepreneurs", (req, res) => {
-  res.json(entrepreneurs);
-});
 
 //? get entrepreneur by id
 app.get("/api/entrepreneurs/:id", (req, res) => {

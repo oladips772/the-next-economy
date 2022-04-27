@@ -31,8 +31,8 @@ function User({ data }) {
               <td>{person?.bussiness}</td>
               <td>
                 <NavLink to={`/Profile/${person?.id}`}>
-                  <span className="p-1 mx-4 bg-green-700 text-white rounded cursor-pointer">
-                    Edit
+                  <span className="p-1 mx-4 bg-green-700 text-white  text-sm font-semibold rounded cursor-pointer">
+                    View
                   </span>
                 </NavLink>
                 <span className="p-1 bg-red-700 text-white rounded cursor-pointer">

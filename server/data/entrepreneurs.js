@@ -1,7 +1,6 @@
 /** @format */
 const entrepreneurs = [
   {
-    id: 1,
     name: "John Doe",
     email: "Doe@gmail.com",
     image: "http://captiontools.com/wp-content/uploads/2017/03/testy3-1.png",
@@ -10,7 +9,6 @@ const entrepreneurs = [
     year: 2020,
   },
   {
-    id: 2,
     name: "Jane Doe",
     email: "jane@gmail.com",
     image:
@@ -20,7 +18,6 @@ const entrepreneurs = [
     year: 2021,
   },
   {
-    id: 3,
     name: "Dele bolu",
     email: "alli@gmail.com",
     image:
@@ -30,7 +27,6 @@ const entrepreneurs = [
     year: 2020,
   },
   {
-    id: 6,
     name: "Esther olumide",
     email: "esther@gmail.com",
     image:
