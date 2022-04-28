@@ -10,8 +10,8 @@ function Entreprenuers() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data } = await axios.get("/api/entrepreneurs");
-      setEntrepreneurs(data);
+      const  data  = await axios.get("/api/entrepreneurs");
+      setEntrepreneurs(data.json());
     };
     fetchData();
   }, []);

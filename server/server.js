@@ -22,6 +22,7 @@ app.use("/api/entrepreneurs", entrepreneurRouter);
 app.use(notFound);
 app.use(errorHandler)
 
+
 // app.get("/", (req, res) => {
 //   res.send(`server is running on port ${PORT}`);
 // });
@@ -32,7 +33,7 @@ app.use(errorHandler)
 //   res.json(admins);
 // });
 
-// //? get entrepreneurs from server
+//? get entrepreneurs from server
 // app.get("/api/entrepreneurs", (req, res) => {
 //   res.json(entrepreneurs);
 // });
