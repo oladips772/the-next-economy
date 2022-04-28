@@ -7,7 +7,7 @@ import { entrepreneurListReducer } from "./Reducers/EntrepreneurReducer";
 const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
 });
-
+  
 const initialState = {};
 const middleware = [thunk];
 

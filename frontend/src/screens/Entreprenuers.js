@@ -2,18 +2,19 @@
 import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
+import toast, { Toaster } from "react-hot-toast";
+ 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
-  const [entrepreneurs, setEntrepreneurs] = useState([]);
+  const dispatch = useDispatch();
+  const entrepreneurList = useSelector((state) => state.entrepreneurList);
+  const { loading, error, entrepreneurs } = entrepreneurList;
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await axios.get("/api/entrepreneurs");
-      setEntrepreneurs(data);
-    };
-    fetchData();
-  }, []);
+    dispatch(listEntrepreneurs());
+  }, [dispatch]);
 
   const search = (data) => {
     return data?.filter(
@@ -28,6 +29,7 @@ function Entreprenuers() {
 
   return (
     <div>
+      <Toaster />
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">
@@ -42,8 +44,12 @@ function Entreprenuers() {
             />
           </div>
           {/*  */}
+          {error && toast.error("please check your connection")}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
             <User data={search(entrepreneurs)} />
+            {loading && (
+              <img src="/images/loader2.png" alt="" className="loading_image" />
+            )}
           </div>
         </div>
       </div>

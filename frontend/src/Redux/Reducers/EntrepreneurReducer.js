@@ -9,7 +9,7 @@ export const entrepreneurListReducer = (
   state = { entrepreneurs: [] },
   action
 ) => {
-  switch (action.payload) {
+  switch (action.type) {
     case ENTREPRENEURS_LIST_REQUEST:
       return {
         loading: true,

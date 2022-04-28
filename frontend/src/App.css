@@ -489,3 +489,10 @@ textarea {
   padding: 5px;
   border-radius: 3px;
 }
+
+.loading_image{
+  position:absolute;
+  left:55%;
+  top:60%;
+  transform:translate(-45%,-45%)
+}
