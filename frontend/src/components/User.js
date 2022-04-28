@@ -14,7 +14,7 @@ function User({ data }) {
           <th>Bussiness</th>
           <th>Actions</th>
         </tr>
-        {data?.map((person) => (
+        {data.map((person) => (
           <>
             <tr>
               <td>
@@ -30,7 +30,7 @@ function User({ data }) {
               <td>{person?.year}</td>
               <td>{person?.bussiness}</td>
               <td>
-                <NavLink to={`/Profile/${person?.id}`}>
+                <NavLink to={`/Profile/${person?._id}`}>
                   <span className="p-1 mx-4 bg-green-700 text-white  text-sm font-semibold rounded cursor-pointer">
                     View
                   </span>

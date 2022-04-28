@@ -1,5 +1,6 @@
 /** @format */
 import {
+  ENTREPRENEURS_LIST_FAIL,
   ENTREPRENEURS_LIST_REQUEST,
   ENTREPRENEURS_LIST_SUCCESS,
 } from "../Constants/EntrepreneurConstant";
@@ -17,7 +18,15 @@ export const entrepreneurListReducer = (
     case ENTREPRENEURS_LIST_SUCCESS:
       return {
         loading: false,
-        entrepreneurs: [],
+        entrepreneurs: action.payload,
       };
+    case ENTREPRENEURS_LIST_FAIL:
+      return {
+        loading: false,
+        entrepreneurs: [],
+        error: action.payload,
+      };
+    default:
+      return state;
   }
 };

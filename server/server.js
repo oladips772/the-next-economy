@@ -33,7 +33,7 @@ app.use(errorHandler)
 //   res.json(admins);
 // });
 
-//? get entrepreneurs from server
+// ? get entrepreneurs from server
 // app.get("/api/entrepreneurs", (req, res) => {
 //   res.json(entrepreneurs);
 // });

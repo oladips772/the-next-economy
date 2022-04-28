@@ -3,15 +3,14 @@ import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import User from "../components/User";
 import axios from "axios";
-
 function Entreprenuers() {
   const [query, setQuery] = useState("");
   const [entrepreneurs, setEntrepreneurs] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const  data  = await axios.get("/api/entrepreneurs");
-      setEntrepreneurs(data.json());
+      const { data } = await axios.get("/api/entrepreneurs");
+      setEntrepreneurs(data);
     };
     fetchData();
   }, []);
@@ -22,7 +21,7 @@ function Entreprenuers() {
         person?.name.toLowerCase().includes(query) ||
         person?.email.toString().includes(query) ||
         person?.bussiness.toLowerCase().includes(query) ||
-        person?.phone.toLowerCase().includes(query) ||
+        person?.phone.toString().includes(query) ||
         person?.year.toString().includes(query)
     );
   };

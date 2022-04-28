@@ -3,16 +3,21 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
-import { entrepreneurs } from "../data/entrepreneurs";
+import axios from "axios";
 
 function Edit() {
-  // const [entrepreneur, setEntrepreneur] = React.useState(null);
+  const [entrepreneur, setEntrepreneur] = React.useState({});
   let params = useParams();
   const filePicker = React.useRef(null);
   const [selectedImage, setSelectedImage] = React.useState("");
-  const entrepreneur = entrepreneurs.find(
-    (entrepreneur) => entrepreneur.id === parseInt(params.id)
-  );
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get(`/api/entrepreneurs/${params.id}`);
+      setEntrepreneur(data);
+    };
+    fetchData();
+  }, []);
 
   const handleChange = (e) => {
     const reader = new FileReader();

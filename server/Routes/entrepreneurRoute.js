@@ -9,7 +9,7 @@ entrepreneurRouter.get(
   "/",
   asyncHandler(async (req, res) => {
     const entrepreneurs = await Entrepreneur.find({});
-    res.json({ entrepreneurs });
+    res.json(entrepreneurs);
   })
 );
 
@@ -21,7 +21,7 @@ entrepreneurRouter.get(
     if (!entrepreneur) {
       res.status(404).json({ msg: "entrepreneur not found" });
     } else {
-      res.json({ entrepreneur });
+      res.json(entrepreneur);
     }
   })
 );
