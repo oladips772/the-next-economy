@@ -1,9 +1,8 @@
 /** @format */
 import React, { useState } from "react";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import PersonPinOutlinedIcon from "@mui/icons-material/PersonPinOutlined";
 import Calendar from "react-calendar";
-// import "react-calendar/dist/Calendar.css";
+
 
 function HomeHeader() {
   const [value, onChange] = useState(new Date());

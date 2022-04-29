@@ -5,7 +5,7 @@ import User from "../components/User";
 import { useSelector, useDispatch } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import toast, { Toaster } from "react-hot-toast";
- 
+
 function Entreprenuers() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ function Entreprenuers() {
     return data?.filter(
       (person) =>
         person?.name.toLowerCase().includes(query) ||
-        person?.email.toString().includes(query) ||
+        person?.email.toLowerCase().includes(query) ||
         person?.bussiness.toLowerCase().includes(query) ||
         person?.phone.toString().includes(query) ||
         person?.year.toString().includes(query)

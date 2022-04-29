@@ -2,12 +2,16 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { entrepreneurListReducer } from "./Reducers/EntrepreneurReducer";
+import {
+  entrepreneurDetailsReducer,
+  entrepreneurListReducer,
+} from "./Reducers/EntrepreneurReducer";
 
 const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
+  entrepreneurDetails: entrepreneurDetailsReducer,
 });
-  
+
 const initialState = {};
 const middleware = [thunk];
 
