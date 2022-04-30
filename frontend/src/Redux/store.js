@@ -6,13 +6,25 @@ import {
   entrepreneurDetailsReducer,
   entrepreneurListReducer,
 } from "./Reducers/EntrepreneurReducer";
+import { adminLoginReducer } from "./Reducers/AdminReducer";
 
 const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
   entrepreneurDetails: entrepreneurDetailsReducer,
+  adminLogin: adminLoginReducer,
 });
 
-const initialState = {};
+
+const adminInfoFromLocalStorage = localStorage.getItem("adminInfo")
+  ? JSON.parse(localStorage.getItem("adminInfo"))
+  : null;
+
+const initialState = {
+  adminLogin: {
+    adminInfo: adminInfoFromLocalStorage,
+  },
+};
+
 const middleware = [thunk];
 
 const store = createStore(

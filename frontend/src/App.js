@@ -18,7 +18,7 @@ function App() {
           <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
           <Route path="/Login" element={<Login />} />{" "}
           <Route path="/Profile/:id" element={<Profile />} />{" "}
-          <Route path="CreateAdmin" element={<CreateAdmin />} />{" "}
+          <Route path="/CreateAdmin" element={<CreateAdmin />} />{" "}
         </Routes>
       </BrowserRouter>
     </div>
