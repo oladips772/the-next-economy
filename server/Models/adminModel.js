@@ -1,5 +1,6 @@
 /** @format */
 const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
 
 const adminSchema = mongoose.Schema(
   {
@@ -26,6 +27,11 @@ const adminSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+// ? login
+adminSchema.methods.matchPassword = async function (enterPassword) {
+  return await bcrypt.compare(enterPassword, this.password);
+};
 
 const Admin = mongoose.model("Admin", adminSchema);
 module.exports = Admin;

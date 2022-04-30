@@ -8,17 +8,20 @@ const cors = require("cors");
 const { connectDatabase } = require("./config/MongoDb");
 const ImportData = require("./DataImport");
 const entrepreneurRouter = require("./Routes/entrepreneurRoute");
+const adminRouter = require("./Routes/adminRoute");
 const { notFound, errorHandler } = require("./Middleware/Error");
 
 
 const PORT = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
+app.use(express.json())
 connectDatabase();
 
 // API
 app.use("/api/import", ImportData)
 app.use("/api/entrepreneurs", entrepreneurRouter);
+app.use("/api/admins", adminRouter);
 app.use(notFound);
 app.use(errorHandler)
 
