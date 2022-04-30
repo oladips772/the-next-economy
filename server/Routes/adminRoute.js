@@ -28,6 +28,32 @@ adminRouter.post(
   })
 );
 
+// ? register admin
+adminRouter.post(
+  "/register",
+  asyncHandler(async (req, res) => {
+    const { name, email, password } = req.body;
+    const userExists = await Admin.findOne({ email });
+    if (userExists) {
+      res.status(400);
+      throw new Error("admin already exists");
+    }
+    const admin = await Admin.create({ email, password, name });
+    if (admin) {
+      res.status(201).json({
+        _id: admin._id,
+        name: admin.name,
+        email: admin.email,
+        isAdmin: admin.isAdmin,
+        token: generateToken(admin._id),
+      });
+    } else {
+      res.status(400);
+      throw new Error("invalid admin credentials");
+    }
+  })
+);
+
 // ? admin profile
 adminRouter.get(
   "/profile",
