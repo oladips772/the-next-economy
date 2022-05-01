@@ -52,6 +52,7 @@ function Login() {
             className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white bg-black"
           />
           <button
+            disabled={loading}
             className={`text-white ${
               loading
                 ? "bg-green-800 text-[12px] animate-pulse"

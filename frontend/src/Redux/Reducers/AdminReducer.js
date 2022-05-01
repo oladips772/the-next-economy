@@ -9,7 +9,6 @@ import {
   ADMIN_CREATE_SUCCESS,
 } from "../Constants/AdminConstant";
 
-
 // ? admin login reducer
 export const adminLoginReducer = (state = {}, action) => {
   switch (action.type) {
@@ -33,14 +32,10 @@ export const adminCreateReducer = (state = {}, action) => {
     case ADMIN_CREATE_REQUEST:
       return { loading: true };
     case ADMIN_CREATE_SUCCESS:
-      return { loading: false, adminInfo: action.payload };
+      return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_CREATE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;
   }
 };
-
-
-
-
