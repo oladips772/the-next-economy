@@ -1,15 +1,26 @@
 /** @format */
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { useDispatch } from "react-redux";
+import { AdminLogout } from "../Redux/Actions/AdminAction";
 
 function Sidebar() {
+  const navigate = useNavigate();
+
   const status = navigator.onLine;
   const [systemStatus, setSystemStatus] = useState(status);
+  const dispatch = useDispatch();
+
+  const LOGOUT = (e) => {
+    e.preventDefault();
+    dispatch(AdminLogout());
+    navigate("/Login");
+  };
 
   useEffect(() => {
     setSystemStatus(status);
@@ -87,11 +98,12 @@ function Sidebar() {
         </div>
       </div>
       {/*  */}
-      <div className="absolute bottom-10 flex items-center mx-2 cursor-pointer">
-        <LogoutIcon className="rotate-180 text-white mr-2 " />
-        <NavLink to="/Login">
+      <div
+        className="absolute bottom-10 flex items-center mx-2 cursor-pointer"
+        onClick={LOGOUT}
+      >
+        <LogoutIcon className="rotate-180 text-white mr-2 text-sm" />
         <p className="text-white text-sm font-semibold">LOG OUT</p>
-        </NavLink>
       </div>
       <div className="absolute bottom-2 flex items-center mx-2">
         <p className="text-white text-[11px] font-bold">SYSTEM STATUS : </p>

@@ -29,7 +29,6 @@ function Entreprenuers() {
 
   return (
     <div>
-      <Toaster />
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">

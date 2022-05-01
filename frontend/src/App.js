@@ -7,10 +7,13 @@ import Entreprenuers from "./screens/Entreprenuers";
 import Login from "./screens/Login";
 import Profile from "./screens/Profile";
 import CreateAdmin from "./screens/CreateAdmin";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
+      <Toaster />
+
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<HomeScreen />} />

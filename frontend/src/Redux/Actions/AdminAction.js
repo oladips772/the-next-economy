@@ -3,6 +3,7 @@ import {
   ADMIN_LOGIN_FAIL,
   ADMIN_LOGIN_REQUEST,
   ADMIN_LOGIN_SUCCESS,
+  ADMIN_LOGOUT,
 } from "../Constants/AdminConstant";
 import axios from "axios";
 
@@ -30,4 +31,9 @@ export const AdminLogin = (email, password) => async (dispatch) => {
           : error.message,
     });
   }
+};
+
+export const AdminLogout = () => async (dispatch) => {
+  dispatch({ type: ADMIN_LOGOUT });
+  localStorage.removeItem("adminInfo");
 };

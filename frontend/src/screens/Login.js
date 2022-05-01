@@ -27,7 +27,6 @@ function Login() {
 
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center">
-      <Toaster />
       {error && toast.error(error)}
       <div className="">
         <div className="flex flex-col">
@@ -37,24 +36,30 @@ function Login() {
             alt=""
           />
           <input
+            disabled={loading}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="text"
             placeholder="Email"
-            className="border-green-300 border-[1px] outline-none p-2 w-[400px] my-2 rounded bg-transparent text-white"
+            className="border-green-300 border-[1px] outline-none p-2 w-[400px] my-2 rounded text-white bg-black"
           />
           <input
+            disabled={loading}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
-            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white"
+            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white bg-black"
           />
           <button
-            className="text-white bg-green-600 p-2 rounded text-sm font-bold mt-4 w-full"
+            className={`text-white ${
+              loading
+                ? "bg-green-800 text-[12px] animate-pulse"
+                : "bg-green-600"
+            } p-2 rounded text-sm font-bold mt-4 w-full`}
             onClick={LOGIN}
           >
-            LOGIN
+            {`${loading ? "Login you in..." : "Login"}`}
           </button>
         </div>
       </div>
