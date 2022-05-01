@@ -13,6 +13,7 @@ function CreateAdmin() {
             <form className="flex flex-col mx-4">
               <label className="-mb-4">Admin Name</label>
               <input
+              name="name"
                 type="text"
                 className="h-[35px] w-[350px] border border-black outline-none p-4 rounded my-4"
               />

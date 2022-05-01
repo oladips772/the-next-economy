@@ -4,6 +4,9 @@ import {
   ADMIN_LOGIN_REQUEST,
   ADMIN_LOGIN_SUCCESS,
   ADMIN_LOGOUT,
+  ADMIN_CREATE_FAIL,
+  ADMIN_CREATE_REQUEST,
+  ADMIN_CREATE_SUCCESS,
 } from "../Constants/AdminConstant";
 
 
@@ -22,4 +25,22 @@ export const adminLoginReducer = (state = {}, action) => {
       return state;
   }
 };
+
+
+// ? admin create reducer
+export const adminCreateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_CREATE_REQUEST:
+      return { loading: true };
+    case ADMIN_CREATE_SUCCESS:
+      return { loading: false, adminInfo: action.payload };
+    case ADMIN_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+
+
 

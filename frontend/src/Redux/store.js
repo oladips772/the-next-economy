@@ -6,12 +6,13 @@ import {
   entrepreneurDetailsReducer,
   entrepreneurListReducer,
 } from "./Reducers/EntrepreneurReducer";
-import { adminLoginReducer } from "./Reducers/AdminReducer";
+import { adminCreateReducer, adminLoginReducer } from "./Reducers/AdminReducer";
 
 const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
   entrepreneurDetails: entrepreneurDetailsReducer,
   adminLogin: adminLoginReducer,
+  adminCreate:adminCreateReducer,
 });
 
 
