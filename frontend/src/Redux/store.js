@@ -3,6 +3,7 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
+  entrepreneurCreateReducer,
   entrepreneurDetailsReducer,
   entrepreneurListReducer,
 } from "./Reducers/EntrepreneurReducer";
@@ -13,6 +14,7 @@ const reducer = combineReducers({
   entrepreneurDetails: entrepreneurDetailsReducer,
   adminLogin: adminLoginReducer,
   adminCreate:adminCreateReducer,
+  entrepreneurCreate:entrepreneurCreateReducer,
 });
 
 

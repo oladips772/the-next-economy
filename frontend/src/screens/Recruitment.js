@@ -2,10 +2,13 @@
 import React, { useRef, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import axios from "axios";
+// https://api.cloudinary.com/v1_1/dsbhrtd0o/image/upload
 
 function HomeScreen() {
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
+  const [image, setImage] = useState("");
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -15,6 +18,24 @@ function HomeScreen() {
     reader.onload = (readerEvent) => {
       setSelectedImage(readerEvent.target.result);
     };
+  };
+
+  const handleCreate = async () => {
+    if (!selectedImage) return;
+    const data = new FormData();
+    data.append("file", selectedImage);
+    data.append("upload_preset", "uploads");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/dsbhrtd0o/image/upload",
+        data
+      );
+      const { url } = uploadRes.data;
+      setImage(url);
+      console.log(uploadRes.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -70,7 +91,7 @@ function HomeScreen() {
                 </select>
               </div>
             </div>
-            <button>Create</button>
+            <button onClick={handleCreate}>Create</button>
           </div>
         </div>
       </div>
