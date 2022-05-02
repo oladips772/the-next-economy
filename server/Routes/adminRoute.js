@@ -38,6 +38,11 @@ adminRouter.post(
       res.status(400);
       throw new Error("admin already exists");
     }
+    
+     if (!name || !email || !password) {
+       throw new Error("please fill all fields");
+     }
+    
     const admin = await Admin.create({ email, password, name });
     if (admin) {
       res.status(201).json({

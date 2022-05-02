@@ -13,6 +13,50 @@ entrepreneurRouter.get(
   })
 );
 
+// ? create entrepreneur sever route
+entrepreneurRouter.post(
+  "/create",
+  asyncHandler(async (req, res) => {
+    const { name, email, image, phone, year, bussiness, bio } = req.body;
+    const userExists = await Entrepreneur.findOne({ email });
+
+    if (userExists) {
+      res.status(400);
+      throw new Error("entrepreneur already exists");
+    }
+
+    if (!name || !email || !image || !phone || !year || !bussiness || !bio) {
+      throw new Error("please fill all fields");
+    }
+
+    const entrepreneur = await Entrepreneur.create({
+      name,
+      email,
+      image,
+      phone,
+      year,
+      bussiness,
+      bio,
+    });
+    if (entrepreneur) {
+      res.status(201).json({
+        _id: entrepreneur._id,
+        name: entrepreneur.name,
+        email: entrepreneur.email,
+        image: entrepreneur.image,
+        phone: entrepreneur.phone,
+        year: entrepreneur.year,
+        bussiness: entrepreneur.bussiness,
+        bio: entrepreneur.bio,
+        createdAt: entrepreneur.createdAt,
+      });
+    } else {
+      res.status(400);
+      throw new Error("invalid entrepreneur credentials");
+    }
+  })
+);
+
 // ? get entrepreneur by id from server route
 entrepreneurRouter.get(
   "/:id",

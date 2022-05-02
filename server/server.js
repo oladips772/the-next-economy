@@ -11,25 +11,22 @@ const entrepreneurRouter = require("./Routes/entrepreneurRoute");
 const adminRouter = require("./Routes/adminRoute");
 const { notFound, errorHandler } = require("./Middleware/Error");
 
-
 const PORT = process.env.PORT || 4000;
 const app = express();
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 connectDatabase();
 
 // API
-app.use("/api/import", ImportData)
+app.use("/api/import", ImportData);
 app.use("/api/entrepreneurs", entrepreneurRouter);
 app.use("/api/admins", adminRouter);
 app.use(notFound);
-app.use(errorHandler)
-
+app.use(errorHandler);
 
 // app.get("/", (req, res) => {
 //   res.send(`server is running on port ${PORT}`);
 // });
-
 
 //? get admins from server
 // app.get("/api/admins", (req, res) => {
@@ -52,18 +49,17 @@ app.get("/api/admins/:id", (req, res) => {
   }
 });
 
-
 //? get entrepreneur by id
-app.get("/api/entrepreneurs/:id", (req, res) => {
-  const { id } = req.params;
-  const entrepreneur = entrepreneurs.find(
-    (entrepreneur) => entrepreneur.id === parseInt(id)
-  );
-  if (!entrepreneur) {
-    res.status(404).json({ msg: "admin not found" });
-  } else {
-    res.json(entrepreneur);
-  }
-});
+// app.get("/api/entrepreneurs/:id", (req, res) => {
+//   const { id } = req.params;
+//   const entrepreneur = entrepreneurs.find(
+//     (entrepreneur) => entrepreneur.id === parseInt(id)
+//   );
+//   if (!entrepreneur) {
+//     res.status(404).json({ msg: "admin not found" });
+//   } else {
+//     res.json(entrepreneur);
+//   }
+// });
 
 app.listen(PORT, console.log(`server is running on port ${PORT}`));

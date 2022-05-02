@@ -3,12 +3,22 @@ import React, { useRef, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import axios from "axios";
-// https://api.cloudinary.com/v1_1/dsbhrtd0o/image/upload
+import { useSelector, useDispatch } from "react-redux";
+import { EntrepreneurCreate } from "../Redux/Actions/EntrepreneurAction";
 
 function HomeScreen() {
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [image, setImage] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [year, setYear] = useState(null);
+  const [bio, setBio] = useState("");
+  const [bussiness, setBussiness] = useState("Employment");
+  const dispatch = useDispatch();
+  const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
+  const { loading, success, error } = entrepreneurCreate;
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -36,6 +46,14 @@ function HomeScreen() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const createEntreprenuer = (e) => {
+    e.preventDefault();
+    handleCreate();
+    dispatch(
+      EntrepreneurCreate(name, email, image, phone, year, bussiness, bio)
+    );
   };
 
   return (
@@ -73,26 +91,54 @@ function HomeScreen() {
               </div>
               <div className="input_div">
                 <label>Full Name</label>
-                <input type="text" />
+                <input
+                  required
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <label>Email</label>
-                <input type="text" />
+                <input
+                  required
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
                 <label>Phone</label>
-                <input type="number" />
+                <input
+                  required
+                  type="number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
               </div>
               <div className="select_div">
                 <label>Year</label>
-                <input type="number" />
+                <input
+                  required
+                  type="number"
+                  value={year}
+                  onChange={(e) => setYear(e.target.value)}
+                />
                 <label>Bio</label>
-                <textarea></textarea>
+                <textarea
+                  required
+                  value={bio}
+                  onChange={(e) => setBio(e.target.value)}
+                ></textarea>
                 <label>Bussiness Sector</label>
-                <select>
+                <select onChange={(e) => setBussiness(e.target.value)}>
                   <option value="Employment">Employment</option>
                   <option value="Entreprenuership">Entreprenuership</option>
                 </select>
               </div>
             </div>
-            <button onClick={handleCreate}>Create</button>
+            <button
+              onClick={createEntreprenuer}
+              className={`${loading && "animate-pulse"}`}
+            >{`${loading ? "Creating..." : "Create"}`}</button>
           </div>
+          {error && <p>{error}</p>}
         </div>
       </div>
     </div>
