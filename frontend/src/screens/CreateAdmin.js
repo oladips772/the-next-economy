@@ -16,17 +16,19 @@ function CreateAdmin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(AdminCreate(name, email, password));
-      if (error) {
-        toast.error(error);
-      } else if (success) {
-        toast.success("admin created succesfully");
-        setName("");
-        setEmail("");
-        setPassword("");
-        window.location.reload();
-      }
   };
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    } else if (success) {
+      toast.success("admin created succesfully");
+      setName("");
+      setEmail("");
+      setPassword("");
+      window.location.reload();
+    }
+  }, [error, success]);
 
   return (
     <div>

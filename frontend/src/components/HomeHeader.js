@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import Calendar from "react-calendar";
 
-
-function HomeHeader() {
+function HomeHeader({ entrepreneurs }) {
   const [value, onChange] = useState(new Date());
 
   return (
@@ -18,7 +17,7 @@ function HomeHeader() {
             Total Entrepreneurs
           </p>
           <span className="absolute right-4 text-3xl font-bold text-gray-700">
-            48
+            {entrepreneurs?.length}
           </span>
         </div>
         {/*  */}
