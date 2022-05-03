@@ -16,7 +16,6 @@ function HomeScreen() {
   }, [dispatch]);
 
 
-
   return (
     <div>
       <div className="flex justify-between">

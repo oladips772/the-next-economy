@@ -6,6 +6,7 @@ import {
   entrepreneurCreateReducer,
   entrepreneurDetailsReducer,
   entrepreneurListReducer,
+  entrepreneurUpdateReducer,
 } from "./Reducers/EntrepreneurReducer";
 import { adminCreateReducer, adminLoginReducer } from "./Reducers/AdminReducer";
 
@@ -13,10 +14,10 @@ const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
   entrepreneurDetails: entrepreneurDetailsReducer,
   adminLogin: adminLoginReducer,
-  adminCreate:adminCreateReducer,
-  entrepreneurCreate:entrepreneurCreateReducer,
+  adminCreate: adminCreateReducer,
+  entrepreneurCreate: entrepreneurCreateReducer,
+  entrepreneurUpdate: entrepreneurUpdateReducer,
 });
-
 
 const adminInfoFromLocalStorage = localStorage.getItem("adminInfo")
   ? JSON.parse(localStorage.getItem("adminInfo"))

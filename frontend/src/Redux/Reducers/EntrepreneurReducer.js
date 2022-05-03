@@ -9,8 +9,13 @@ import {
   ENTREPRENEUR_CREATE_FAIL,
   ENTREPRENEUR_CREATE_REQUEST,
   ENTREPRENEUR_CREATE_SUCCESS,
+  ENTREPRENEUR_UPDATE_REQUEST,
+  ENTREPRENEUR_UPDATE_SUCCESS,
+  ENTREPRENEUR_UPDATE_FAIL,
+  ENTREPRENEUR_UPDATE_RESET,
 } from "../Constants/EntrepreneurConstant";
 
+// ? entrepreneur list reducers
 export const entrepreneurListReducer = (
   state = { entrepreneurs: [] },
   action
@@ -37,6 +42,7 @@ export const entrepreneurListReducer = (
   }
 };
 
+// ? entrepreneur details
 export const entrepreneurDetailsReducer = (
   state = { entrepreneur: {} },
   action
@@ -63,7 +69,7 @@ export const entrepreneurDetailsReducer = (
   }
 };
 
-// ? admin create reducer
+// ? entreprenuer create reducer
 export const entrepreneurCreateReducer = (state = {}, action) => {
   switch (action.type) {
     case ENTREPRENEUR_CREATE_REQUEST:
@@ -71,6 +77,20 @@ export const entrepreneurCreateReducer = (state = {}, action) => {
     case ENTREPRENEUR_CREATE_SUCCESS:
       return { loading: false, success: true, entreprenuer: action.payload };
     case ENTREPRENEUR_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// ? entreprenuer update reducer
+export const entrepreneurUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ENTREPRENEUR_UPDATE_REQUEST:
+      return { loading: true };
+    case ENTREPRENEUR_UPDATE_SUCCESS:
+      return { loading: false, success: true, entreprenuer: action.payload };
+    case ENTREPRENEUR_UPDATE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

@@ -10,6 +10,9 @@ import {
   ENTREPRENEUR_CREATE_FAIL,
   ENTREPRENEUR_CREATE_REQUEST,
   ENTREPRENEUR_CREATE_SUCCESS,
+  ENTREPRENEUR_UPDATE_REQUEST,
+  ENTREPRENEUR_UPDATE_SUCCESS,
+  ENTREPRENEUR_UPDATE_FAIL,
 } from "../Constants/EntrepreneurConstant";
 
 export const listEntrepreneurs = () => async (dispatch) => {
@@ -81,3 +84,37 @@ export const listEntrepreneur = (id) => async (dispatch) => {
     });
   }
 };
+
+// ? entrepreneur update action
+export const updateEntrepreneur =
+  (entrepreneur) => async (dispatch, getState) => {
+    try {
+      dispatch({
+        type: ENTREPRENEUR_UPDATE_REQUEST,
+      });
+
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const { data } = await axios.put(
+        `/api/entrepreneurs/profile`,
+        entrepreneur,
+        config
+      );
+      dispatch({
+        type: ENTREPRENEUR_UPDATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: ENTREPRENEUR_UPDATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
