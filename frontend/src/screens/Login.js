@@ -20,6 +20,12 @@ function Login() {
     }
   }, [adminInfo]);
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
+
   const LOGIN = (e) => {
     e.preventDefault();
     dispatch(AdminLogin(email, password));
@@ -27,7 +33,6 @@ function Login() {
 
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center">
-      {error && toast.error(error)}
       <div className="">
         <div className="flex flex-col">
           <img

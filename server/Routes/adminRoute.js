@@ -12,6 +12,11 @@ adminRouter.post(
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const admin = await Admin.findOne({ email });
+
+    if (!email || !password) {
+      throw new Error("password and email required!");
+    }
+    
     if (admin && (await admin.matchPassword(password))) {
       res.json({
         _id: admin._id,
@@ -38,11 +43,11 @@ adminRouter.post(
       res.status(400);
       throw new Error("admin already exists");
     }
-    
-     if (!name || !email || !password) {
-       throw new Error("please fill all fields");
-     }
-    
+
+    if (!name || !email || !password) {
+      throw new Error("please fill all fields");
+    }
+
     const admin = await Admin.create({ email, password, name });
     if (admin) {
       res.status(201).json({

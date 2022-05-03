@@ -7,13 +7,20 @@ import Entreprenuers from "./screens/Entreprenuers";
 import Login from "./screens/Login";
 import Profile from "./screens/Profile";
 import CreateAdmin from "./screens/CreateAdmin";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
-      <Toaster />
-
+      <Toaster
+        toastOptions={{
+          className: "",
+          style: {
+            color: "white",
+            background: "rgb(9, 145, 9)",
+          },
+        }}
+      />
       <BrowserRouter>
         <Routes>
           <Route path="/" exact element={<HomeScreen />} />

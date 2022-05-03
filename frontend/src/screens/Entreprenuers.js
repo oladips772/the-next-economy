@@ -4,7 +4,8 @@ import Sidebar from "../components/Sidebar";
 import User from "../components/User";
 import { useSelector, useDispatch } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import "react-toastify/dist/ReactToastify.css";
 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
@@ -15,6 +16,13 @@ function Entreprenuers() {
   useEffect(() => {
     dispatch(listEntrepreneurs());
   }, [dispatch]);
+
+
+  useEffect(() => {
+    if (error) {
+      toast.error("please check system status");
+    }
+  }, [error]);
 
   const search = (data) => {
     return data?.filter(
@@ -43,7 +51,6 @@ function Entreprenuers() {
             />
           </div>
           {/*  */}
-          {error && toast.error("please check your connection")}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
             <User data={search(entrepreneurs)} />
             {loading && (

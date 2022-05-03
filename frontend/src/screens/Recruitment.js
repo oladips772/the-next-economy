@@ -1,15 +1,16 @@
 /** @format */
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { EntrepreneurCreate } from "../Redux/Actions/EntrepreneurAction";
+import toast from "react-hot-toast";
 
 function HomeScreen() {
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -48,9 +49,32 @@ function HomeScreen() {
     }
   };
 
+  useEffect(() => {
+    if (selectedImage) {
+      handleCreate();
+    }
+  }, [selectedImage]);
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    } else if (success) {
+      window.location.reload()
+      toast.success("created succesfully");
+      setSelectedImage("");
+      setImage(null);
+      setName("");
+      setEmail("");
+      setPhone("");
+      setYear("");
+      setBio("");
+      setBussiness("");
+    }
+  }, [error, success]);
+
   const createEntreprenuer = (e) => {
     e.preventDefault();
-    handleCreate();
+    if (!image) return;
     dispatch(
       EntrepreneurCreate(name, email, image, phone, year, bussiness, bio)
     );
@@ -138,7 +162,6 @@ function HomeScreen() {
               className={`${loading && "animate-pulse"}`}
             >{`${loading ? "Creating..." : "Create"}`}</button>
           </div>
-          {error && <p>{error}</p>}
         </div>
       </div>
     </div>

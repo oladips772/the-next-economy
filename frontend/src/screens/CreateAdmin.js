@@ -1,5 +1,5 @@
 /** @format */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import { AdminCreate } from "../Redux/Actions/AdminAction";
@@ -16,16 +16,21 @@ function CreateAdmin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(AdminCreate(name, email, password));
-    setName("");
-    setEmail("");
-    setPassword("");
+      if (error) {
+        toast.error(error);
+      } else if (success) {
+        toast.success("admin created succesfully");
+        setName("");
+        setEmail("");
+        setPassword("");
+        window.location.reload();
+      }
   };
+
 
   return (
     <div>
       <div className="flex justify-between">
-        {error && toast.error(error)}
-        {success && toast.success("admin created successfully")}
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
           <h1 className="text-3xl mb-6 ">New Admin</h1>

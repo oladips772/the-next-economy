@@ -77,7 +77,7 @@ function Edit() {
                   <label>Year</label>
                   <input type="number" value={entrepreneur.year} />
                   <label>Biography</label>
-                  <textarea></textarea>
+                  <textarea value={entrepreneur?.bio}></textarea>
                   <label>Bussiness Sector</label>
                   <select>
                     <option value={entrepreneur.bussiness}>

@@ -69,7 +69,7 @@ input {
 }
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
-  background-color: green;
+  background-color: rgb(9, 145, 9);
   color: white;
 }
 .react-calendar__navigation button[disabled] {
