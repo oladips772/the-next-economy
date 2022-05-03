@@ -1,35 +1,78 @@
 /** @format */
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useDispatch, useSelector } from "react-redux";
-import { listEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
+import {
+  listEntrepreneur,
+  updateEntrepreneur,
+} from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
 
-
 function Edit() {
-  const [selectedImage, setSelectedImage] = React.useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState(null);
+  const [year, setYear] = useState(null);
+  const [bussiness, setBussiness] = useState("");
+  const [bio, setBio] = useState("");
   const dispatch = useDispatch();
-  const filePicker = React.useRef(null);
+  const [image, setImage] = useState("");
   let params = useParams();
-  const productId = params.id;
+  const entrepreneurId = params.id;
+
   const entrepreneurDetails = useSelector((state) => state.entrepreneurDetails);
   const { loading, error, entrepreneur } = entrepreneurDetails;
 
-  React.useEffect(() => {
-    dispatch(listEntrepreneur(productId));
-  }, [dispatch, productId]);
+  const entrepreneurUpdate = useSelector((state) => state.entrepreneurUpdate);
+  const {
+    loading: updateLoading,
+    error: errorUpdate,
+    success,
+  } = entrepreneurUpdate;
 
-  const handleChange = (e) => {
-    const reader = new FileReader();
-    if (e.target.files[0]) {
-      reader.readAsDataURL(e.target.files[0]);
-    }
-    reader.onload = (readerEvent) => {
-      setSelectedImage(readerEvent.target.result);
-    };
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateEntrepreneur(
+        entrepreneurId,
+        name,
+        email,
+        image,
+        phone,
+        year,
+        bussiness,
+        bio
+      )
+    );
   };
+
+  useEffect(() => {
+    if (errorUpdate) {
+      toast.error(errorUpdate);
+    }
+    if (success) {
+      toast.success("profile updated successfully");
+      window.location.reload();
+    }
+  }, [errorUpdate, success]);
+
+  useEffect(() => {
+    dispatch(listEntrepreneur(entrepreneurId));
+  }, [dispatch, entrepreneurId]);
+
+  useEffect(() => {
+    if (entrepreneur) {
+      setName(entrepreneur.name);
+      setImage(entrepreneur.image);
+      setEmail(entrepreneur.email);
+      setPhone(entrepreneur.phone);
+      setYear(entrepreneur.year);
+      setBussiness(entrepreneur.bussiness);
+      setBio(entrepreneur.bio);
+    }
+  }, [entrepreneur]);
 
   return (
     <div>
@@ -46,46 +89,53 @@ function Edit() {
             <div className="edit_container shadow">
               <div className="edit_wrapper">
                 <div className="edit_image_div">
-                  <img
-                    src={`${
-                      selectedImage ? selectedImage : entrepreneur.image
-                    }`}
-                    alt=""
-                    className=""
-                  />
-                  <input
-                    className="display-none"
-                    type="file"
-                    hidden
-                    ref={filePicker}
-                    onChange={handleChange}
-                  />
-                  <CameraAltOutlinedIcon
-                    className="camera"
-                    onClick={() => filePicker.current.click()}
-                  />
+                  <img src={`${entrepreneur?.image}`} alt="" className="" />
                 </div>
                 <div className="">
                   <label>Full Name</label>
-                  <input type="text" value={entrepreneur.name} />
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
                   <label>Email</label>
-                  <input type="text" value={entrepreneur.email} />
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                   <label>Phone</label>
-                  <input type="number" value={entrepreneur.phone} />
+                  <input
+                    type="number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                  />
                 </div>
                 <div className="">
                   <label>Year</label>
-                  <input type="number" value={entrepreneur.year} />
+                  <input
+                    type="number"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+                  />
                   <label>Biography</label>
-                  <textarea value={entrepreneur?.bio}></textarea>
+                  <textarea
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  ></textarea>
                   <label>Bussiness Sector</label>
-                  <select>
-                    <option value={entrepreneur.bussiness}>
-                      {entrepreneur.bussiness}
-                    </option>
-                    <option value="Entreprenuership">Entreprenuership</option>
+                  <select onChange={(e) => setBussiness(e.target.value)}>
+                    <option value={bussiness}>{bussiness}</option>
+                    <option value="Entrepreneurship">Entrepreneurship</option>
+                    <option value="Employment">Employment</option>
                   </select>
-                  <button>UPDATE</button>
+                  <button
+                    onClick={handleUpdate}
+                    disabled={updateLoading}
+                    className={`${updateLoading && "animate-pulse"}`}
+                  >
+                    {`${updateLoading ? "Updating..." : "Update"}`}
+                  </button>
                 </div>
               </div>
               {/*  */}
@@ -104,8 +154,6 @@ function Edit() {
                   <p>{entrepreneur.bussiness}</p>
                   <span>Phone</span>
                   <p>{entrepreneur.phone}</p>
-                  {/* <span>Year</span>
-                <p>2022</p> */}
                 </div>
               </div>
             </div>

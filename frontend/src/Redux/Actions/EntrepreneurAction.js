@@ -87,7 +87,7 @@ export const listEntrepreneur = (id) => async (dispatch) => {
 
 // ? entrepreneur update action
 export const updateEntrepreneur =
-  (entrepreneur) => async (dispatch, getState) => {
+  (id, name, email, image, phone, year, bussiness, bio) => async (dispatch) => {
     try {
       dispatch({
         type: ENTREPRENEUR_UPDATE_REQUEST,
@@ -100,8 +100,8 @@ export const updateEntrepreneur =
       };
 
       const { data } = await axios.put(
-        `/api/entrepreneurs/profile`,
-        entrepreneur,
+        `/api/entrepreneurs/profile/${id}`,
+        { name, email, image, phone, year, bussiness, bio },
         config
       );
       dispatch({

@@ -8,6 +8,7 @@ import Login from "./screens/Login";
 import Profile from "./screens/Profile";
 import CreateAdmin from "./screens/CreateAdmin";
 import { Toaster } from "react-hot-toast";
+import PrivateRoute from "./PrivateRoute";
 
 function App() {
   return (
@@ -23,12 +24,50 @@ function App() {
       />
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<HomeScreen />} />
-          <Route path="/New_Entrepreneur" element={<Recruitment />} />{" "}
-          <Route path="/Entrepreneurs" element={<Entreprenuers />} />{" "}
+          <Route
+            path="/"
+            exact
+            element={
+              <PrivateRoute>
+                <HomeScreen />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/New_Entrepreneur"
+            element={
+              <PrivateRoute>
+                {" "}
+                <Recruitment />{" "}
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/Entrepreneurs"
+            element={
+              <PrivateRoute>
+                <Entreprenuers />{" "}
+              </PrivateRoute>
+            }
+          />{" "}
           <Route path="/Login" element={<Login />} />{" "}
-          <Route path="/Profile/:id" element={<Profile />} />{" "}
-          <Route path="/CreateAdmin" element={<CreateAdmin />} />{" "}
+          <Route
+            path="/Profile/:id"
+            element={
+              <PrivateRoute>
+                <Profile />{" "}
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/CreateAdmin"
+            element={
+              <PrivateRoute>
+                {" "}
+                <CreateAdmin />
+              </PrivateRoute>
+            }
+          />{" "}
         </Routes>
       </BrowserRouter>
     </div>

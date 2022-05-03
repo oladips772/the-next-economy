@@ -70,4 +70,35 @@ entrepreneurRouter.get(
   })
 );
 
+// ? update entrepreneur by id from server route
+entrepreneurRouter.put(
+  "/profile/:id",
+  asyncHandler(async (req, res) => {
+    const entrepreneur = await Entrepreneur.findById(req.params.id);
+    if (entrepreneur) {
+      (entrepreneur.name = req.body.name || entrepreneur.name),
+        (entrepreneur.email = req.body.email || entrepreneur.email),
+        (entrepreneur.image = req.body.image || entrepreneur.image),
+        (entrepreneur.phone = req.body.phone || entrepreneur.phone),
+        (entrepreneur.year = req.body.year || entrepreneur.year),
+        (entrepreneur.bussiness = req.body.bussiness || entrepreneur.bussiness),
+        (entrepreneur.bio = req.body.bio || entrepreneur.bio);
+      const updatedEntrepreneur = await entrepreneur.save();
+      res.json({
+        _id: updatedEntrepreneur._id,
+        name: updatedEntrepreneur.name,
+        email: updatedEntrepreneur.email,
+        image: updatedEntrepreneur.image,
+        phone: updatedEntrepreneur.phone,
+        year: updatedEntrepreneur.year,
+        bussiness: updatedEntrepreneur.bussiness,
+        bio: updatedEntrepreneur.bio,
+        createdAt: updatedEntrepreneur.createdAt,
+      });
+    } else {
+      throw new Error("entrepreneur not found");
+    }
+  })
+);
+
 module.exports = entrepreneurRouter;
