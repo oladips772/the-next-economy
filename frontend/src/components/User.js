@@ -1,8 +1,19 @@
 /** @format */
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
+import toast from "react-hot-toast";
 
 function User({ data }) {
+  const dispatch = useDispatch();
+
+  function DELETE(id) {
+    dispatch(deleteEntrepreneur(id));
+    toast.success("Entrepreneur Deleted");
+    window.location.reload();
+  }
+
   return (
     <>
       <table>
@@ -35,7 +46,10 @@ function User({ data }) {
                     View
                   </span>
                 </NavLink>
-                <span className="p-1 bg-red-700 text-white rounded cursor-pointer">
+                <span
+                  className="p-1 bg-red-700 text-white rounded cursor-pointer"
+                  onClick={() => DELETE(person?._id)}
+                >
                   Delete
                 </span>
               </td>
