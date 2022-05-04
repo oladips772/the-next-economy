@@ -26,22 +26,22 @@ adminRouter.post(
       throw new Error("password and email are required!");
     }
 
-    if (admin.isAdmin === false) {
+    if (admin?.isAdmin === false) {
       throw new Error("disabled account!");
-    }
-
-    if (admin && (await admin.matchPassword(password))) {
-      res.json({
-        _id: admin._id,
-        name: admin.name,
-        email: admin.email,
-        isAdmin: admin.isAdmin,
-        token: generateToken(admin._id),
-        createdAt: admin.createdAt,
-      });
     } else {
-      res.status(401);
-      throw new Error("wrong email or password");
+      if (admin && (await admin.matchPassword(password))) {
+        res.json({
+          _id: admin._id,
+          name: admin.name,
+          email: admin.email,
+          isAdmin: admin.isAdmin,
+          token: generateToken(admin._id),
+          createdAt: admin.createdAt,
+        });
+      } else {
+        res.status(401);
+        throw new Error("wrong email or password");
+      }
     }
   })
 );
@@ -123,7 +123,7 @@ adminRouter.put(
         _id: updatedAdmin._id,
         name: updatedAdmin.name,
         email: updatedAdmin.email,
-        isAdmin:updatedAdmin.isAdmin,
+        isAdmin: updatedAdmin.isAdmin,
         createdAt: updatedAdmin.createdAt,
       });
     } else {
