@@ -14,7 +14,7 @@ adminRouter.post(
     const admin = await Admin.findOne({ email });
 
     if (!email || !password) {
-      throw new Error("password and email required!");
+      throw new Error("password and email are required!");
     }
     
     if (admin && (await admin.matchPassword(password))) {
@@ -28,7 +28,7 @@ adminRouter.post(
       });
     } else {
       res.status(401);
-      throw new Error("invalid credentials");
+      throw new Error("wrong email or password");
     }
   })
 );

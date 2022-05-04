@@ -101,4 +101,17 @@ entrepreneurRouter.put(
   })
 );
 
+// ? delete entrepreneur by id from server route
+entrepreneurRouter.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const entrepreneur = await Entrepreneur.findByIdAndDelete(req.params.id);
+    if (entrepreneur) {
+      res.json({ msg: `entrepreneur deleted ${req.params.id}` });
+    } else {
+      throw new Error("entrepreneur not found");
+    }
+  })
+);
+
 module.exports = entrepreneurRouter;
