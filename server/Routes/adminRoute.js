@@ -6,6 +6,15 @@ const adminRouter = express.Router();
 const Admin = require("../Models/adminModel");
 const generateToken = require("../utils/generateToken");
 
+// ? get admins
+adminRouter.get(
+  "/",
+  asyncHandler(async (req, res) => {
+    const admins = await Admin.find({});
+    res.json(admins);
+  })
+);
+
 // ? login admin
 adminRouter.post(
   "/login",
@@ -16,7 +25,11 @@ adminRouter.post(
     if (!email || !password) {
       throw new Error("password and email are required!");
     }
-    
+
+    if (admin.isAdmin === false) {
+      throw new Error("disabled account!");
+    }
+
     if (admin && (await admin.matchPassword(password))) {
       res.json({
         _id: admin._id,
@@ -81,6 +94,61 @@ adminRouter.get(
     } else {
       res.status(401);
       throw new Error("invalid token");
+    }
+  })
+);
+
+// ? admin delete
+adminRouter.delete(
+  "/:id",
+  asyncHandler(async (req, res) => {
+    const admin = await Admin.findByIdAndDelete(req.params.id);
+    if (admin) {
+      res.json({ msg: `entrepreneur deleted ${req.params.id}` });
+    } else {
+      throw new Error("entrepreneur not found");
+    }
+  })
+);
+
+// ? disable admin by id from server route
+adminRouter.put(
+  "/disable/:id",
+  asyncHandler(async (req, res) => {
+    const admin = await Admin.findById(req.params.id);
+    if (admin) {
+      admin.isAdmin = false;
+      const updatedAdmin = await admin.save();
+      res.json({
+        _id: updatedAdmin._id,
+        name: updatedAdmin.name,
+        email: updatedAdmin.email,
+        isAdmin:updatedAdmin.isAdmin,
+        createdAt: updatedAdmin.createdAt,
+      });
+    } else {
+      throw new Error("entrepreneur not found");
+    }
+  })
+);
+
+// ? enabled admin by id from server route
+adminRouter.put(
+  "/enable/:id",
+  asyncHandler(async (req, res) => {
+    const admin = await Admin.findById(req.params.id);
+    if (admin) {
+      admin.isAdmin = true;
+      const updatedAdmin = await admin.save();
+      res.json({
+        _id: updatedAdmin._id,
+        name: updatedAdmin.name,
+        email: updatedAdmin.email,
+        isAdmin: updatedAdmin.isAdmin,
+        createdAt: updatedAdmin.createdAt,
+      });
+    } else {
+      throw new Error("entrepreneur not found");
     }
   })
 );

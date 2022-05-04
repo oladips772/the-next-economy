@@ -31,11 +31,11 @@ function CreateAdmin() {
   }, [error, success]);
 
   return (
-    <div>
-      <div className="flex justify-between">
-        <Sidebar />
-        <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-3xl mb-6 ">New Admin</h1>
+    <div className="flex justify-between">
+      <Sidebar />
+      <div className="flex justify-between ">
+        <div className="ml-[250px] mt-4 mb-4">
+          <h1 className="text-lg mb-6 font-semibold">NEW ADMIN</h1>
           <div className="">
             <form className="flex flex-col mx-4" onSubmit={handleSubmit}>
               <label className="-mb-4" htmlFor="name">
@@ -74,6 +74,27 @@ function CreateAdmin() {
                 {`${loading ? "Creating..." : "Create"}`}
               </button>
             </form>
+          </div>
+          {/* admins div */}
+        </div>
+        <div className="mt-4 mb-4 ml-8 w-[600px]">
+          <h1 className="mb-4 font-semibold">ADMIN ACCOUNTS</h1>
+          <div className="flex items-center mx-6 justify-between border-b border-gray-400">
+            <p className="font-bold">Name</p>
+            <p className="font-bold">Email</p>
+            <p className="font-bold">Actions</p>
+          </div>
+          <div className="flex items-center mx-6 justify-between mt-4 -mr-4 p-2 border-b border-gray-400">
+            <span>Korede</span>
+            <span>Korede@gmail.com</span>
+            <div className="flex items-center space-x-6">
+              <p className="bg-red-600 text-white rounded p-[4px] font-semibold text-[13px] cursor-pointer">
+                DISABLE
+              </p>
+              <p className="bg-red-800 text-white rounded p-[4px] font-semibold text-[13px] cursor-pointer">
+                DELETE
+              </p>
+            </div>
           </div>
         </div>
       </div>
