@@ -278,11 +278,11 @@ input {
   display: flex;
   align-items: center;
   margin-top: 20px;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   justify-content: space-between;
-  border: 1px solid black;
-  border-radius: 3px;
+  border: 1px solid gray;
+  border-radius: 20px;
 }
 
 .search_container input {

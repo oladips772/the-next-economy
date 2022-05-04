@@ -17,8 +17,8 @@ function App() {
         toastOptions={{
           className: "",
           style: {
-            color: "black",
-            background: "white",
+            color: "white",
+            background: "green",
             border:"2px solid lightgreen"
           },
         }}

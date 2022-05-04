@@ -17,7 +17,6 @@ function Entreprenuers() {
     dispatch(listEntrepreneurs());
   }, [dispatch]);
 
-
   useEffect(() => {
     if (error) {
       toast.error("please check system status");
@@ -40,7 +39,9 @@ function Entreprenuers() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">
-          <h1 className="text-3xl mb-4 w-full">Entrepreneurs</h1>
+          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+            Entrepreneurs
+          </h1>
           <div className="search_container">
             <input
               type="search"

@@ -85,10 +85,9 @@ function HomeScreen() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-3xl mb-4 w-full">Entrepreneur</h1>
-          <div>
-            <h2>Add New Entrepreneur</h2>
-          </div>
+          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+           Create New Entrepreneur
+          </h1>
           {/*  */}
           <div className="form_container shadow">
             <div className="flex_div">

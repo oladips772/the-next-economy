@@ -83,7 +83,9 @@ function Edit() {
           <img src="/images/loader2.png" alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
-            <h1 className="text-3xl mb-4 w-full">Profile</h1>
+            <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+              Profile
+            </h1>
             <div></div>
             {/*  */}
             <div className="edit_container shadow">

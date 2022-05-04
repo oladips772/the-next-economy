@@ -21,9 +21,11 @@ function HomeScreen() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">
-          <h1 className="text-3xl mb-4 w-full">Dashboard</h1>
-          <HomeHeader entrepreneurs={entrepreneurs}/>
-          <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading}/>
+          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+            Dashboard
+          </h1>
+          <HomeHeader entrepreneurs={entrepreneurs} />
+          <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading} />
         </div>
       </div>
     </div>

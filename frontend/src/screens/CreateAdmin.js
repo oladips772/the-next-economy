@@ -68,7 +68,9 @@ function CreateAdmin() {
       <Sidebar />
       <div className="flex justify-between ">
         <div className="ml-[250px] mt-4 mb-4">
-          <h1 className="text-lg mb-6 font-semibold">NEW ADMIN</h1>
+          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+            New Admin
+          </h1>
           <div className="">
             <form className="flex flex-col mx-4" onSubmit={handleSubmit}>
               <label className="-mb-4" htmlFor="name">
@@ -111,8 +113,10 @@ function CreateAdmin() {
           {/* admins div */}
         </div>
         {/* admins div */}
-        <div className="mt-4 mb-4 ml-8 w-[600px]">
-          <h1 className="mb-4 font-semibold">ADMIN ACCOUNTS</h1>
+        <div className="mt-4 mb-4 ml-[120px] w-[570px] shadow rounded h-[100%]">
+          <h1 className="mb-4 font-semibold text-green-600 p-4">
+            ADMIN ACCOUNTS
+          </h1>
           <div className="flex items-center mx-6 justify-between border-b border-gray-400">
             <p className="font-bold">Name</p>
             <p className="font-bold">Email</p>
@@ -121,11 +125,11 @@ function CreateAdmin() {
           {!adminsLoading && (
             <>
               {admins?.map((admin) => (
-                <div className="flex items-center mx-6 justify-between mt-4 -mr-4 p-2 border-b border-gray-400">
-                  <span className="font-semibold text-gray-900">
+                <div className="flex items-center mx-6 justify-between mt-1  p-2 border-b border-gray-400">
+                  <span className="font-[400] text-gray-900">
                     {admin?.name}
                   </span>
-                  <span className="font-semibold text-gray-900">
+                  <span className="font-[400] text-gray-900">
                     {admin?.email}
                   </span>
                   <div className="flex items-center space-x-6">
