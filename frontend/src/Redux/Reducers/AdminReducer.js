@@ -7,7 +7,34 @@ import {
   ADMIN_CREATE_FAIL,
   ADMIN_CREATE_REQUEST,
   ADMIN_CREATE_SUCCESS,
+  ADMINS_LIST_FAIL,
+  ADMINS_LIST_REQUEST,
+  ADMINS_LIST_SUCCESS,
 } from "../Constants/AdminConstant";
+
+// ? admin list reducer
+export const adminsListReducer = (state = { admins: [] }, action) => {
+  switch (action.type) {
+    case ADMINS_LIST_REQUEST:
+      return {
+        loading: true,
+        admins: [],
+      };
+    case ADMINS_LIST_SUCCESS:
+      return {
+        loading: false,
+        admins: action.payload,
+      };
+    case ADMINS_LIST_FAIL:
+      return {
+        loading: false,
+        admins: [],
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 // ? admin login reducer
 export const adminLoginReducer = (state = {}, action) => {
@@ -24,7 +51,6 @@ export const adminLoginReducer = (state = {}, action) => {
       return state;
   }
 };
-
 
 // ? admin create reducer
 export const adminCreateReducer = (state = {}, action) => {

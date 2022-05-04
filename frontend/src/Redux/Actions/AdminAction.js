@@ -7,8 +7,31 @@ import {
   ADMIN_CREATE_FAIL,
   ADMIN_CREATE_REQUEST,
   ADMIN_CREATE_SUCCESS,
+  ADMIN_DELETE,
+  ADMIN_DISABLE,
+  ADMIN_ENABLE,
+  ADMINS_LIST_REQUEST,
+  ADMINS_LIST_SUCCESS,
+  ADMINS_LIST_FAIL,
 } from "../Constants/AdminConstant";
 import axios from "axios";
+
+// ? get all admins action
+export const listAdmins = () => async (dispatch) => {
+  try {
+    dispatch({ type: ADMINS_LIST_REQUEST });
+    const { data } = await axios.get(`/api/admins`);
+    dispatch({ type: ADMINS_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: ADMINS_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
 
 // ? admin login action
 export const AdminLogin = (email, password) => async (dispatch) => {
@@ -69,4 +92,41 @@ export const AdminLogout = () => async (dispatch) => {
   localStorage.removeItem("adminInfo");
 };
 
+// ? admin delete action
+export const deleteAdmin = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.delete(`/api/admins/${id}`);
+    dispatch({
+      type: ADMIN_DELETE,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+// ? admin disable action
+export const disableAdmin = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/admins/disable/${id}`);
+    dispatch({
+      type: ADMIN_DISABLE,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// ? admin disable action
+export const enableAdmin = (id) => async (dispatch) => {
+  try {
+    const { data } = await axios.put(`/api/admins/enable/${id}`);
+    dispatch({
+      type: ADMIN_ENABLE,
+      payload: data,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
