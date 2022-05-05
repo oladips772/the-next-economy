@@ -117,7 +117,7 @@ function CreateAdmin() {
           <h1 className="mb-4 font-semibold text-green-600 p-4">
             ADMIN ACCOUNTS
           </h1>
-          <div className="flex items-center mx-6 justify-between border-b border-gray-400">
+          <div className="flex items-center mx-6 justify-between border-b border-gray-200">
             <p className="font-bold">Name</p>
             <p className="font-bold">Email</p>
             <p className="font-bold">Actions</p>
@@ -125,7 +125,7 @@ function CreateAdmin() {
           {!adminsLoading && (
             <>
               {admins?.map((admin) => (
-                <div className="flex items-center mx-6 justify-between mt-1  p-2 border-b border-gray-400">
+                <div className="flex items-center mx-6 justify-between mt-1  p-2 border-b border-gray-200">
                   <span className="font-[400] text-gray-900">
                     {admin?.name}
                   </span>

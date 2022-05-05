@@ -94,42 +94,102 @@ function Edit() {
                   <img src={`${entrepreneur?.image}`} alt="" className="" />
                 </div>
                 <div className="">
-                  <label>Full Name</label>
+                  <label className="font-semibold">Full Name</label>
                   <input
+                    disabled={updateLoading}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                  <label>Email</label>
+                  <label className="font-semibold">Email</label>
                   <input
+                    disabled={updateLoading}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label>Phone</label>
+                  <label className="font-semibold">Phone</label>
                   <input
+                    disabled={updateLoading}
                     type="number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
                 <div className="">
-                  <label>Year</label>
+                  <label className="font-semibold">Year</label>
                   <input
+                    disabled={updateLoading}
                     type="number"
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
                   />
-                  <label>Biography</label>
+                  <label className="font-semibold">Biography</label>
                   <textarea
+                    disabled={updateLoading}
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
-                  <label>Bussiness Sector</label>
-                  <select onChange={(e) => setBussiness(e.target.value)}>
+                  <label className="font-semibold">Bussiness Sector</label>
+                  <select
+                    onChange={(e) => setBussiness(e.target.value)}
+                    disabled={updateLoading}
+                  >
                     <option value={bussiness}>{bussiness}</option>
-                    <option value="Entrepreneurship">Entrepreneurship</option>
                     <option value="Employment">Employment</option>
+                    <option value="Entreprenuership">Entreprenuership</option>
+                    <option value="Fin Tech">
+                      Fin Tech (Financial Technology)
+                    </option>
+                    <option value="Med Tech">
+                      Med Tech (Medical Technology)
+                    </option>
+                    <option value="Ed Tech">
+                      Ed Tech (Educational Technology)
+                    </option>
+                    <option value="Reg Tech">
+                      Reg Tech (Regulatory Technology)
+                    </option>
+                    <option value="Legal Tech">
+                      Legal Tech (Legal Technology)
+                    </option>
+                    <option value="Ad Tech">
+                      Ad Tech (Advertising Technology)
+                    </option>
+                    <option value="Reg Tech">
+                      Reg Tech (Regulatory Technology)
+                    </option>
+                    <option value="Clean Tech">
+                      Clean Tech (Clean Technology)
+                    </option>
+                    <option value="Fem Tech">
+                      Fem Tech (Femal Technology)
+                    </option>
+                    <option value="Health Tech">
+                      Health Tech (Regulatory Technology)
+                    </option>
+                    <option value="Yester Tech">
+                      Yester Tech (Retro Technology)
+                    </option>
+                    <option value="Prop Tech">
+                      Prop Tech (Property Technology)
+                    </option>
+                    <option value="Insure Tech">
+                      Insure Tech (Insurance Technology)
+                    </option>
+                    <option value="Wealth Tech">
+                      Wealth Tech (Wealth Technology)
+                    </option>
+                    <option value="Food Tech">
+                      Food Tech (Food Technology)
+                    </option>
+                    <option value="Bio Tech">Bio Tech (Bio Technology)</option>
+                    <option value="Art Tech">
+                      Art Tech (Artistic Technology)
+                    </option>
+                    <option value="Mark Tech">
+                      Mark Tech (Marketing Technology)
+                    </option>
                   </select>
                   <button
                     onClick={handleUpdate}

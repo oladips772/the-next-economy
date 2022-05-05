@@ -46,7 +46,7 @@ function Entreprenuers() {
             <input
               type="search"
               className=""
-              placeholder="Search by Name , Email ,Phone, Year, Bussiness "
+              placeholder="Search by Name , Email , Phone , Year , Bussiness"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
