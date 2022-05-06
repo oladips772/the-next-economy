@@ -147,9 +147,6 @@ function Edit() {
                     <option value="Ed Tech">
                       Ed Tech (Educational Technology)
                     </option>
-                    <option value="Reg Tech">
-                      Reg Tech (Regulatory Technology)
-                    </option>
                     <option value="Legal Tech">
                       Legal Tech (Legal Technology)
                     </option>
@@ -166,7 +163,7 @@ function Edit() {
                       Fem Tech (Femal Technology)
                     </option>
                     <option value="Health Tech">
-                      Health Tech (Regulatory Technology)
+                      Health Tech (Health Technology)
                     </option>
                     <option value="Yester Tech">
                       Yester Tech (Retro Technology)

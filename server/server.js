@@ -38,6 +38,7 @@ app.use(errorHandler);
 //   res.json(entrepreneurs);
 // });
 
+
 //? get admin by id
 app.get("/api/admins/:id", (req, res) => {
   const { id } = req.params;
@@ -48,6 +49,7 @@ app.get("/api/admins/:id", (req, res) => {
     res.json(admin);
   }
 });
+
 
 //? get entrepreneur by id
 // app.get("/api/entrepreneurs/:id", (req, res) => {
