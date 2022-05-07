@@ -22,6 +22,7 @@ function Edit() {
   const [bio, setBio] = useState("");
   const [image, setImage] = useState("");
   const [entrepreneurImage, setEntrepreneurImage] = useState("");
+  const [cloudLoading, setCloudLoading] = useState(false);
   const dispatch = useDispatch();
   let params = useParams();
   const entrepreneurId = params.id;
@@ -74,6 +75,7 @@ function Edit() {
 
   const handleCreate = async () => {
     if (!selectedImage) return;
+    setCloudLoading(true);
     const data = new FormData();
     data.append("file", selectedImage);
     data.append("upload_preset", "uploads");
@@ -88,6 +90,7 @@ function Edit() {
     } catch (error) {
       console.log(error);
     }
+    setCloudLoading(false);
   };
 
   useEffect(() => {
@@ -242,15 +245,20 @@ function Edit() {
                       Mark Tech (Marketing Technology)
                     </option>
                   </select>
-                  {/* {selectedImage && !image && ( */}
+                  {cloudLoading && (
+                    <button className={`${cloudLoading && "animate-pulse text-sm"}`}>
+                      {`${cloudLoading && "processing image please wait"}`}
+                    </button>
+                  )}
+                  {!cloudLoading && (
                     <button
                       onClick={handleUpdate}
                       disabled={updateLoading}
-                      className={`${updateLoading && "animate-pulse"}`}
+                      className={`${updateLoading ? "animate-pulse": "text-sm"}`}
                     >
                       {`${updateLoading ? "Updating..." : "Update"}`}
                     </button>
-                  {/* )} */}
+                  )}
                 </div>
               </div>
               {/*  */}

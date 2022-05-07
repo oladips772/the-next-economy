@@ -1,5 +1,5 @@
 /** @format */
-import React from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 
 function User({ data }) {
   const dispatch = useDispatch();
+  const [showModal, setModal] = useState(false);
 
   function DELETE(id) {
     dispatch(deleteEntrepreneur(id));

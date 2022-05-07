@@ -432,9 +432,10 @@ textarea {
   color: white;
   height: 35px;
   width: 400px;
-  border-radius: 4px;
+  border-radius: 3px;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
+  text-transform:uppercase;
 }
 
 .edit_container .display_container {
