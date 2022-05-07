@@ -20,6 +20,7 @@ function HomeScreen() {
   const dispatch = useDispatch();
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
+  const [cloudLoading, setCloudLoading] = useState(false);
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -33,6 +34,7 @@ function HomeScreen() {
 
   const handleCreate = async () => {
     if (!selectedImage) return;
+    setCloudLoading(true);
     const data = new FormData();
     data.append("file", selectedImage);
     data.append("upload_preset", "uploads");
@@ -47,6 +49,7 @@ function HomeScreen() {
     } catch (error) {
       console.log(error);
     }
+    setCloudLoading(false);
   };
 
   useEffect(() => {
@@ -158,8 +161,9 @@ function HomeScreen() {
                 ></textarea>
                 <label>Bussiness Sector</label>
                 <div className="overflow_man">
-                  <select onChange={(e) => setBussiness(e.target.value)}
-                disabled={loading}
+                  <select
+                    onChange={(e) => setBussiness(e.target.value)}
+                    disabled={loading}
                   >
                     <option value="Employment">Employment</option>
                     <option value="Entreprenuership">Entreprenuership</option>
@@ -216,10 +220,17 @@ function HomeScreen() {
                 </div>
               </div>
             </div>
-            <button
-              onClick={createEntreprenuer}
-              className={`${loading && "animate-pulse"}`}
-            >{`${loading ? "Creating..." : "Create"}`}</button>
+            {!cloudLoading && (
+              <button
+                onClick={createEntreprenuer}
+                className={`${loading && "animate-pulse font-semibold"}`}
+              >{`${loading ? "Creating..." : "Create"}`}</button>
+            )}
+            {cloudLoading && (
+              <button className={`${cloudLoading && "animate-pulse text-[12px] font-semibold"}`}>
+                {`${cloudLoading && "processing image please wait"}`}
+              </button>
+            )}
           </div>
         </div>
       </div>

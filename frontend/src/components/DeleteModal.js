@@ -1,7 +1,4 @@
 /** @format */
-import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
-import { useDispatch } from "react-redux";
-import toast from "react-hot-toast";
 
 function DeleteModal({ onClick, close, image, name }) {
 
@@ -9,10 +6,11 @@ function DeleteModal({ onClick, close, image, name }) {
     <div className="modal_container">
       <div className="modal_content">
         <div className="flex_div2">
+          <h2>DELETE ENTREPRENEUR ?</h2>
           <img
             src={image}
             alt=""
-            className="h-[150px] w-[150px] rounded-full mb-2 object-contain border border-gray-400"
+            className="h-[130px] w-[130px] rounded-full mb-2 object-contain border border-gray-400"
           />
           <p className="font-semibold">{name}</p>
         </div>
