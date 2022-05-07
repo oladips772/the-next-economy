@@ -9,16 +9,20 @@ import {
   updateEntrepreneur,
 } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 function Edit() {
+  const filePicker = useRef(null);
+  const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState(null);
   const [year, setYear] = useState(null);
   const [bussiness, setBussiness] = useState("");
   const [bio, setBio] = useState("");
-  const dispatch = useDispatch();
   const [image, setImage] = useState("");
+  const [entrepreneurImage, setEntrepreneurImage] = useState("");
+  const dispatch = useDispatch();
   let params = useParams();
   const entrepreneurId = params.id;
 
@@ -32,6 +36,16 @@ function Edit() {
     success,
   } = entrepreneurUpdate;
 
+  const handleChange = (e) => {
+    const reader = new FileReader();
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+    reader.onload = (readerEvent) => {
+      setSelectedImage(readerEvent.target.result);
+    };
+  };
+
   const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(
@@ -39,7 +53,7 @@ function Edit() {
         entrepreneurId,
         name,
         email,
-        image,
+        image ? image : entrepreneurImage,
         phone,
         year,
         bussiness,
@@ -58,6 +72,30 @@ function Edit() {
     }
   }, [errorUpdate, success]);
 
+  const handleCreate = async () => {
+    if (!selectedImage) return;
+    const data = new FormData();
+    data.append("file", selectedImage);
+    data.append("upload_preset", "uploads");
+    try {
+      const uploadRes = await axios.post(
+        "https://api.cloudinary.com/v1_1/dsbhrtd0o/image/upload",
+        data
+      );
+      const { url } = uploadRes.data;
+      setImage(url);
+      console.log(uploadRes.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedImage) {
+      handleCreate();
+    }
+  }, [selectedImage]);
+
   useEffect(() => {
     dispatch(listEntrepreneur(entrepreneurId));
   }, [dispatch, entrepreneurId]);
@@ -65,7 +103,7 @@ function Edit() {
   useEffect(() => {
     if (entrepreneur) {
       setName(entrepreneur.name);
-      setImage(entrepreneur.image);
+      setEntrepreneurImage(entrepreneur.image);
       setEmail(entrepreneur.email);
       setPhone(entrepreneur.phone);
       setYear(entrepreneur.year);
@@ -91,7 +129,23 @@ function Edit() {
             <div className="edit_container shadow">
               <div className="edit_wrapper">
                 <div className="edit_image_div">
-                  <img src={`${entrepreneur?.image}`} alt="" className="" />
+                  <img
+                    src={`${selectedImage ? selectedImage : entrepreneurImage}`}
+                    alt=""
+                    className=""
+                  />
+                  <input
+                    type="file"
+                    ref={filePicker}
+                    hidden
+                    onChange={handleChange}
+                  />
+                  {!updateLoading && (
+                    <CameraAltOutlinedIcon
+                      className="camera"
+                      onClick={() => filePicker.current.click()}
+                    />
+                  )}
                 </div>
                 <div className="">
                   <label className="font-semibold">Full Name</label>
@@ -188,13 +242,15 @@ function Edit() {
                       Mark Tech (Marketing Technology)
                     </option>
                   </select>
-                  <button
-                    onClick={handleUpdate}
-                    disabled={updateLoading}
-                    className={`${updateLoading && "animate-pulse"}`}
-                  >
-                    {`${updateLoading ? "Updating..." : "Update"}`}
-                  </button>
+                  {/* {selectedImage && !image && ( */}
+                    <button
+                      onClick={handleUpdate}
+                      disabled={updateLoading}
+                      className={`${updateLoading && "animate-pulse"}`}
+                    >
+                      {`${updateLoading ? "Updating..." : "Update"}`}
+                    </button>
+                  {/* )} */}
                 </div>
               </div>
               {/*  */}
