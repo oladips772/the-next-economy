@@ -1,13 +1,15 @@
 /** @format */
-import { useState } from "react";
+import { useState ,useRef} from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
 
+
 function User({ data }) {
   const dispatch = useDispatch();
   const [showModal, setModal] = useState(false);
+  const userRef = useRef(null)
 
   function DELETE(id) {
     dispatch(deleteEntrepreneur(id));
@@ -24,11 +26,11 @@ function User({ data }) {
           <th>Phone</th>
           <th>Year</th>
           <th>Bussiness</th>
-          <th>Actions</th>
+          <th>Action</th>
         </tr>
         {data.map((person) => (
           <>
-            <tr>
+            <tr key={person?._id}>
               <td>
                 <img
                   src={person?.image}
@@ -42,17 +44,14 @@ function User({ data }) {
               <td>{person?.year}</td>
               <td>{person?.bussiness}</td>
               <td>
-                <NavLink to={`/Profile/${person?._id}`}>
-                  <span className="p-1 mx-4 bg-green-700 text-white  text-sm font-semibold rounded cursor-pointer">
-                    View
+                <NavLink
+                  to={`/Profile/${person?._id}`}
+                  className="w-[80px] p-[4px] mx-4 bg-green-700 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
+                >
+                  <span className="text-[12px] font-semibold text-white">
+                    VIEW
                   </span>
                 </NavLink>
-                <span
-                  className="p-1 bg-red-700 text-white rounded cursor-pointer"
-                  onClick={() => DELETE(person?._id)}
-                >
-                  Delete
-                </span>
               </td>
             </tr>
           </>

@@ -1,17 +1,20 @@
 /** @format */
 import { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  deleteEntrepreneur,
   listEntrepreneur,
   updateEntrepreneur,
 } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
 import axios from "axios";
+import DeleteModal from "../components/DeleteModal";
 
 function Edit() {
+  const navigate = useNavigate()
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
@@ -23,6 +26,7 @@ function Edit() {
   const [image, setImage] = useState("");
   const [entrepreneurImage, setEntrepreneurImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
+  const [showModal, setModal] = useState(false);
   const dispatch = useDispatch();
   let params = useParams();
   const entrepreneurId = params.id;
@@ -46,6 +50,17 @@ function Edit() {
       setSelectedImage(readerEvent.target.result);
     };
   };
+
+  function DELETE(id) {
+    dispatch(deleteEntrepreneur(id));
+    setModal(!showModal);
+    toast.success("Entrepreneur Deleted");
+    navigate("/Entrepreneurs");
+  }
+
+  function close() {
+    setModal(!showModal);
+  }
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -117,6 +132,14 @@ function Edit() {
 
   return (
     <div>
+      {showModal && (
+        <DeleteModal
+          close={close}
+          image={entrepreneur.image}
+          name={entrepreneur.name}
+          onClick={()=>DELETE(entrepreneurId)}
+        />
+      )}
       <div className="flex justify-between">
         <Sidebar />
         {error && toast.error(error)}
@@ -246,7 +269,9 @@ function Edit() {
                     </option>
                   </select>
                   {cloudLoading && (
-                    <button className={`${cloudLoading && "animate-pulse text-sm"}`}>
+                    <button
+                      className={`${cloudLoading && "animate-pulse text-sm"}`}
+                    >
                       {`${cloudLoading && "processing image please wait"}`}
                     </button>
                   )}
@@ -254,9 +279,19 @@ function Edit() {
                     <button
                       onClick={handleUpdate}
                       disabled={updateLoading}
-                      className={`${updateLoading ? "animate-pulse": "text-sm"}`}
+                      className={`${
+                        updateLoading ? "animate-pulse" : "text-sm"
+                      }`}
                     >
                       {`${updateLoading ? "Updating..." : "Update"}`}
+                    </button>
+                  )}
+                  {!showModal && (
+                    <button
+                      className="mt-6 delete-btn"
+                      onClick={() => setModal(!showModal)}
+                    >
+                      DELETE ENTREPRENEUR
                     </button>
                   )}
                 </div>

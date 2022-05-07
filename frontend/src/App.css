@@ -399,8 +399,8 @@ textarea {
   border: 1px solid lightgray;
 }
 
-.edit_image_div input{
-  display:none
+.edit_image_div input {
+  display: none;
 }
 
 .edit_wrapper select {
@@ -435,7 +435,7 @@ textarea {
   border-radius: 3px;
   font-weight: 600;
   font-size: 12px;
-  text-transform:uppercase;
+  text-transform: uppercase;
 }
 
 .edit_container .display_container {
@@ -512,4 +512,70 @@ textarea {
   left: 57%;
   top: 60%;
   transform: translate(-45%, -45%);
+}
+
+.delete-btn {
+  background: rgb(189, 9, 9) !important;
+}
+
+/* delete modal styling */
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  transition:all 0.4s ease;
+}
+
+.modal_content {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -55%);
+  background: whitesmoke;
+  width: 420px;
+  height: 270px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex_div2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.row_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.row_div .close_btn {
+  cursor: pointer;
+  background: green;
+  margin-right: 40px;
+  margin-left: 95px;
+  font-weight: 500;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px;
+}
+
+.row_div .delete_btn {
+  cursor: pointer;
+  background: rgb(167, 7, 7);
+  margin-right: 80px;
+  font-weight: 500;
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  padding: 5px;
 }
