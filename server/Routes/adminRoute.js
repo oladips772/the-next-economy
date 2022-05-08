@@ -35,6 +35,7 @@ adminRouter.post(
           name: admin.name,
           email: admin.email,
           isAdmin: admin.isAdmin,
+          masterAdmin: admin?.masterAdmin,
           token: generateToken(admin._id),
           createdAt: admin.createdAt,
         });
@@ -148,7 +149,7 @@ adminRouter.put(
         createdAt: updatedAdmin.createdAt,
       });
     } else {
-      throw new Error("entrepreneur not found");
+      throw new Error("admin not found");
     }
   })
 );

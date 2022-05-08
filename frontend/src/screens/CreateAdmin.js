@@ -9,9 +9,11 @@ import {
   enableAdmin,
   listAdmins,
 } from "../Redux/Actions/AdminAction";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function CreateAdmin() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +50,10 @@ function CreateAdmin() {
 
   useEffect(() => {
     dispatch(listAdmins());
-  }, [dispatch]);
+    if (!adminInfo.masterAdmin) {
+      navigate("/");
+    }
+  }, [dispatch, adminInfo]);
 
   useEffect(() => {
     if (error) {

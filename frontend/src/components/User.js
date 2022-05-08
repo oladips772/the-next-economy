@@ -1,15 +1,14 @@
 /** @format */
-import { useState ,useRef} from "react";
+import { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
 
-
 function User({ data }) {
   const dispatch = useDispatch();
   const [showModal, setModal] = useState(false);
-  const userRef = useRef(null)
+  const userRef = useRef(null);
 
   function DELETE(id) {
     dispatch(deleteEntrepreneur(id));
@@ -38,8 +37,12 @@ function User({ data }) {
                   className="w-[35px] h-[35px] object-contain ml-2 mr-2 rounded-full "
                 />
                 {person?.name}
+              </td>{" "}
+              <td className="font-semibold ml-4 mr-6">
+                <a href={`mailto:${person?.email}`} target="_blank">
+                  {person?.email}
+                </a>
               </td>
-              <td>{person?.email}</td>
               <td>{person?.phone}</td>
               <td>{person?.year}</td>
               <td>{person?.bussiness}</td>

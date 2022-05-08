@@ -1,6 +1,6 @@
 /** @format */
 import { useEffect, useRef, useState } from "react";
-import { useParams,useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 
 function Edit() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
@@ -33,6 +33,8 @@ function Edit() {
 
   const entrepreneurDetails = useSelector((state) => state.entrepreneurDetails);
   const { loading, error, entrepreneur } = entrepreneurDetails;
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { adminInfo } = adminLogin;
 
   const entrepreneurUpdate = useSelector((state) => state.entrepreneurUpdate);
   const {
@@ -137,7 +139,7 @@ function Edit() {
           close={close}
           image={entrepreneur.image}
           name={entrepreneur.name}
-          onClick={()=>DELETE(entrepreneurId)}
+          onClick={() => DELETE(entrepreneurId)}
         />
       )}
       <div className="flex justify-between">
@@ -286,13 +288,17 @@ function Edit() {
                       {`${updateLoading ? "Updating..." : "Update"}`}
                     </button>
                   )}
-                  {!showModal && (
-                    <button
-                      className="mt-6 delete-btn"
-                      onClick={() => setModal(!showModal)}
-                    >
-                      DELETE ENTREPRENEUR
-                    </button>
+                  {adminInfo?.masterAdmin && (
+                    <>
+                      {!showModal && (
+                        <button
+                          className="mt-6 delete-btn"
+                          onClick={() => setModal(!showModal)}
+                        >
+                          DELETE ENTREPRENEUR
+                        </button>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

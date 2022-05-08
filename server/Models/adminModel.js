@@ -22,6 +22,11 @@ const adminSchema = mongoose.Schema(
       required: true,
       default: true,
     },
+    masterAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
   },
   {
     timestamps: true,

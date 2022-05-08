@@ -8,9 +8,12 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { useDispatch } from "react-redux";
 import { AdminLogout } from "../Redux/Actions/AdminAction";
+import { useSelector } from "react-redux";
 
 function Sidebar() {
   const navigate = useNavigate();
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { adminInfo } = adminLogin;
 
   const status = navigator.onLine;
   const [systemStatus, setSystemStatus] = useState(status);
@@ -81,21 +84,23 @@ function Sidebar() {
             <p className="text-[13px] font-semibold">ENTREPRENEURS</p>
           </NavLink>
         </div>
-        <div className="my-4">
-          <NavLink
-            to="/CreateAdmin"
-            className="flex items-center"
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "rgb(40, 211, 40)" : "white",
-                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
-              };
-            }}
-          >
-            <AdminPanelSettingsIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">NEW ADMIN</p>
-          </NavLink>
-        </div>
+        {adminInfo?.masterAdmin && (
+          <div className="my-4">
+            <NavLink
+              to="/CreateAdmin"
+              className="flex items-center"
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? "rgb(40, 211, 40)" : "white",
+                  borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+                };
+              }}
+            >
+              <AdminPanelSettingsIcon className="mx-4 text-lg" />
+              <p className="text-[13px] font-semibold">NEW ADMIN</p>
+            </NavLink>
+          </div>
+        )}
       </div>
       {/*  */}
       <div
