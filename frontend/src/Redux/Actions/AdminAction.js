@@ -16,6 +16,9 @@ import {
   ADMIN_DETAILS_REQUEST,
   ADMIN_DETAILS_SUCCESS,
   ADMIN_DETAILS_FAIL,
+  ADMIN_UPDATE_REQUEST,
+  ADMIN_UPDATE_SUCCESS,
+  ADMIN_UPDATE_FAIL,
 } from "../Constants/AdminConstant";
 import axios from "axios";
 
@@ -164,21 +167,26 @@ export const getAdminDetails = (id) => async (dispatch, getState) => {
   }
 };
 
+
 // ? admin update function
-export const AdminUpdate = (id) => async (dispatch, getState) => {
+export const AdminUpdate = (user) => async (dispatch, getState) => {
   try {
-    dispatch({ type: ADMIN_DETAILS_REQUEST });
+    dispatch({ type: ADMIN_UPDATE_REQUEST });
     const {
       adminLogin: { adminInfo },
     } = getState();
 
     const config = {
       headers: {
+        "Content-type": "application/json",
         Authorization: `Bearer ${adminInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/admins/${id}`, config);
-    dispatch({ type: ADMIN_DETAILS_SUCCESS, payload: data });
+    const { data } = await axios.put(`/api/admins/profile`, user, config);
+    dispatch({ type: ADMIN_UPDATE_SUCCESS, payload: data });
+    dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
+    localStorage.setItem("adminInfo", JSON.stringify(data));
+
   } catch (error) {
     const message =
       error.response && error.response.data.message
@@ -188,7 +196,7 @@ export const AdminUpdate = (id) => async (dispatch, getState) => {
       dispatch(AdminLogout());
     }
     dispatch({
-      type: ADMIN_DETAILS_FAIL,
+      type: ADMIN_UPDATE_FAIL,
       payload: message,
     });
   }

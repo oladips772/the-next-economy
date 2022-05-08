@@ -83,7 +83,7 @@ adminRouter.get(
   "/profile",
   protect,
   asyncHandler(async (req, res) => {
-    const admin = await Admin.findById(req.user._id)
+    const admin = await Admin.findById(req.user._id);
     if (admin) {
       res.json({
         _id: admin._id,
@@ -106,12 +106,12 @@ adminRouter.put(
   "/profile",
   protect,
   asyncHandler(async (req, res) => {
-    const admin = await Admin.findById(req.user._id).select("-password");
+    const admin = await Admin.findById(req.user._id);
     if (admin) {
-      (admin.name = req.body.name || admin.name),
-        (admin.email = req.body.email || admin.email);
-      if (req.body.password) {
-        admin.password = req.body.password;
+      (admin.name = req.body.adminName || admin.name),
+        (admin.email = req.body.adminEmail || admin.email);
+      if (req.body.adminPassword) {
+        admin.password = req.body.adminPassword;
       }
       const updatedAdmin = await admin.save();
       res.json({

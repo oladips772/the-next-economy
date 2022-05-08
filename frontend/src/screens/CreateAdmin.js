@@ -4,6 +4,7 @@ import Sidebar from "../components/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
 import {
   AdminCreate,
+  AdminUpdate,
   deleteAdmin,
   disableAdmin,
   enableAdmin,
@@ -33,6 +34,12 @@ function CreateAdmin() {
   const { adminInfo } = adminLogin;
   const adminDetails = useSelector((state) => state.adminDetails);
   const { admin } = adminDetails;
+  const adminUpdate = useSelector((state) => state.adminUpdate);
+  const {
+    loading: updateLoading,
+    success: updateSuccess,
+    error: updateError,
+  } = adminUpdate;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,11 +64,30 @@ function CreateAdmin() {
     window.location.reload();
   };
 
-  const UPDATE = (id) => {
+  const UPDATE = () => {
     if (adminPassword != confirmPassword) {
       toast.error("passwords do not match!");
+    } else {
+      dispatch(
+        AdminUpdate({
+          id: admin._id,
+          adminName,
+          adminEmail,
+          adminPassword,
+        })
+      );
     }
   };
+
+  useEffect(() => {
+    if (updateError) {
+      toast.error(updateError);
+      window.location.reload();
+    } else if (updateSuccess) {
+      toast.success("admin updated successfully");
+      window.location.reload();
+    }
+  }, [updateError, updateSuccess]);
 
   useEffect(() => {
     dispatch(listAdmins());
@@ -223,7 +249,10 @@ function CreateAdmin() {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button onClick={UPDATE}>UPDATE</button>
+        <button
+          onClick={UPDATE}
+          className={`${updateLoading && "animate-pulse"}`}
+        >{`${updateLoading ? "UPDATING.." : "UPDATE"}`}</button>
       </div>
     </div>
   );
