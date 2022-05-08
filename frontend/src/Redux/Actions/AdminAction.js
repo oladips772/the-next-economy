@@ -13,6 +13,9 @@ import {
   ADMINS_LIST_REQUEST,
   ADMINS_LIST_SUCCESS,
   ADMINS_LIST_FAIL,
+  ADMIN_DETAILS_REQUEST,
+  ADMIN_DETAILS_SUCCESS,
+  ADMIN_DETAILS_FAIL,
 } from "../Constants/AdminConstant";
 import axios from "axios";
 
@@ -128,5 +131,65 @@ export const enableAdmin = (id) => async (dispatch) => {
     });
   } catch (error) {
     console.log(error);
+  }
+};
+
+// ? admin details action
+export const getAdminDetails = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADMIN_DETAILS_REQUEST });
+    const {
+      adminLogin: { adminInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${adminInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/api/admins/${id}`, config);
+    dispatch({ type: ADMIN_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Unauthorized , token failed") {
+      dispatch(AdminLogout());
+    }
+    dispatch({
+      type: ADMIN_DETAILS_FAIL,
+      payload: message,
+    });
+  }
+};
+
+// ? admin update function
+export const AdminUpdate = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: ADMIN_DETAILS_REQUEST });
+    const {
+      adminLogin: { adminInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${adminInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`/api/admins/${id}`, config);
+    dispatch({ type: ADMIN_DETAILS_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Unauthorized , token failed") {
+      dispatch(AdminLogout());
+    }
+    dispatch({
+      type: ADMIN_DETAILS_FAIL,
+      payload: message,
+    });
   }
 };

@@ -83,7 +83,7 @@ adminRouter.get(
   "/profile",
   protect,
   asyncHandler(async (req, res) => {
-    const admin = await Admin.findById(req.user._id).select("-password");
+    const admin = await Admin.findById(req.user._id)
     if (admin) {
       res.json({
         _id: admin._id,
@@ -122,7 +122,7 @@ adminRouter.put(
         masterAdmin: updatedAdmin.masterAdmin,
         password: updatedAdmin.password,
         createdAt: updatedAdmin.createdAt,
-        token:generateToken(updatedAdmin._id)
+        token: generateToken(updatedAdmin._id),
       });
     } else {
       res.status(401);

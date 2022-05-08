@@ -10,6 +10,13 @@ import {
   ADMINS_LIST_FAIL,
   ADMINS_LIST_REQUEST,
   ADMINS_LIST_SUCCESS,
+  ADMIN_DETAILS_FAIL,
+  ADMIN_DETAILS_REQUEST,
+  ADMIN_DETAILS_SUCCESS,
+  ADMIN_DETAILS_RESET,
+  ADMIN_UPDATE_REQUEST,
+  ADMIN_UPDATE_SUCCESS,
+  ADMIN_UPDATE_FAIL,
 } from "../Constants/AdminConstant";
 
 // ? admin list reducer
@@ -60,6 +67,36 @@ export const adminCreateReducer = (state = {}, action) => {
     case ADMIN_CREATE_SUCCESS:
       return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_CREATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// ? admin details reducer
+export const adminDetailsReducer = (state = { admin: {} }, action) => {
+  switch (action.type) {
+    case ADMIN_DETAILS_REQUEST:
+      return { ...state, loading: true };
+    case ADMIN_DETAILS_SUCCESS:
+      return { loading: false, admin: action.payload };
+    case ADMIN_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
+    case ADMIN_DETAILS_RESET:
+      return { admin: {} };
+    default:
+      return state;
+  }
+};
+
+// ? admin update reducer
+export const adminUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_UPDATE_REQUEST:
+      return { loading: true };
+    case ADMIN_UPDATE_SUCCESS:
+      return { loading: false, success: true, adminInfo: action.payload };
+    case ADMIN_UPDATE_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

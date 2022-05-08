@@ -7,6 +7,7 @@ import {
   deleteAdmin,
   disableAdmin,
   enableAdmin,
+  getAdminDetails,
   listAdmins,
 } from "../Redux/Actions/AdminAction";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,12 @@ function CreateAdmin() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // ???????????
+  const [adminName, setAdminName] = useState("");
+  const [adminEmail, setAdminEmail] = useState("");
+  const [adminPassword, setAdminPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  // ????????
   const dispatch = useDispatch();
   const adminCreate = useSelector((state) => state.adminCreate);
   const { loading, error, success } = adminCreate;
@@ -24,6 +31,8 @@ function CreateAdmin() {
   const { loading: adminsLoading, admins } = adminsList;
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
+  const adminDetails = useSelector((state) => state.adminDetails);
+  const { admin } = adminDetails;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,10 +57,20 @@ function CreateAdmin() {
     window.location.reload();
   };
 
+  const UPDATE = (id) => {
+    if (adminPassword != confirmPassword) {
+      toast.error("passwords do not match!");
+    }
+  };
+
   useEffect(() => {
     dispatch(listAdmins());
+    dispatch(getAdminDetails("profile"));
     if (!adminInfo.masterAdmin) {
       navigate("/");
+    } else {
+      setAdminName(adminInfo.name);
+      setAdminEmail(adminInfo.email);
     }
   }, [dispatch, adminInfo]);
 
@@ -180,11 +199,31 @@ function CreateAdmin() {
       </div>
       <div className="update_container shadow">
         <h2>(MASTER ADMIN) PROFILE UPDATE</h2>
-        <input type="text" placeholder="Master Admin Name" />
-        <input type="text" placeholder="Master Admin Email" />
-        <input type="text" placeholder="Master Admin Password" />
-        <input type="text" placeholder="Confirm Password" />
-        <button>UPDATE</button>
+        <input
+          type="text"
+          placeholder="Master Admin Name"
+          value={adminName}
+          onChange={(e) => setAdminName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Master Admin Email"
+          value={adminEmail}
+          onChange={(e) => setAdminEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Master Admin Password"
+          value={adminPassword}
+          onChange={(e) => setAdminPassword(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button onClick={UPDATE}>UPDATE</button>
       </div>
     </div>
   );
