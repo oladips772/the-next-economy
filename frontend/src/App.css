@@ -14,6 +14,10 @@ input {
   background: transparent !important;
 }
 
+a{
+  color:black;
+}
+
 .dashboard_icon {
   font-size: 22px !important;
   color: white;
@@ -596,4 +600,51 @@ textarea {
   padding: 6px;
   width: 100px;
   text-align: center;
+}
+
+
+/* create admin screen  */
+.update_container{
+  position: absolute;
+  bottom:-160px;
+  display: flex;
+  flex-direction: column;
+  left:55%;
+  width:570px;
+  height:330px;
+}
+
+.update_container h2{
+  font-size: 17px;
+  font-weight: 600;
+  margin-top: 10px;
+  text-align: center;
+  color:green;
+}
+
+.update_container input{
+  height:35px;
+  width:530px;
+  margin:10px 20px;
+  border-radius:3px;
+  border:1px solid black;
+  padding: 5px;
+  outline:none;
+}
+
+.update_container button{
+  width:530px;
+  margin:15px 20px;
+  border-radius:3px;
+  padding: 5px;
+  background-color: green;
+  color:white;
+  font-weight: 600;
+  font-size: 13px;
+  height:35px;
+  text-align: center;
+}
+
+.update_container input::placeholder{
+  color:rgb(43, 42, 42);
 }

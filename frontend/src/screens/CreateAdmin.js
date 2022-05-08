@@ -71,10 +71,10 @@ function CreateAdmin() {
   return (
     <div className="flex justify-between">
       <Sidebar />
-      <div className="flex justify-between ">
-        <div className="ml-[250px] mt-4 mb-4">
+      <div className="flex justify-between mb-[480px]">
+        <div className="ml-[250px] mt-4 mb-4 h-[100%] p-2">
           <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-            New Admin
+            NEW ADMIN
           </h1>
           <div className="">
             <form className="flex flex-col mx-4" onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ function CreateAdmin() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                className="h-[35px] w-[350px] border border-black outline-none p-2 rounded my-4"
+                className="h-[35px] w-[380px] border border-black outline-none p-2 rounded my-4"
               />
               <label className="-mb-4">Admin Email</label>
               <input
@@ -95,7 +95,7 @@ function CreateAdmin() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                className="h-[35px] w-[350px] border border-black outline-none p-2 rounded my-4"
+                className="h-[35px] w-[380px] border border-black outline-none p-2 rounded my-4"
               />
               <label className="-mb-4">Admin Password</label>
               <input
@@ -103,22 +103,22 @@ function CreateAdmin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 type="password"
-                className="h-[35px] w-[350px] border border-black outline-none p-2 rounded my-4"
+                className="h-[35px] w-[380px] border border-black outline-none p-2 rounded my-4"
               />
               <button
                 disabled={loading}
-                className={`w-[350px] ${
+                className={`w-[380px] ${
                   loading ? "bg-green-800 animate-pulse" : "bg-green-600"
                 } text-white h-[35px] rounded mt-4 font-semibold text-[13px]`}
               >
-                {`${loading ? "Creating..." : "Create"}`}
+                {`${loading ? "CREATING..." : "CREATE"}`}
               </button>
             </form>
           </div>
           {/* admins div */}
         </div>
         {/* admins div */}
-        <div className="mt-4 mb-4 ml-[120px] w-[570px] shadow rounded h-[100%]">
+        <div className="mt-4 mb-4 ml-[70px] w-[570px]  rounded h-[100%]">
           <h1 className="mb-4 font-semibold text-green-600 p-4">
             ADMIN ACCOUNTS
           </h1>
@@ -178,7 +178,14 @@ function CreateAdmin() {
           )}
         </div>
       </div>
-      <div className="update_container"></div>
+      <div className="update_container shadow">
+        <h2>(MASTER ADMIN) PROFILE UPDATE</h2>
+        <input type="text" placeholder="Master Admin Name" />
+        <input type="text" placeholder="Master Admin Email" />
+        <input type="text" placeholder="Master Admin Password" />
+        <input type="text" placeholder="Confirm Password" />
+        <button>UPDATE</button>
+      </div>
     </div>
   );
 }

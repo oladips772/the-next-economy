@@ -78,7 +78,7 @@ adminRouter.post(
   })
 );
 
-// ? admin profile
+// ? admin get profile
 adminRouter.get(
   "/profile",
   protect,
@@ -90,11 +90,43 @@ adminRouter.get(
         name: admin.name,
         email: admin.email,
         isAdmin: admin.isAdmin,
+        masterAdmin: admin.masterAdmin,
+        password: admin.password,
         createdAt: admin.createdAt,
       });
     } else {
       res.status(401);
       throw new Error("invalid token");
+    }
+  })
+);
+
+// ? admin profile update
+adminRouter.put(
+  "/profile",
+  protect,
+  asyncHandler(async (req, res) => {
+    const admin = await Admin.findById(req.user._id).select("-password");
+    if (admin) {
+      (admin.name = req.body.name || admin.name),
+        (admin.email = req.body.email || admin.email);
+      if (req.body.password) {
+        admin.password = req.body.password;
+      }
+      const updatedAdmin = await admin.save();
+      res.json({
+        _id: updatedAdmin._id,
+        name: updatedAdmin.name,
+        email: updatedAdmin.email,
+        isAdmin: updatedAdmin.isAdmin,
+        masterAdmin: updatedAdmin.masterAdmin,
+        password: updatedAdmin.password,
+        createdAt: updatedAdmin.createdAt,
+        token:generateToken(updatedAdmin._id)
+      });
+    } else {
+      res.status(401);
+      throw new Error("admin not found");
     }
   })
 );
