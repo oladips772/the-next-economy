@@ -310,7 +310,11 @@ function Edit() {
                     <span>Full Name</span>
                     <p>{entrepreneur.name}</p>
                     <span>Email</span>
-                    <p>{entrepreneur.email}</p>
+                    <p>
+                      <a href={`mailto:${entrepreneur.email}`} target="_blank">
+                        {entrepreneur.email}
+                      </a>
+                    </p>
                   </div>
                 </div>
                 <div className="bottom_info">

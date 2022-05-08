@@ -1,20 +1,7 @@
 /** @format */
-import { useState, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteEntrepreneur } from "../Redux/Actions/EntrepreneurAction";
-import toast from "react-hot-toast";
 
 function User({ data }) {
-  const dispatch = useDispatch();
-  const [showModal, setModal] = useState(false);
-  const userRef = useRef(null);
-
-  function DELETE(id) {
-    dispatch(deleteEntrepreneur(id));
-    toast.success("Entrepreneur Deleted");
-    window.location.reload();
-  }
 
   return (
     <>
@@ -38,7 +25,7 @@ function User({ data }) {
                 />
                 {person?.name}
               </td>{" "}
-              <td className="font-semibold ml-4 mr-6">
+              <td className="ml-8 mr-6 text-gray-800">
                 <a href={`mailto:${person?.email}`} target="_blank">
                   {person?.email}
                 </a>

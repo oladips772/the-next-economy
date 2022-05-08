@@ -131,10 +131,10 @@ function CreateAdmin() {
             <>
               {admins?.map((admin) => (
                 <div className="flex items-center mx-6 justify-between mt-1  p-2 border-b border-gray-200">
-                  <span className="font-[400] text-gray-900">
+                  <span className="font-[500] text-gray-900">
                     {admin?.name}
                   </span>
-                  <span className="font-[400] text-gray-900">
+                  <span className="font-[500] text-gray-900">
                     {admin?.email}
                   </span>
                   <div className="flex items-center space-x-6">
@@ -178,6 +178,7 @@ function CreateAdmin() {
           )}
         </div>
       </div>
+      <div className="update_container"></div>
     </div>
   );
 }
