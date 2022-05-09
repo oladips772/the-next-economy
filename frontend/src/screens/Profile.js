@@ -329,10 +329,10 @@ function Edit() {
                 {adminInfo.masterAdmin && (
                   <>
                     <div className="flex items-center mt-4  w-full ml-2">
-                      <h2 className="text-green-800 font-[600] text-[13px]">
+                      <h2 className="font-[600] text-[13px]">
                         CREATED BY :{" "}
                       </h2>
-                      <p className="font-[500] text-[14px] text-green-800 ml-[4px]">
+                      <p className="font-[500] text-[14px]  ml-[4px]">
                         {entrepreneur?.createdBy === adminInfo.name
                           ? "you"
                           : entrepreneur?.createdBy}{" "}
@@ -341,10 +341,10 @@ function Edit() {
                       </p>
                     </div>
                     <div className="flex items-center mt-1 w-full ml-2">
-                      <h2 className="text-green-800 font-[600] text-[13px]">
+                      <h2 className="0 font-[600] text-[13px]">
                         LASTLY UPDATED BY :{" "}
                       </h2>
-                      <p className="font-[500] text-[14px] text-green-800 ml-[4px]">
+                      <p className="font-[500] text-[14px]  ml-[4px]">
                         {entrepreneur?.updatedBy === adminInfo.name
                           ? "you"
                           : entrepreneur?.updatedBy}{" "}

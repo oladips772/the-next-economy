@@ -30,8 +30,8 @@ function Sidebar() {
   }, [status]);
 
   return (
-    <div className="h-[100vh] bg-black w-[220px] fixed ">
-      <div className="text-center justify-center">
+    <div className="h-[100vh] bg-black w-[220px] fixed sidebar">
+      <div className="text-center justify-center img_div">
         <img
           src="http://blackinnovationsafrica.com/wp-content/uploads/2020/02/logo.png"
           className="object-contain ml-6 mt-4"

@@ -271,15 +271,16 @@ a{
   margin-top: 30px;
   background: green;
   color: white;
-  width: 360px;
+  width: 580px;
+  margin-left:40px;
   justify-content: center;
   text-align: center;
   align-items: center;
   display: flex;
   margin-bottom: 20px;
-  border-radius: 4px;
+  border-radius: 3px;
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 13px;
 }
 
@@ -648,3 +649,4 @@ textarea {
 .update_container input::placeholder{
   color:rgb(43, 42, 42);
 }
+

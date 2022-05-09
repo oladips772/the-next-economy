@@ -251,6 +251,7 @@ function HomeScreen() {
             )}
             {cloudLoading && (
               <button
+                style={{"cursor":"not-allowed"}}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
                 }`}

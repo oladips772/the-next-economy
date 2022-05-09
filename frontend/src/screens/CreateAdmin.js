@@ -226,12 +226,14 @@ function CreateAdmin() {
       <div className="update_container shadow">
         <h2>(MASTER ADMIN) PROFILE UPDATE</h2>
         <input
+          disabled={updateLoading}
           type="text"
           placeholder="Master Admin Name"
           value={adminName}
           onChange={(e) => setAdminName(e.target.value)}
         />
         <input
+          disabled={updateLoading}
           type="text"
           placeholder="Master Admin Email"
           value={adminEmail}
@@ -239,17 +241,20 @@ function CreateAdmin() {
         />
         <input
           type="password"
+          disabled={updateLoading}
           placeholder="Master Admin Password"
           value={adminPassword}
           onChange={(e) => setAdminPassword(e.target.value)}
         />
         <input
+          disabled={updateLoading}
           type="password"
           placeholder="Confirm Password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <button
+          disabled={updateLoading}
           onClick={UPDATE}
           className={`${updateLoading && "animate-pulse"}`}
         >{`${updateLoading ? "UPDATING.." : "UPDATE"}`}</button>
