@@ -17,7 +17,17 @@ entrepreneurRouter.get(
 entrepreneurRouter.post(
   "/create",
   asyncHandler(async (req, res) => {
-    const { name, email, image, phone, year, bussiness, bio } = req.body;
+    const {
+      name,
+      email,
+      image,
+      phone,
+      year,
+      bussiness,
+      bio,
+      createdBy,
+      updatedBy,
+    } = req.body;
     const userExists = await Entrepreneur.findOne({ email });
 
     if (userExists) {
@@ -37,6 +47,8 @@ entrepreneurRouter.post(
       year,
       bussiness,
       bio,
+      createdBy,
+      updatedBy,
     });
     if (entrepreneur) {
       res.status(201).json({
@@ -48,6 +60,8 @@ entrepreneurRouter.post(
         year: entrepreneur.year,
         bussiness: entrepreneur.bussiness,
         bio: entrepreneur.bio,
+        createdBy: entrepreneur.createdBy,
+        updatedBy: entrepreneur.updatedBy,
         createdAt: entrepreneur.createdAt,
       });
     } else {
@@ -82,7 +96,9 @@ entrepreneurRouter.put(
         (entrepreneur.phone = req.body.phone || entrepreneur.phone),
         (entrepreneur.year = req.body.year || entrepreneur.year),
         (entrepreneur.bussiness = req.body.bussiness || entrepreneur.bussiness),
-        (entrepreneur.bio = req.body.bio || entrepreneur.bio);
+        (entrepreneur.bio = req.body.bio || entrepreneur.bio),
+        (entrepreneur.createdBy = req.body.createdBy || entrepreneur.createdBy),
+        (entrepreneur.updatedBy = req.body.updatedBy || entrepreneur.updatedBy);
       const updatedEntrepreneur = await entrepreneur.save();
       res.json({
         _id: updatedEntrepreneur._id,
@@ -93,6 +109,8 @@ entrepreneurRouter.put(
         year: updatedEntrepreneur.year,
         bussiness: updatedEntrepreneur.bussiness,
         bio: updatedEntrepreneur.bio,
+        createdBy: entrepreneur.createdBy,
+        updatedBy: entrepreneur.updatedBy,
         createdAt: updatedEntrepreneur.createdAt,
       });
     } else {
@@ -113,7 +131,5 @@ entrepreneurRouter.delete(
     }
   })
 );
-
-
 
 module.exports = entrepreneurRouter;

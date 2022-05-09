@@ -32,6 +32,14 @@ const EntreprenuerSchema = mongoose.Schema(
       type: String,
       require: [true, "entrepreneur bio is required"],
     },
+    createdBy: {
+      type: String,
+      require: [true, "entrepreneur createdBy is required"],
+    },
+    updatedBy: {
+      type: String,
+      require: [true, "entrepreneur updatedBy is required"],
+    },
   },
   {
     timestamps: true,

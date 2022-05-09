@@ -21,6 +21,12 @@ function HomeScreen() {
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
   const [cloudLoading, setCloudLoading] = useState(false);
+  const adminLogin = useSelector((state) => state.adminLogin);
+  const { adminInfo } = adminLogin;
+  const [createdBy, setCreatedBy] = useState("");
+  const [updatedBy, setUpdatedBy] = useState("");
+
+  console.log(createdBy);
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -31,6 +37,13 @@ function HomeScreen() {
       setSelectedImage(readerEvent.target.result);
     };
   };
+
+  useEffect(() => {
+    if (adminInfo) {
+      setCreatedBy(adminInfo?.name);
+      setUpdatedBy(adminInfo?.name);
+    }
+  }, [adminInfo]);
 
   const handleCreate = async () => {
     if (!selectedImage) return;
@@ -79,7 +92,17 @@ function HomeScreen() {
     e.preventDefault();
     if (!image) return;
     dispatch(
-      EntrepreneurCreate(name, email, image, phone, year, bussiness, bio)
+      EntrepreneurCreate(
+        name,
+        email,
+        image,
+        phone,
+        year,
+        bussiness,
+        bio,
+        createdBy,
+        updatedBy
+      )
     );
   };
 
@@ -227,7 +250,11 @@ function HomeScreen() {
               >{`${loading ? "Creating..." : "Create"}`}</button>
             )}
             {cloudLoading && (
-              <button className={`${cloudLoading && "animate-pulse text-[12px] font-semibold"}`}>
+              <button
+                className={`${
+                  cloudLoading && "animate-pulse text-[12px] font-semibold"
+                }`}
+              >
                 {`${cloudLoading && "processing image please wait"}`}
               </button>
             )}

@@ -39,7 +39,8 @@ export const listEntrepreneurs = () => async (dispatch) => {
 
 // ? create entreprenuer action
 export const EntrepreneurCreate =
-  (name, email, image, phone, year, bussiness, bio) => async (dispatch) => {
+  (name, email, image, phone, year, bussiness, bio, createdBy, updatedBy) =>
+  async (dispatch) => {
     try {
       dispatch({ type: ENTREPRENEUR_CREATE_REQUEST });
       const config = {
@@ -49,7 +50,17 @@ export const EntrepreneurCreate =
       };
       const { data } = await axios.post(
         `/api/entrepreneurs/create`,
-        { name, email, image, phone, year, bussiness, bio },
+        {
+          name,
+          email,
+          image,
+          phone,
+          year,
+          bussiness,
+          bio,
+          createdBy,
+          updatedBy,
+        },
         config
       );
       dispatch({ type: ENTREPRENEUR_CREATE_SUCCESS, payload: data });
@@ -88,7 +99,8 @@ export const listEntrepreneur = (id) => async (dispatch) => {
 
 // ? entrepreneur update action
 export const updateEntrepreneur =
-  (id, name, email, image, phone, year, bussiness, bio) => async (dispatch) => {
+  (id, name, email, image, phone, year, bussiness, bio, updatedBy) =>
+  async (dispatch) => {
     try {
       dispatch({
         type: ENTREPRENEUR_UPDATE_REQUEST,
@@ -102,7 +114,16 @@ export const updateEntrepreneur =
 
       const { data } = await axios.put(
         `/api/entrepreneurs/profile/${id}`,
-        { name, email, image, phone, year, bussiness, bio },
+        {
+          name,
+          email,
+          image,
+          phone,
+          year,
+          bussiness,
+          bio,
+          updatedBy,
+        },
         config
       );
       dispatch({

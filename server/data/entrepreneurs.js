@@ -7,6 +7,9 @@ const entrepreneurs = [
     phone: "08133309622",
     bussiness: "Employment",
     year: 2020,
+    bio: "lovely man",
+    createdBy: "dipsy",
+    updatedBy: "dispy",
   },
   {
     name: "Jane Doe",
@@ -16,6 +19,9 @@ const entrepreneurs = [
     phone: "09113189735",
     bussiness: "Employment",
     year: 2021,
+    bio: "lovely man",
+    createdBy: "dipsy",
+    updatedBy: "dispy",
   },
   {
     name: "Dele bolu",
@@ -25,6 +31,9 @@ const entrepreneurs = [
     phone: "09029283011",
     bussiness: "Enterpreneurship",
     year: 2020,
+    bio: "lovely man",
+    createdBy: "dipsy",
+    updatedBy: "dispy",
   },
   {
     name: "Esther olumide",
@@ -34,6 +43,9 @@ const entrepreneurs = [
     phone: "08077712370",
     bussiness: "Enterpreneurship",
     year: 2022,
+    bio: "lovely man",
+    createdBy: "dipsy",
+    updatedBy: "dispy",
   },
 ];
 

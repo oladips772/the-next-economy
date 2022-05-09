@@ -12,6 +12,7 @@ import {
 import toast from "react-hot-toast";
 import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
+import moment from "moment";
 
 function Edit() {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ function Edit() {
   const { loading, error, entrepreneur } = entrepreneurDetails;
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
+  const updatedBy = adminInfo.name;
 
   const entrepreneurUpdate = useSelector((state) => state.entrepreneurUpdate);
   const {
@@ -75,7 +77,8 @@ function Edit() {
         phone,
         year,
         bussiness,
-        bio
+        bio,
+        updatedBy
       )
     );
   };
@@ -323,6 +326,34 @@ function Edit() {
                   <span>Phone</span>
                   <p>{entrepreneur.phone}</p>
                 </div>
+                {adminInfo.masterAdmin && (
+                  <>
+                    <div className="flex items-center mt-4  w-full ml-2">
+                      <h2 className="text-green-800 font-[600] text-[13px]">
+                        CREATED BY :{" "}
+                      </h2>
+                      <p className="font-[500] text-[14px] text-green-800 ml-[4px]">
+                        {entrepreneur?.createdBy === adminInfo.name
+                          ? "you"
+                          : entrepreneur?.createdBy}{" "}
+                        on {""}
+                        {moment(entrepreneur?.createdAt).format("LL")}
+                      </p>
+                    </div>
+                    <div className="flex items-center mt-1 w-full ml-2">
+                      <h2 className="text-green-800 font-[600] text-[13px]">
+                        LASTLY UPDATED BY :{" "}
+                      </h2>
+                      <p className="font-[500] text-[14px] text-green-800 ml-[4px]">
+                        {entrepreneur?.updatedBy === adminInfo.name
+                          ? "you"
+                          : entrepreneur?.updatedBy}{" "}
+                        on {""}
+                        {moment(entrepreneur?.updatedAt).format("LL")}
+                      </p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </div>
