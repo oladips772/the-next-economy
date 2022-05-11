@@ -5,7 +5,9 @@ import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import PersonAddAltOutlinedIcon from "@mui/icons-material/PersonAddAltOutlined";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
+import AndroidIcon from "@mui/icons-material/Android";
 import LogoutIcon from "@mui/icons-material/Logout";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useDispatch } from "react-redux";
 import { AdminLogout } from "../Redux/Actions/AdminAction";
 import { useSelector } from "react-redux";
@@ -82,6 +84,36 @@ function Sidebar() {
           >
             <PeopleAltOutlinedIcon className="mx-4 text-lg" />
             <p className="text-[13px] font-semibold">ENTREPRENEURS</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/CreateDevelopers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">CREATE DEVS</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AndroidIcon className="mx-4 text-lg" />
+            <p className="text-[13px] font-semibold">FULLSTACK DEVS</p>
           </NavLink>
         </div>
         {adminInfo?.masterAdmin && (
