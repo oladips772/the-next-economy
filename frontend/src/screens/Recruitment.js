@@ -59,8 +59,8 @@ function HomeScreen() {
       const { url } = uploadRes.data;
       setImage(url);
       console.log(uploadRes.data);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      console.log(err);
     }
     setCloudLoading(false);
   };
@@ -245,13 +245,14 @@ function HomeScreen() {
             </div>
             {!cloudLoading && (
               <button
+              disabled={loading}
                 onClick={createEntreprenuer}
                 className={`${loading && "animate-pulse font-semibold"}`}
               >{`${loading ? "Creating..." : "Create"}`}</button>
             )}
             {cloudLoading && (
               <button
-                style={{"cursor":"not-allowed"}}
+                style={{ cursor: "not-allowed" }}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
                 }`}
