@@ -167,7 +167,7 @@ function HomeScreen() {
                 />
               </div>
               <div className="select_div">
-                <label>Year</label>
+                <label>Cohort</label>
                 <input
                   disabled={loading}
                   required
@@ -175,23 +175,18 @@ function HomeScreen() {
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
                 />
-                <label>Bio</label>
-                <textarea
-                  disabled={loading}
-                  required
-                  value={bio}
-                  onChange={(e) => setBio(e.target.value)}
-                ></textarea>
-                <label>Bussiness Sector</label>
+                <label>Facebook ID</label>
+                <input type="text" />
+                <label>Linkedin ID</label>
+                <input type="text" />
+                <label>Gender</label>
                 <div className="overflow_man">
                   <select
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
                   >
-                    <option value="Employment">Employment</option>
-                    <option value="Health Tech">
-                      Health Tech (Health Technology)
-                    </option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select>
                 </div>
               </div>

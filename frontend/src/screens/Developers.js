@@ -1,7 +1,7 @@
 /** @format */
 import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
-import User from "../components/User";
+import User2 from "../components/User2";
 import { useSelector, useDispatch } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { toast } from "react-hot-toast";
@@ -54,7 +54,7 @@ function Entreprenuers() {
           </div>
           {/*  */}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            <User data={search(entrepreneurs)} />
+            <User2 data={search(entrepreneurs)} />
             {loading && (
               <img src="/images/loader2.png" alt="" className="loading_image" />
             )}

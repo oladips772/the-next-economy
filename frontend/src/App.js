@@ -9,6 +9,7 @@ import Login from "./screens/Login";
 import Profile from "./screens/Profile";
 import CreateDev from "./screens/CreateDev";
 import CreateAdmin from "./screens/CreateAdmin";
+import DevProfile from "./screens/DevProfile";
 import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./PrivateRoute";
 
@@ -67,6 +68,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Developers />{" "}
+              </PrivateRoute>
+            }
+          />{" "}
+          <Route
+            path="/DevProfile/:id"
+            element={
+              <PrivateRoute>
+                <DevProfile />{" "}
               </PrivateRoute>
             }
           />{" "}

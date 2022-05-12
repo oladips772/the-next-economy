@@ -9,6 +9,7 @@ const { connectDatabase } = require("./config/MongoDb");
 const ImportData = require("./DataImport");
 const entrepreneurRouter = require("./Routes/entrepreneurRoute");
 const adminRouter = require("./Routes/adminRoute");
+const developerRouter = require("./Routes/developerRoute");
 const { notFound, errorHandler } = require("./Middleware/Error");
 
 const PORT = process.env.PORT || 4000;
@@ -21,6 +22,7 @@ connectDatabase();
 app.use("/api/import", ImportData);
 app.use("/api/entrepreneurs", entrepreneurRouter);
 app.use("/api/admins", adminRouter);
+app.use("/api/developers", developerRouter)
 app.use(notFound);
 app.use(errorHandler);
 

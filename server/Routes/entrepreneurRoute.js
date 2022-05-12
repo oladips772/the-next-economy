@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const entrepreneurRouter = express.Router();
 const Entrepreneur = require("../Models/enterpreneurModel");
 
-// ? get entrepreneurs from server route
+// ? get entrepreneurs from server route  
 entrepreneurRouter.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -32,7 +32,7 @@ entrepreneurRouter.post(
 
     if (userExists) {
       res.status(400);
-      throw new Error("entrepreneur already exists");
+      throw new Error("entrepreneur already exist");
     }
 
     if (!name || !email || !image || !phone || !year || !bussiness || !bio) {
@@ -109,8 +109,8 @@ entrepreneurRouter.put(
         year: updatedEntrepreneur.year,
         bussiness: updatedEntrepreneur.bussiness,
         bio: updatedEntrepreneur.bio,
-        createdBy: entrepreneur.createdBy,
-        updatedBy: entrepreneur.updatedBy,
+        createdBy: updatedEntrepreneur.createdBy,
+        updatedBy: updatedEntrepreneur.updatedBy,
         createdAt: updatedEntrepreneur.createdAt,
       });
     } else {
