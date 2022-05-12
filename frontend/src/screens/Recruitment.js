@@ -26,7 +26,6 @@ function HomeScreen() {
   const [createdBy, setCreatedBy] = useState("");
   const [updatedBy, setUpdatedBy] = useState("");
 
-  console.log(createdBy);
 
   const handleChange = (e) => {
     const reader = new FileReader();

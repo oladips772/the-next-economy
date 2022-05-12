@@ -12,7 +12,6 @@ import {
   ENTREPRENEUR_UPDATE_REQUEST,
   ENTREPRENEUR_UPDATE_SUCCESS,
   ENTREPRENEUR_UPDATE_FAIL,
-  ENTREPRENEUR_UPDATE_RESET,
 } from "../Constants/EntrepreneurConstant";
 
 // ? entrepreneur list reducers

@@ -5,10 +5,10 @@ import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  deleteEntrepreneur,
-  listEntrepreneur,
-  updateEntrepreneur,
-} from "../Redux/Actions/EntrepreneurAction";
+  deleteDeveloper,
+  listDeveloper,
+  updateDeveloper,
+} from "../Redux/Actions/DeveloperAction";
 import toast from "react-hot-toast";
 import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
@@ -16,34 +16,35 @@ import moment from "moment";
 
 function Edit() {
   let params = useParams();
-  const entrepreneurId = params.id;
+  const developerId = params.id;
   const navigate = useNavigate();
   const filePicker = useRef(null);
   const [selectedImage, setSelectedImage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState(null);
-  const [year, setYear] = useState(null);
-  const [bussiness, setBussiness] = useState("");
-  const [bio, setBio] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cohort, setCohort] = useState("");
+  const [gender, setGender] = useState("");
+  const [linkedinId, setLinkedinId] = useState("");
+  const [facebookId, setFacebookId] = useState("");
   const [image, setImage] = useState("");
-  const [entrepreneurImage, setEntrepreneurImage] = useState("");
+  const [developerImage, setDeveloperImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
   const [showModal, setModal] = useState(false);
   const dispatch = useDispatch();
 
-  const entrepreneurDetails = useSelector((state) => state.entrepreneurDetails);
-  const { loading, error, entrepreneur } = entrepreneurDetails;
+  const developerDetails = useSelector((state) => state.developerDetails);
+  const { loading, error, developer } = developerDetails;
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
   const updatedBy = adminInfo.name;
 
-  const entrepreneurUpdate = useSelector((state) => state.entrepreneurUpdate);
+  const developerUpdate = useSelector((state) => state.developerUpdate);
   const {
     loading: updateLoading,
     error: errorUpdate,
     success,
-  } = entrepreneurUpdate;
+  } = developerUpdate;
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -56,10 +57,10 @@ function Edit() {
   };
 
   function DELETE(id) {
-    dispatch(deleteEntrepreneur(id));
+    dispatch(deleteDeveloper(id));
     setModal(!showModal);
-    toast.success("Entrepreneur Deleted");
-    navigate("/Entrepreneurs");
+    toast.success("Developer Deleted");
+    navigate("/Developers");
   }
 
   function close() {
@@ -69,15 +70,16 @@ function Edit() {
   const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(
-      updateEntrepreneur(
-        entrepreneurId,
+      updateDeveloper(
+        developerId,
         name,
         email,
-        image ? image : entrepreneurImage,
+        image ? image : developerImage,
         phone,
-        year,
-        bussiness,
-        bio,
+        gender,
+        cohort,
+        linkedinId,
+        facebookId,
         updatedBy
       )
     );
@@ -120,29 +122,31 @@ function Edit() {
   }, [selectedImage]);
 
   useEffect(() => {
-    dispatch(listEntrepreneur(entrepreneurId));
-  }, [dispatch, entrepreneurId]);
+    dispatch(listDeveloper(developerId));
+  }, [dispatch, developerId]);
 
   useEffect(() => {
-    if (entrepreneur) {
-      setName(entrepreneur.name);
-      setEntrepreneurImage(entrepreneur.image);
-      setEmail(entrepreneur.email);
-      setPhone(entrepreneur.phone);
-      setYear(entrepreneur.year);
-      setBussiness(entrepreneur.bussiness);
-      setBio(entrepreneur.bio);
+    if (developer) {
+      setName(developer.name);
+      setDeveloperImage(developer.image);
+      setEmail(developer.email);
+      setPhone(developer.phone);
+      setCohort(developer.cohort);
+      setGender(developer.gender);
+      setLinkedinId(developer.linkedinId);
+      setFacebookId(developer.facebookId);
     }
-  }, [entrepreneur]);
+  }, [developer]);
 
   return (
     <div>
       {showModal && (
         <DeleteModal
           close={close}
-          image={entrepreneur.image}
-          name={entrepreneur.name}
-          onClick={() => DELETE(entrepreneurId)}
+          text="DELETE DEVELOPER"
+          image={developer.image}
+          name={developer.name}
+          onClick={() => DELETE(developerId)}
         />
       )}
       <div className="flex justify-between">
@@ -161,7 +165,7 @@ function Edit() {
               <div className="edit_wrapper">
                 <div className="edit_image_div">
                   <img
-                    src={`${selectedImage ? selectedImage : entrepreneurImage}`}
+                    src={`${selectedImage ? selectedImage : developerImage}`}
                     alt=""
                     className=""
                   />
@@ -202,76 +206,35 @@ function Edit() {
                   />
                 </div>
                 <div className="">
-                  <label className="font-semibold">Year</label>
+                  <label className="font-semibold">Cohort</label>
                   <input
                     disabled={updateLoading}
-                    type="number"
-                    value={year}
-                    onChange={(e) => setYear(e.target.value)}
+                    type="text"
+                    value={cohort}
+                    onChange={(e) => setCohort(e.target.value)}
                   />
-                  <label className="font-semibold">Biography</label>
-                  <textarea
+                  <label className="font-semibold">Linked ID</label>
+                  <input
                     disabled={updateLoading}
-                    value={bio}
-                    onChange={(e) => setBio(e.target.value)}
-                  ></textarea>
-                  <label className="font-semibold">Bussiness Sector</label>
+                    type="text"
+                    value={linkedinId}
+                    onChange={(e) => setLinkedinId(e.target.value)}
+                  />
+                  <label className="font-semibold">Facebook ID</label>
+                  <input
+                    disabled={updateLoading}
+                    type="text"
+                    value={facebookId}
+                    onChange={(e) => setFacebookId(e.target.value)}
+                  />
+                  <label className="font-semibold">Gender</label>
                   <select
-                    onChange={(e) => setBussiness(e.target.value)}
+                    onChange={(e) => setGender(e.target.value)}
                     disabled={updateLoading}
                   >
-                    <option value={bussiness}>{bussiness}</option>
-                    <option value="Employment">Employment</option>
-                    <option value="Entreprenuership">Entreprenuership</option>
-                    <option value="Fin Tech">
-                      Fin Tech (Financial Technology)
-                    </option>
-                    <option value="Med Tech">
-                      Med Tech (Medical Technology)
-                    </option>
-                    <option value="Ed Tech">
-                      Ed Tech (Educational Technology)
-                    </option>
-                    <option value="Legal Tech">
-                      Legal Tech (Legal Technology)
-                    </option>
-                    <option value="Ad Tech">
-                      Ad Tech (Advertising Technology)
-                    </option>
-                    <option value="Reg Tech">
-                      Reg Tech (Regulatory Technology)
-                    </option>
-                    <option value="Clean Tech">
-                      Clean Tech (Clean Technology)
-                    </option>
-                    <option value="Fem Tech">
-                      Fem Tech (Femal Technology)
-                    </option>
-                    <option value="Health Tech">
-                      Health Tech (Health Technology)
-                    </option>
-                    <option value="Yester Tech">
-                      Yester Tech (Retro Technology)
-                    </option>
-                    <option value="Prop Tech">
-                      Prop Tech (Property Technology)
-                    </option>
-                    <option value="Insure Tech">
-                      Insure Tech (Insurance Technology)
-                    </option>
-                    <option value="Wealth Tech">
-                      Wealth Tech (Wealth Technology)
-                    </option>
-                    <option value="Food Tech">
-                      Food Tech (Food Technology)
-                    </option>
-                    <option value="Bio Tech">Bio Tech (Bio Technology)</option>
-                    <option value="Art Tech">
-                      Art Tech (Artistic Technology)
-                    </option>
-                    <option value="Mark Tech">
-                      Mark Tech (Marketing Technology)
-                    </option>
+                    <option value={gender}>{gender}</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
                   </select>
                   {cloudLoading && (
                     <button
@@ -298,7 +261,7 @@ function Edit() {
                           className="mt-6 delete-btn"
                           onClick={() => setModal(!showModal)}
                         >
-                          DELETE ENTREPRENEUR
+                          DELETE DEVELOPER
                         </button>
                       )}
                     </>
@@ -308,34 +271,34 @@ function Edit() {
               {/*  */}
               <div className="display_container shadow">
                 <div className="top_info">
-                  <img src={entrepreneur.image} alt="" />
+                  <img src={developer.image} alt="" />
                   <div className="top_info_side">
                     <span>Full Name</span>
-                    <p>{entrepreneur.name}</p>
+                    <p>{developer.name}</p>
                     <span>Email</span>
                     <p>
-                      <a href={`mailto:${entrepreneur.email}`} target="_blank">
-                        {entrepreneur.email}
+                      <a href={`mailto:${developer.email}`} target="_blank">
+                        {developer.email}
                       </a>
                     </p>
                   </div>
                 </div>
                 <div className="bottom_info">
-                  <span>Bussiness</span>
-                  <p>{entrepreneur.bussiness}</p>
+                  <span>Cohort</span>
+                  <p>{developer.cohort}</p>
                   <span>Phone</span>
-                  <p>{entrepreneur.phone}</p>
+                  <p>{developer.phone}</p>
                 </div>
                 {adminInfo.masterAdmin && (
                   <>
                     <div className="flex items-center mt-4  w-full ml-2">
                       <h2 className="font-[600] text-[13px]">CREATED BY : </h2>
                       <p className="font-[500] text-[14px]  ml-[4px]">
-                        {entrepreneur?.createdBy === adminInfo.name
+                        {developer?.createdBy === adminInfo.name
                           ? "you"
-                          : entrepreneur?.createdBy}{" "}
+                          : developer?.createdBy}{" "}
                         on {""}
-                        {moment(entrepreneur?.createdAt).format("LL")}
+                        {moment(developer?.createdAt).format("LL")}
                       </p>
                     </div>
                     <div className="flex items-center mt-1 w-full ml-2">
@@ -343,11 +306,11 @@ function Edit() {
                         LASTLY UPDATED BY :{" "}
                       </h2>
                       <p className="font-[500] text-[14px]  ml-[4px]">
-                        {entrepreneur?.updatedBy === adminInfo.name
+                        {developer?.updatedBy === adminInfo.name
                           ? "you"
-                          : entrepreneur?.updatedBy}{" "}
+                          : developer?.updatedBy}{" "}
                         on {""}
-                        {moment(entrepreneur?.updatedAt).format("LL")}
+                        {moment(developer?.updatedAt).format("LL")}
                       </p>
                     </div>
                   </>

@@ -22,6 +22,7 @@ developerRouter.post(
       email,
       image,
       phone,
+      gender,
       cohort,
       linkedinId,
       facebookId,
@@ -40,6 +41,7 @@ developerRouter.post(
       !image ||
       !phone ||
       !cohort ||
+      !gender ||
       !linkedinId ||
       !facebookId
     ) {
@@ -52,6 +54,7 @@ developerRouter.post(
       image,
       phone,
       cohort,
+      gender,
       linkedinId,
       facebookId,
       createdBy,
@@ -65,12 +68,13 @@ developerRouter.post(
         email: developer.email,
         image: developer.image,
         phone: developer.phone,
+        gender: developer.gender,
         cohort: developer.cohort,
         linkedinId: developer.linkedinId,
         facebookId: developer.facebookId,
         createdBy: developer.createdBy,
         updatedBy: developer.updatedBy,
-        createdAt: entrepreneur.createdAt
+        createdAt: entrepreneur.createdAt,
       });
     } else {
       res.status(400);
@@ -115,6 +119,7 @@ developerRouter.put(
         (developer.email = req.body.email || developer.email),
         (developer.image = req.body.image || developer.image),
         (developer.phone = req.body.phone || developer.phone),
+        (developer.gender = req.body.gender || developer.gender),
         (developer.cohort = req.body.cohort || developer.cohort),
         (developer.linkedinId = req.body.linkedinId || developer.linkedinId),
         (developer.facebookId = req.body.facebookId || developer.facebookId),
@@ -127,6 +132,7 @@ developerRouter.put(
         email: updatedDeveloper.email,
         image: updatedDeveloper.image,
         phone: updatedDeveloper.phone,
+        gender: updatedDeveloper.gender,
         cohort: updatedDeveloper.cohort,
         linkedinId: updatedDeveloper.linkedinId,
         facebookId: updatedDeveloper.facebookId,

@@ -6,6 +6,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { EntrepreneurCreate } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
+import { DeveloperCreate } from "../Redux/Actions/DeveloperAction";
 
 function HomeScreen() {
   const filePicker = useRef(null);
@@ -14,19 +15,19 @@ function HomeScreen() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [year, setYear] = useState(null);
-  const [bio, setBio] = useState("");
-  const [bussiness, setBussiness] = useState("Employment");
+  const [cohort, setCohort] = useState("");
+  const [gender, setGender] = useState("Male");
+  const [linkedinId, setLinkedinId] = useState("");
+  const [facebookId, setFacebookId] = useState("");
   const dispatch = useDispatch();
-  const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
-  const { loading, success, error } = entrepreneurCreate;
+  const developerCreate = useSelector((state) => state.developerCreate);
+  const { loading, success, error } = developerCreate;
   const [cloudLoading, setCloudLoading] = useState(false);
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
   const [createdBy, setCreatedBy] = useState("");
   const [updatedBy, setUpdatedBy] = useState("");
 
-  console.log(createdBy);
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -82,24 +83,25 @@ function HomeScreen() {
       setName("");
       setEmail("");
       setPhone("");
-      setYear("");
-      setBio("");
-      setBussiness("");
+      setCohort("");
+      setLinkedinId("");
+      setFacebookId("");
     }
   }, [error, success]);
 
-  const createEntreprenuer = (e) => {
+  const createDeveloper = (e) => {
     e.preventDefault();
     if (!image) return;
     dispatch(
-      EntrepreneurCreate(
+      DeveloperCreate(
         name,
         email,
         image,
         phone,
-        year,
-        bussiness,
-        bio,
+        gender,
+        cohort,
+        linkedinId,
+        facebookId,
         createdBy,
         updatedBy
       )
@@ -171,18 +173,30 @@ function HomeScreen() {
                 <input
                   disabled={loading}
                   required
-                  type="number"
-                  value={year}
-                  onChange={(e) => setYear(e.target.value)}
+                  type="text"
+                  value={cohort}
+                  onChange={(e) => setCohort(e.target.value)}
                 />
                 <label>Facebook ID</label>
-                <input type="text" />
+                <input
+                  disabled={loading}
+                  required
+                  type="text"
+                  value={facebookId}
+                  onChange={(e) => setFacebookId(e.target.value)}
+                />
                 <label>Linkedin ID</label>
-                <input type="text" />
+                <input
+                  disabled={loading}
+                  required
+                  type="text"
+                  value={linkedinId}
+                  onChange={(e) => setLinkedinId(e.target.value)}
+                />
                 <label>Gender</label>
                 <div className="overflow_man">
                   <select
-                    onChange={(e) => setBussiness(e.target.value)}
+                    onChange={(e) => setGender(e.target.value)}
                     disabled={loading}
                   >
                     <option value="Male">Male</option>
@@ -194,7 +208,7 @@ function HomeScreen() {
             {!cloudLoading && (
               <button
                 disabled={loading}
-                onClick={createEntreprenuer}
+                onClick={createDeveloper}
                 className={`${loading && "animate-pulse font-semibold"}`}
               >{`${loading ? "Creating..." : "Create"}`}</button>
             )}

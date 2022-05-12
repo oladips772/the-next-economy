@@ -3,19 +3,19 @@ import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import User2 from "../components/User2";
 import { useSelector, useDispatch } from "react-redux";
-import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
+import { listDevelopers } from "../Redux/Actions/DeveloperAction";
 
 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
-  const entrepreneurList = useSelector((state) => state.entrepreneurList);
-  const { loading, error, entrepreneurs } = entrepreneurList;
+  const developerList = useSelector((state) => state.developerList);
+  const { loading, error, developers } = developerList;
 
   useEffect(() => {
-    dispatch(listEntrepreneurs());
+    dispatch(listDevelopers());
   }, [dispatch]);
 
   useEffect(() => {
@@ -29,9 +29,8 @@ function Entreprenuers() {
       (person) =>
         person?.name.toLowerCase().includes(query) ||
         person?.email.toLowerCase().includes(query) ||
-        person?.bussiness.toLowerCase().includes(query) ||
         person?.phone.toString().includes(query) ||
-        person?.year.toString().includes(query)
+        person?.cohort.toLowerCase().includes(query)
     );
   };
 
@@ -47,14 +46,14 @@ function Entreprenuers() {
             <input
               type="search"
               className=""
-              placeholder="Search by Name , Email , Phone , Year , Bussiness"
+              placeholder="Search by Name , Email , Phone , Cohort"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
           {/*  */}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            <User2 data={search(entrepreneurs)} />
+            <User2 data={search(developers)} />
             {loading && (
               <img src="/images/loader2.png" alt="" className="loading_image" />
             )}

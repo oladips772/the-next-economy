@@ -140,6 +140,7 @@ function Edit() {
       {showModal && (
         <DeleteModal
           close={close}
+          text="DELETE ENTREPRENEUR"
           image={entrepreneur.image}
           name={entrepreneur.name}
           onClick={() => DELETE(entrepreneurId)}

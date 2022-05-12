@@ -20,6 +20,10 @@ const DeveloperSchema = mongoose.Schema(
       type: String,
       require: [true, "developer phone Number is required"],
     },
+    gender: {
+      type: String,
+      require: [true, "developer gender is required"],
+    },
     cohort: {
       type: String,
       require: [true, "developer year is required"],

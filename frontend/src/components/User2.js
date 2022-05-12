@@ -9,8 +9,7 @@ function User({ data }) {
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th>Year</th>
-          <th>Bussiness</th>
+          <th>Cohort</th>
           <th>Action</th>
         </tr>
         {data.map((person) => (
@@ -30,12 +29,11 @@ function User({ data }) {
                 </a>
               </td>
               <td>{person?.phone}</td>
-              <td>{person?.year}</td>
-              <td>{person?.bussiness}</td>
+              <td className="w-[480px]" >{person?.cohort}</td>
               <td>
                 <NavLink
                   to={`/DevProfile/${person?._id}`}
-                  className="w-[80px] p-[4px] mx-4 bg-green-700 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
+                  className="w-[90px] p-[4px] mx-4  bg-green-700 text-sm font-semibold rounded cursor-pointer text-center ml-[80px]"
                 >
                   <span className="text-[12px] font-semibold text-white">
                     VIEW

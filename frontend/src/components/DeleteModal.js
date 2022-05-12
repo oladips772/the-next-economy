@@ -1,12 +1,12 @@
 /** @format */
 
-function DeleteModal({ onClick, close, image, name }) {
+function DeleteModal({ onClick, close, image, name ,text}) {
 
   return (
     <div className="modal_container">
       <div className="modal_content">
         <div className="flex_div2">
-          <h2>DELETE ENTREPRENEUR ?</h2>
+          <h2>{text} ?</h2>
           <img
             src={image}
             alt=""

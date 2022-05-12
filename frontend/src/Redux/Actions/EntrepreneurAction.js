@@ -16,6 +16,7 @@ import {
   ENTREPRENEUR_DELETE,
 } from "../Constants/EntrepreneurConstant";
 
+// ? list entrepreneurs actions
 export const listEntrepreneurs = () => async (dispatch) => {
   try {
     dispatch({
@@ -75,7 +76,7 @@ export const EntrepreneurCreate =
     }
   };
 
-// ? list entrepreneur actions
+// ? list entrepreneur details actions
 export const listEntrepreneur = (id) => async (dispatch) => {
   try {
     dispatch({
