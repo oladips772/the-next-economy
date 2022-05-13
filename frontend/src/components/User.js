@@ -2,7 +2,6 @@
 import { NavLink } from "react-router-dom";
 
 function User({ data }) {
-
   return (
     <>
       <table>
@@ -31,8 +30,8 @@ function User({ data }) {
                 </a>
               </td>
               <td>{person?.phone}</td>
-              <td>{person?.year}</td>
-              <td>{person?.bussiness}</td>
+              <td className="mx-4">{person?.year}</td>
+              <td className="">{person?.bussiness}</td>
               <td>
                 <NavLink
                   to={`/Profile/${person?._id}`}
