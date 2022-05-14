@@ -24,6 +24,8 @@ function Edit() {
   const [year, setYear] = useState(null);
   const [bussiness, setBussiness] = useState("");
   const [bio, setBio] = useState("");
+  const [linkedinId, setLinkedinId] = useState("");
+  const [facebookId, setFacebookId] = useState("");
   const [image, setImage] = useState("");
   const [entrepreneurImage, setEntrepreneurImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
@@ -78,6 +80,8 @@ function Edit() {
         year,
         bussiness,
         bio,
+        linkedinId,
+        facebookId,
         updatedBy
       )
     );
@@ -132,6 +136,8 @@ function Edit() {
       setYear(entrepreneur.year);
       setBussiness(entrepreneur.bussiness);
       setBio(entrepreneur.bio);
+      setLinkedinId(entrepreneur.linkedinId);
+      setFacebookId(entrepreneur.facebookId);
     }
   }, [entrepreneur]);
 
@@ -209,6 +215,20 @@ function Edit() {
                     type="number"
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
+                  />
+                  <label className="font-semibold">Linkedin ID</label>
+                  <input
+                    disabled={updateLoading}
+                    type="text"
+                    value={linkedinId}
+                    onChange={(e) => setLinkedinId(e.target.value)}
+                  />
+                  <label className="font-semibold">Facebook ID</label>
+                  <input
+                    disabled={updateLoading}
+                    type="text"
+                    value={facebookId}
+                    onChange={(e) => setFacebookId(e.target.value)}
                   />
                   <label className="font-semibold">Biography</label>
                   <textarea
@@ -330,9 +350,7 @@ function Edit() {
                 {adminInfo.masterAdmin && (
                   <>
                     <div className="flex items-center mt-4  w-full ml-2">
-                      <h2 className="font-[600] text-[13px]">
-                        CREATED BY :{" "}
-                      </h2>
+                      <h2 className="font-[600] text-[13px]">CREATED BY : </h2>
                       <p className="font-[500] text-[14px]  ml-[4px]">
                         {entrepreneur?.createdBy === adminInfo.name
                           ? "you"

@@ -17,6 +17,8 @@ function HomeScreen() {
   const [year, setYear] = useState(null);
   const [bio, setBio] = useState("");
   const [bussiness, setBussiness] = useState("Employmentability");
+  const [linkedinId, setLinkedinId] = useState("");
+  const [facebookId, setFacebookId] = useState("");
   const dispatch = useDispatch();
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
@@ -25,7 +27,6 @@ function HomeScreen() {
   const { adminInfo } = adminLogin;
   const [createdBy, setCreatedBy] = useState("");
   const [updatedBy, setUpdatedBy] = useState("");
-
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -83,6 +84,8 @@ function HomeScreen() {
       setPhone("");
       setYear("");
       setBio("");
+      setLinkedinId("");
+      setFacebookId("");
       setBussiness("");
     }
   }, [error, success]);
@@ -99,6 +102,8 @@ function HomeScreen() {
         year,
         bussiness,
         bio,
+        linkedinId,
+        facebookId,
         createdBy,
         updatedBy
       )
@@ -110,12 +115,12 @@ function HomeScreen() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+          <h1 className="text-[24px] mb-6 font-semibold text-green-600 p-4">
             Create New Entrepreneur
           </h1>
           {/*  */}
           <div className="form_container shadow -mt-[100px]">
-            <div className="flex_div">
+            <div className="flex_div -mt-6 ">
               <div className="image_div">
                 <img
                   src={`${
@@ -164,8 +169,24 @@ function HomeScreen() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
+                <label>Linkedin ID</label>
+                <input
+                  disabled={loading}
+                  required
+                  type="text"
+                  value={linkedinId}
+                  onChange={(e) => setLinkedinId(e.target.value)}
+                />
               </div>
               <div className="select_div">
+                <label>Facebook ID</label>
+                <input
+                  disabled={loading}
+                  required
+                  type="text"
+                  value={facebookId}
+                  onChange={(e) => setFacebookId(e.target.value)}
+                />
                 <label>Year</label>
                 <input
                   disabled={loading}
@@ -244,7 +265,7 @@ function HomeScreen() {
             </div>
             {!cloudLoading && (
               <button
-              disabled={loading}
+                disabled={loading}
                 onClick={createEntreprenuer}
                 className={`${loading && "animate-pulse font-semibold"}`}
               >{`${loading ? "Creating..." : "Create"}`}</button>

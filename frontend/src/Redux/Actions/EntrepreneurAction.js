@@ -40,7 +40,19 @@ export const listEntrepreneurs = () => async (dispatch) => {
 
 // ? create entreprenuer action
 export const EntrepreneurCreate =
-  (name, email, image, phone, year, bussiness, bio, createdBy, updatedBy) =>
+  (
+    name,
+    email,
+    image,
+    phone,
+    year,
+    bussiness,
+    bio,
+    linkedinId,
+    facebookId,
+    createdBy,
+    updatedBy
+  ) =>
   async (dispatch) => {
     try {
       dispatch({ type: ENTREPRENEUR_CREATE_REQUEST });
@@ -59,6 +71,8 @@ export const EntrepreneurCreate =
           year,
           bussiness,
           bio,
+          linkedinId,
+          facebookId,
           createdBy,
           updatedBy,
         },
@@ -100,7 +114,19 @@ export const listEntrepreneur = (id) => async (dispatch) => {
 
 // ? entrepreneur update action
 export const updateEntrepreneur =
-  (id, name, email, image, phone, year, bussiness, bio, updatedBy) =>
+  (
+    id,
+    name,
+    email,
+    image,
+    phone,
+    year,
+    bussiness,
+    bio,
+    linkedinId,
+    facebookId,
+    updatedBy
+  ) =>
   async (dispatch) => {
     try {
       dispatch({
@@ -123,6 +149,8 @@ export const updateEntrepreneur =
           year,
           bussiness,
           bio,
+          linkedinId,
+          facebookId,
           updatedBy,
         },
         config

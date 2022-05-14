@@ -25,6 +25,8 @@ entrepreneurRouter.post(
       year,
       bussiness,
       bio,
+      linkedinId,
+      facebookId,
       createdBy,
       updatedBy,
     } = req.body;
@@ -35,7 +37,7 @@ entrepreneurRouter.post(
       throw new Error("entrepreneur already exist");
     }
 
-    if (!name || !email || !image || !phone || !year || !bussiness || !bio) {
+    if (!name || !email || !image || !phone || !year || !bussiness || !bio || !linkedinId || !facebookId) {
       throw new Error("please fill all fields");
     }
 
@@ -47,6 +49,8 @@ entrepreneurRouter.post(
       year,
       bussiness,
       bio,
+      linkedinId,
+      facebookId,
       createdBy,
       updatedBy,
     });
@@ -60,6 +64,8 @@ entrepreneurRouter.post(
         year: entrepreneur.year,
         bussiness: entrepreneur.bussiness,
         bio: entrepreneur.bio,
+        linkedinId: entrepreneur.linkedinId,
+        facebookId: entrepreneur.facebookId,
         createdBy: entrepreneur.createdBy,
         updatedBy: entrepreneur.updatedBy,
         createdAt: entrepreneur.createdAt,
@@ -97,6 +103,8 @@ entrepreneurRouter.put(
         (entrepreneur.year = req.body.year || entrepreneur.year),
         (entrepreneur.bussiness = req.body.bussiness || entrepreneur.bussiness),
         (entrepreneur.bio = req.body.bio || entrepreneur.bio),
+        (entrepreneur.linkedinId = req.body.linkedinId || entrepreneur.linkedinId),
+        (entrepreneur.facebookId = req.body.facebookId || entrepreneur.facebookId),
         (entrepreneur.createdBy = req.body.createdBy || entrepreneur.createdBy),
         (entrepreneur.updatedBy = req.body.updatedBy || entrepreneur.updatedBy);
       const updatedEntrepreneur = await entrepreneur.save();
@@ -109,6 +117,8 @@ entrepreneurRouter.put(
         year: updatedEntrepreneur.year,
         bussiness: updatedEntrepreneur.bussiness,
         bio: updatedEntrepreneur.bio,
+        linkedinId: updatedEntrepreneur.linkedinId,
+        facebookId: updatedEntrepreneur.facebookId,
         createdBy: updatedEntrepreneur.createdBy,
         updatedBy: updatedEntrepreneur.updatedBy,
         createdAt: updatedEntrepreneur.createdAt,
