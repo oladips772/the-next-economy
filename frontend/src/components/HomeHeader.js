@@ -1,9 +1,11 @@
 /** @format */
 import React, { useState } from "react";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
+import AndroidIcon from "@mui/icons-material/Android";
 import Calendar from "react-calendar";
 
-function HomeHeader({ entrepreneurs }) {
+
+function HomeHeader({ entrepreneurs,developers }) {
   const [value, onChange] = useState(new Date());
 
   return (
@@ -18,6 +20,17 @@ function HomeHeader({ entrepreneurs }) {
           </p>
           <span className="absolute right-4 text-3xl font-bold text-gray-700">
             {entrepreneurs?.length}
+          </span>
+        </div>
+        <div className="shadow-md h-[100px] w-60 rounded mx-4 relative border-l-2 border-green-400">
+          <div className="absolute bg-green-600 rounded h-10 w-10 text-center align-center -top-4 left-4 shadow">
+            <AndroidIcon className="dashboard_icon" />
+          </div>
+          <p className="text-lg absolute -bottom-1 pb-2 ml-2 text-gray-600 font-bold">
+            Total Developers
+          </p>
+          <span className="absolute right-4 text-3xl font-bold text-gray-700">
+            {developers?.length}
           </span>
         </div>
         {/*  */}

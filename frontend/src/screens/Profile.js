@@ -222,7 +222,7 @@ function Edit() {
                     disabled={updateLoading}
                   >
                     <option value={bussiness}>{bussiness}</option>
-                    <option value="Employment">Employment</option>
+                    <option value="Employmentability">Employmentability</option>
                     <option value="Entreprenuership">Entreprenuership</option>
                     <option value="Fin Tech">
                       Fin Tech (Financial Technology)

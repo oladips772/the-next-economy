@@ -17,7 +17,7 @@ const EntreprenuerSchema = mongoose.Schema(
       require: [true, "entrepreneur image is required"],
     },
     phone: {
-      type: Number,
+      type: String,
       require: [true, "entrepreneur phone Number is required"],
     },
     year: {
@@ -31,6 +31,14 @@ const EntreprenuerSchema = mongoose.Schema(
     bio: {
       type: String,
       require: [true, "entrepreneur bio is required"],
+    },
+      linkedinId: {
+      type: String,
+      require: [true, "entrepreneur linkedinId is required"],
+    },
+    facebookId: {
+      type: String,
+      require: [true, "entrepreneur facebookId is required"],
     },
     createdBy: {
       type: String,

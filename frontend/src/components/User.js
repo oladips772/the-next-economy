@@ -22,7 +22,7 @@ function User({ data }) {
                   alt={person?.name}
                   className="w-[35px] h-[35px] object-contain ml-2 mr-2 rounded-full "
                 />
-                {person?.name}
+                <p className="mr-[10px] w-[160px]">{person?.name}</p>
               </td>{" "}
               <td className="ml-8 mr-6 text-gray-800">
                 <a href={`mailto:${person?.email}`} target="_blank">
@@ -30,7 +30,10 @@ function User({ data }) {
                 </a>
               </td>
               <td>{person?.phone}</td>
-              <td className="mx-4">{person?.year}</td>
+              <td className="mx-4">
+                {" "}
+                <p className="ml-[20px]">{person?.year}</p>
+              </td>
               <td className="">{person?.bussiness}</td>
               <td>
                 <NavLink

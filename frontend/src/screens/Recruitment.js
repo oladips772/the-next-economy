@@ -16,7 +16,7 @@ function HomeScreen() {
   const [phone, setPhone] = useState("");
   const [year, setYear] = useState(null);
   const [bio, setBio] = useState("");
-  const [bussiness, setBussiness] = useState("Employment");
+  const [bussiness, setBussiness] = useState("Employmentability");
   const dispatch = useDispatch();
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
@@ -187,7 +187,7 @@ function HomeScreen() {
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
                   >
-                    <option value="Employment">Employment</option>
+                    <option value="Employmentability">Employmentability</option>
                     <option value="Entreprenuership">Entreprenuership</option>
                     <option value="Fin Tech">
                       Fin Tech (Financial Technology)
