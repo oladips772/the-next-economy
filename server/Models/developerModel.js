@@ -36,6 +36,14 @@ const DeveloperSchema = mongoose.Schema(
       type: String,
       require: [true, "developer facebookId is required"],
     },
+    paymentStatus: {
+      type: String,
+      require: [true, "developer paymentStatus is required"],
+    },
+    paymentBalance: {
+      type: String,
+      require: [false],
+    },
     createdBy: {
       type: String,
       require: [true, "developer createdBy is required"],

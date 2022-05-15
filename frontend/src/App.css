@@ -161,7 +161,7 @@ a{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1100px;
+  width: 1050px;
 }
 
 .image_div {
@@ -190,7 +190,22 @@ a{
   flex-direction: column;
   align-items: center;
   margin-bottom: 10px;
-  margin-top: 10px;
+}
+
+.input_div select{
+  width: 390px;
+  display: flex;
+  flex-direction: column;
+  margin: 8px 0;
+  height: 37px !important;
+  background: white;
+  outline: none;
+  border: 1px solid black;
+  align-items: center;
+  padding: 5px;
+  font-size: 17px;
+  border-radius: 3px;
+  cursor:pointer;
 }
 
 .input_div label {
@@ -210,7 +225,6 @@ a{
 
 .select_div {
   margin-top: 125px;
-  margin-right: 20px;
 }
 
 .select_div select {
@@ -224,18 +238,11 @@ a{
   border: 1px solid black;
   align-items: center;
   padding: 5px;
-  cursor: pointer;
   font-size: 17px;
   border-radius: 3px;
-  overflow: scroll;
+  cursor:pointer;
 }
 
-.select_div .overflow_man {
-  height: 100%;
-  max-height: 300px;
-  margin-bottom: 30px;
-  overflow-y: scroll;
-}
 .select_div input {
   outline: none;
   border: 1px solid black;
@@ -375,8 +382,11 @@ textarea {
   outline: none;
   border: 1px solid black;
   border-radius: 5px;
-  margin: 7px 0;
+  margin: 10px 0;
   width: 400px;
+}
+.edit_wrapper input ~ label{
+  margin: 10px 0px !important;
 }
 
 .edit_wrapper textarea {
@@ -411,7 +421,6 @@ textarea {
 }
 
 .edit_wrapper select {
-  margin-bottom: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -421,6 +430,12 @@ textarea {
   border: 1px solid black;
   border-radius: 5px;
   background: white;
+  margin: 10px 0;
+}
+
+.edit_wrapper select:nth-child(2){
+  margin-bottom: 40px;
+
 }
 
 .edit_wrapper .camera {

@@ -28,6 +28,10 @@ function Edit() {
   const [linkedinId, setLinkedinId] = useState("");
   const [facebookId, setFacebookId] = useState("");
   const [image, setImage] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState("Fully Paid");
+  const [paymentBalance, setPaymentBalance] = useState("");
+    const [remarks, setRemarks] = useState("");
+
   const [developerImage, setDeveloperImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
   const [showModal, setModal] = useState(false);
@@ -67,6 +71,12 @@ function Edit() {
     setModal(!showModal);
   }
 
+  useEffect(() => {
+    if (paymentStatus === "Fully Paid" || paymentStatus === "Not Paid") {
+      setPaymentBalance("");
+    }
+  }, [paymentStatus]);
+
   const handleUpdate = (e) => {
     e.preventDefault();
     dispatch(
@@ -80,6 +90,8 @@ function Edit() {
         cohort,
         linkedinId,
         facebookId,
+        paymentStatus,
+        paymentBalance,
         updatedBy
       )
     );
@@ -135,6 +147,8 @@ function Edit() {
       setGender(developer.gender);
       setLinkedinId(developer.linkedinId);
       setFacebookId(developer.facebookId);
+      setPaymentStatus(developer.paymentStatus);
+      setPaymentBalance(developer.paymentBalance);
     }
   }, [developer]);
 
@@ -222,13 +236,47 @@ function Edit() {
                   />
                   <label className="font-semibold">Facebook ID</label>
                   <input
+                    className="mb-4"
                     disabled={updateLoading}
                     type="text"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
                   />
+                  <label className="font-semibold mb-[6px]">
+                    Payment Status
+                  </label>
+                  <select
+                    className="mt-[4px]"
+                    value={paymentStatus}
+                    onChange={(e) => setPaymentStatus(e.target.value)}
+                    disabled={loading}
+                  >
+                    <option value="Fully Paid">Fully Paid</option>
+                    <option value="Partly Paid">Partly Paid</option>
+                    <option value="Not Paid">Not Paid</option>
+                  </select>
+                  <label className="font-semibold mb-[6px]">Remarks</label>
+                  <textarea
+                    value={remarks}
+                    onChange={(e) => setRemarks(e.target.value)}
+                  ></textarea>
+                  {paymentStatus === "Partly Paid" && (
+                    <>
+                      <label className="font-semibold my-4">
+                        Payment Balance
+                      </label>
+                      <input
+                        disabled={loading}
+                        required
+                        type="number"
+                        value={paymentBalance}
+                        onChange={(e) => setPaymentBalance(e.target.value)}
+                      />
+                    </>
+                  )}
                   <label className="font-semibold">Gender</label>
                   <select
+                    className="mt-[5px]"
                     onChange={(e) => setGender(e.target.value)}
                     disabled={updateLoading}
                   >
@@ -238,7 +286,9 @@ function Edit() {
                   </select>
                   {cloudLoading && (
                     <button
-                      className={`${cloudLoading && "animate-pulse text-sm"}`}
+                      className={`${
+                        cloudLoading && "animate-pulse text-sm mt-[40px]"
+                      }`}
                     >
                       {`${cloudLoading && "processing image please wait"}`}
                     </button>
@@ -248,7 +298,9 @@ function Edit() {
                       onClick={handleUpdate}
                       disabled={updateLoading}
                       className={`${
-                        updateLoading ? "animate-pulse" : "text-sm"
+                        updateLoading
+                          ? "animate-pulse mt-[40px]"
+                          : "text-sm mt-[40px]"
                       }`}
                     >
                       {`${updateLoading ? "Updating..." : "Update"}`}
@@ -288,6 +340,14 @@ function Edit() {
                   <p>{developer.cohort}</p>
                   <span>Phone</span>
                   <p>{developer.phone}</p>
+                  <span>Payment Status</span>
+                  <p>{developer.paymentStatus}</p>
+                  {developer.paymentBalance && (
+                    <>
+                      <span>Payment Balance</span>
+                      <p>NGN {developer.paymentBalance},000</p>
+                    </>
+                  )}
                 </div>
                 {adminInfo.masterAdmin && (
                   <>

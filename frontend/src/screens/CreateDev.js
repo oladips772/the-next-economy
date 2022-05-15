@@ -4,7 +4,6 @@ import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import { EntrepreneurCreate } from "../Redux/Actions/EntrepreneurAction";
 import toast from "react-hot-toast";
 import { DeveloperCreate } from "../Redux/Actions/DeveloperAction";
 
@@ -19,6 +18,9 @@ function HomeScreen() {
   const [gender, setGender] = useState("Male");
   const [linkedinId, setLinkedinId] = useState("");
   const [facebookId, setFacebookId] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState("Fully Paid");
+  const [paymentBalance, setPaymentBalance] = useState("");
+  const [remarks, setRemarks] = useState("");
   const dispatch = useDispatch();
   const developerCreate = useSelector((state) => state.developerCreate);
   const { loading, success, error } = developerCreate;
@@ -27,7 +29,6 @@ function HomeScreen() {
   const { adminInfo } = adminLogin;
   const [createdBy, setCreatedBy] = useState("");
   const [updatedBy, setUpdatedBy] = useState("");
-
 
   const handleChange = (e) => {
     const reader = new FileReader();
@@ -102,6 +103,8 @@ function HomeScreen() {
         cohort,
         linkedinId,
         facebookId,
+        paymentStatus,
+        paymentBalance,
         createdBy,
         updatedBy
       )
@@ -167,8 +170,6 @@ function HomeScreen() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-              </div>
-              <div className="select_div">
                 <label>Cohort</label>
                 <input
                   disabled={loading}
@@ -177,6 +178,8 @@ function HomeScreen() {
                   value={cohort}
                   onChange={(e) => setCohort(e.target.value)}
                 />
+              </div>
+              <div className="select_div">
                 <label>Facebook ID</label>
                 <input
                   disabled={loading}
@@ -193,6 +196,34 @@ function HomeScreen() {
                   value={linkedinId}
                   onChange={(e) => setLinkedinId(e.target.value)}
                 />
+                <label>Remarks</label>
+                <textarea
+                  value={remarks}
+                  onChange={(e) => setRemarks(e.target.value)}
+                ></textarea>
+                <label>Payment Status</label>
+                <select
+                  className="mb-2"
+                  onChange={(e) => setPaymentStatus(e.target.value)}
+                  disabled={loading}
+                >
+                  <option value="Fully Paid">Fully Paid</option>
+                  <option value="Partly Paid">Partly Paid</option>
+                  <option value="Not Paid">Not Paid</option>
+                </select>
+                {paymentStatus === "Partly Paid" && (
+                  <>
+                    <label className="">Payment Balance</label>
+                    <input
+                      disabled={loading}
+                      required
+                      type="number"
+                      max={2}
+                      value={paymentBalance}
+                      onChange={(e) => setPaymentBalance(e.target.value)}
+                    />
+                  </>
+                )}
                 <label>Gender</label>
                 <div className="overflow_man">
                   <select

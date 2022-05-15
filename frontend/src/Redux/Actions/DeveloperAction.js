@@ -49,6 +49,8 @@ export const DeveloperCreate =
     cohort,
     linkedinId,
     facebookId,
+    paymentStatus,
+    paymentBalance,
     createdBy,
     updatedBy
   ) =>
@@ -71,6 +73,9 @@ export const DeveloperCreate =
           cohort,
           linkedinId,
           facebookId,
+          paymentStatus,
+          paymentBalance,
+          createdBy,
           createdBy,
           updatedBy,
         },
@@ -122,6 +127,9 @@ export const updateDeveloper =
     cohort,
     linkedinId,
     facebookId,
+    paymentStatus,
+    paymentBalance,
+    createdBy,
     updatedBy
   ) =>
   async (dispatch) => {
@@ -147,6 +155,9 @@ export const updateDeveloper =
           cohort,
           linkedinId,
           facebookId,
+          paymentStatus,
+          paymentBalance,
+          createdBy,
           updatedBy,
         },
         config

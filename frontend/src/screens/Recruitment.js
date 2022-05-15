@@ -19,6 +19,7 @@ function HomeScreen() {
   const [bussiness, setBussiness] = useState("Employmentability");
   const [linkedinId, setLinkedinId] = useState("");
   const [facebookId, setFacebookId] = useState("");
+  const [status, setStatus] = useState("Registered");
   const dispatch = useDispatch();
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
@@ -144,7 +145,7 @@ function HomeScreen() {
                   />
                 )}
               </div>
-              <div className="input_div">
+              <div className="input_div mt-[120px]">
                 <label>Full Name</label>
                 <input
                   disabled={loading}
@@ -177,6 +178,15 @@ function HomeScreen() {
                   value={linkedinId}
                   onChange={(e) => setLinkedinId(e.target.value)}
                 />
+                <label>Status</label>
+                <select
+                  onChange={(e) => setStatus(e.target.value)}
+                  value={status}
+                  disabled={loading}
+                >
+                  <option value="Registered">Registered</option>
+                  <option value="Not Registered">Not Registered</option>
+                </select>
               </div>
               <div className="select_div">
                 <label>Facebook ID</label>
@@ -205,6 +215,7 @@ function HomeScreen() {
                 <label>Bussiness Sector</label>
                 <div className="overflow_man">
                   <select
+                    value={bussiness}
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
                   >

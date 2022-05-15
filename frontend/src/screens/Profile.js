@@ -28,6 +28,8 @@ function Edit() {
   const [facebookId, setFacebookId] = useState("");
   const [image, setImage] = useState("");
   const [entrepreneurImage, setEntrepreneurImage] = useState("");
+    const [status, setStatus] = useState("Registered");
+
   const [cloudLoading, setCloudLoading] = useState(false);
   const [showModal, setModal] = useState(false);
   const dispatch = useDispatch();
@@ -237,7 +239,8 @@ function Edit() {
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
                   <label className="font-semibold">Bussiness Sector</label>
-                  <select
+                    <select
+                    className="mb-[40px]"
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={updateLoading}
                   >
@@ -296,7 +299,7 @@ function Edit() {
                   </select>
                   {cloudLoading && (
                     <button
-                      className={`${cloudLoading && "animate-pulse text-sm"}`}
+                      className={`${cloudLoading && "animate-pulse text-sm mt-4"}`}
                     >
                       {`${cloudLoading && "processing image please wait"}`}
                     </button>
@@ -306,7 +309,7 @@ function Edit() {
                       onClick={handleUpdate}
                       disabled={updateLoading}
                       className={`${
-                        updateLoading ? "animate-pulse" : "text-sm"
+                        updateLoading ? "animate-pulse mt-4" : "text-sm mt-[20px]"
                       }`}
                     >
                       {`${updateLoading ? "Updating..." : "Update"}`}

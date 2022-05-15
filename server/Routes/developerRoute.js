@@ -16,7 +16,7 @@ developerRouter.get(
 // ? create developer sever route
 developerRouter.post(
   "/create",
-  asyncHandler(async (req, res) => {
+  asyncHandler(async (req, res) => {   
     const {
       name,
       email,
@@ -26,6 +26,8 @@ developerRouter.post(
       cohort,
       linkedinId,
       facebookId,
+      paymentStatus,
+      paymentBalance,
       createdBy,
       updatedBy,
     } = req.body;
@@ -57,6 +59,8 @@ developerRouter.post(
       gender,
       linkedinId,
       facebookId,
+      paymentStatus,
+      paymentBalance,
       createdBy,
       updatedBy,
     });
@@ -72,6 +76,8 @@ developerRouter.post(
         cohort: developer.cohort,
         linkedinId: developer.linkedinId,
         facebookId: developer.facebookId,
+        paymentStatus: developer.paymentStatus,
+        paymentBalance:developer.paymentBalance,
         createdBy: developer.createdBy,
         updatedBy: developer.updatedBy,
         createdAt: entrepreneur.createdAt,
@@ -123,6 +129,8 @@ developerRouter.put(
         (developer.cohort = req.body.cohort || developer.cohort),
         (developer.linkedinId = req.body.linkedinId || developer.linkedinId),
         (developer.facebookId = req.body.facebookId || developer.facebookId),
+        (developer.paymentStatus = req.body.paymentStatus || developer.paymentStatus),
+        (developer.paymentBalance = req.body.paymentBalance),
         (developer.createdBy = req.body.createdBy || developer.createdBy),
         (developer.updatedBy = req.body.updatedBy || developer.updatedBy);
       const updatedDeveloper = await developer.save();
@@ -136,6 +144,8 @@ developerRouter.put(
         cohort: updatedDeveloper.cohort,
         linkedinId: updatedDeveloper.linkedinId,
         facebookId: updatedDeveloper.facebookId,
+        paymentStatus: updatedDeveloper.paymentStatus,
+        paymentBalance:updatedDeveloper.paymentBalance,
         createdBy: updatedDeveloper.createdBy,
         updatedBy: updatedDeveloper.updatedBy,
         createdAt: updatedDeveloper.createdAt,
