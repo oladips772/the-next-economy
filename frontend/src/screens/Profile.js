@@ -155,7 +155,21 @@ function Edit() {
 
   return (
     <div>
-      {showPrint && <PrintModal closePrint={closePrint} />}
+      {showPrint && (
+        <PrintModal
+          closePrint={closePrint}
+          name={entrepreneur.name}
+          image={entrepreneur.image}
+          email={entrepreneur.email}
+          phone={entrepreneur.phone}
+          year={entrepreneur.year}
+          bussiness={entrepreneur.bussiness}
+          bio={entrepreneur.bio}
+          linkedin={entrepreneur.linkedinId}
+          facebook={entrepreneur.facebookId}
+          status={entrepreneur.status}
+        />
+      )}
       {showModal && (
         <DeleteModal
           close={close}

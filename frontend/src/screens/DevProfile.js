@@ -13,6 +13,7 @@ import {
 import toast from "react-hot-toast";
 import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
+import PrintModal2 from "../components/PrintModal2";
 import moment from "moment";
 
 function Edit() {
@@ -32,6 +33,7 @@ function Edit() {
   const [paymentStatus, setPaymentStatus] = useState("Fully Paid");
   const [paymentBalance, setPaymentBalance] = useState("");
   const [remarks, setRemarks] = useState("");
+  const [showPrint, setPrint] = useState(false);
 
   const [developerImage, setDeveloperImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
@@ -155,8 +157,27 @@ function Edit() {
     }
   }, [developer]);
 
+  const closePrint = () => {
+    setPrint(!showPrint);
+  };
+
   return (
     <div>
+      {showPrint && (
+        <PrintModal2
+          closePrint={closePrint}
+          name={developer.name}
+          image={developer.image}
+          email={developer.email}
+          phone={developer.phone}
+          cohort={developer.cohort}
+          remarks={developer.remarks}
+          linkedin={developer.linkedinId}
+          facebook={developer.facebookId}
+          status={developer.paymentStatus}
+          balance={developer.paymentBalance}
+        />
+      )}
       {showModal && (
         <DeleteModal
           close={close}
@@ -173,9 +194,15 @@ function Edit() {
           <img src="/images/loader2.png" alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
-            <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-              Dev Profile
-            </h1>
+            <div className="flex justify-between w-full items-center">
+              <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+                Dev Profile
+              </h1>
+              <PrintIcon
+                className=" text-green-600 h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
+                onClick={() => setPrint(!showPrint)}
+              />
+            </div>
             <div></div>
             {/*  */}
             <div className="edit_container shadow">

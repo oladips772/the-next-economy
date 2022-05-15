@@ -677,6 +677,7 @@ textarea {
   transition: all 0.4s ease !important;
   transition-delay: 0.4s !important;
   z-index: 999;
+  overflow-y: scroll;
 }
 
 .print_close {
