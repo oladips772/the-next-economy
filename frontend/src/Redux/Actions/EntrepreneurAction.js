@@ -50,6 +50,7 @@ export const EntrepreneurCreate =
     bio,
     linkedinId,
     facebookId,
+    status,
     createdBy,
     updatedBy
   ) =>
@@ -73,6 +74,7 @@ export const EntrepreneurCreate =
           bio,
           linkedinId,
           facebookId,
+          status,
           createdBy,
           updatedBy,
         },
@@ -125,6 +127,7 @@ export const updateEntrepreneur =
     bio,
     linkedinId,
     facebookId,
+    status,
     updatedBy
   ) =>
   async (dispatch) => {
@@ -151,6 +154,7 @@ export const updateEntrepreneur =
           bio,
           linkedinId,
           facebookId,
+          status,
           updatedBy,
         },
         config

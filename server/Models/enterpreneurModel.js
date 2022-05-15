@@ -32,13 +32,17 @@ const EntreprenuerSchema = mongoose.Schema(
       type: String,
       require: [true, "entrepreneur bio is required"],
     },
-      linkedinId: {
+    linkedinId: {
       type: String,
       require: [true, "entrepreneur linkedinId is required"],
     },
     facebookId: {
       type: String,
       require: [true, "entrepreneur facebookId is required"],
+    },
+    status: {
+      type: String,
+      require: [true, "entrepreneur status is required"],
     },
     createdBy: {
       type: String,
@@ -53,7 +57,6 @@ const EntreprenuerSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
 
 const Entrepreneur = mongoose.model("Entrepreneur", EntreprenuerSchema);
 module.exports = Entrepreneur;

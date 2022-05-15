@@ -105,6 +105,7 @@ function HomeScreen() {
         bio,
         linkedinId,
         facebookId,
+        status,
         createdBy,
         updatedBy
       )

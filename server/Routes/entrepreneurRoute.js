@@ -27,6 +27,7 @@ entrepreneurRouter.post(
       bio,
       linkedinId,
       facebookId,
+      status,
       createdBy,
       updatedBy,
     } = req.body;
@@ -51,6 +52,7 @@ entrepreneurRouter.post(
       bio,
       linkedinId,
       facebookId,
+      status,
       createdBy,
       updatedBy,
     });
@@ -66,6 +68,7 @@ entrepreneurRouter.post(
         bio: entrepreneur.bio,
         linkedinId: entrepreneur.linkedinId,
         facebookId: entrepreneur.facebookId,
+        status: entrepreneur.status,
         createdBy: entrepreneur.createdBy,
         updatedBy: entrepreneur.updatedBy,
         createdAt: entrepreneur.createdAt,
@@ -105,6 +108,7 @@ entrepreneurRouter.put(
         (entrepreneur.bio = req.body.bio || entrepreneur.bio),
         (entrepreneur.linkedinId = req.body.linkedinId || entrepreneur.linkedinId),
         (entrepreneur.facebookId = req.body.facebookId || entrepreneur.facebookId),
+        (entrepreneur.status = req.body.status || entrepreneur.status),
         (entrepreneur.createdBy = req.body.createdBy || entrepreneur.createdBy),
         (entrepreneur.updatedBy = req.body.updatedBy || entrepreneur.updatedBy);
       const updatedEntrepreneur = await entrepreneur.save();
@@ -119,6 +123,7 @@ entrepreneurRouter.put(
         bio: updatedEntrepreneur.bio,
         linkedinId: updatedEntrepreneur.linkedinId,
         facebookId: updatedEntrepreneur.facebookId,
+        status: updatedEntrepreneur.status,
         createdBy: updatedEntrepreneur.createdBy,
         updatedBy: updatedEntrepreneur.updatedBy,
         createdAt: updatedEntrepreneur.createdAt,

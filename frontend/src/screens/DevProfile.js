@@ -30,7 +30,7 @@ function Edit() {
   const [image, setImage] = useState("");
   const [paymentStatus, setPaymentStatus] = useState("Fully Paid");
   const [paymentBalance, setPaymentBalance] = useState("");
-    const [remarks, setRemarks] = useState("");
+  const [remarks, setRemarks] = useState("");
 
   const [developerImage, setDeveloperImage] = useState("");
   const [cloudLoading, setCloudLoading] = useState(false);
@@ -90,6 +90,7 @@ function Edit() {
         cohort,
         linkedinId,
         facebookId,
+        remarks,
         paymentStatus,
         paymentBalance,
         updatedBy
@@ -147,6 +148,7 @@ function Edit() {
       setGender(developer.gender);
       setLinkedinId(developer.linkedinId);
       setFacebookId(developer.facebookId);
+      setRemarks(developer.remarks);
       setPaymentStatus(developer.paymentStatus);
       setPaymentBalance(developer.paymentBalance);
     }
@@ -255,11 +257,6 @@ function Edit() {
                     <option value="Partly Paid">Partly Paid</option>
                     <option value="Not Paid">Not Paid</option>
                   </select>
-                  <label className="font-semibold mb-[6px]">Remarks</label>
-                  <textarea
-                    value={remarks}
-                    onChange={(e) => setRemarks(e.target.value)}
-                  ></textarea>
                   {paymentStatus === "Partly Paid" && (
                     <>
                       <label className="font-semibold my-4">
@@ -274,6 +271,12 @@ function Edit() {
                       />
                     </>
                   )}
+                  <label className="font-semibold mb-[6px]">Remarks</label>
+                  <textarea
+                    value={remarks}
+                    onChange={(e) => setRemarks(e.target.value)}
+                  ></textarea>
+
                   <label className="font-semibold">Gender</label>
                   <select
                     className="mt-[5px]"

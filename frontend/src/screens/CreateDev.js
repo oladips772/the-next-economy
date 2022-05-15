@@ -87,6 +87,7 @@ function HomeScreen() {
       setCohort("");
       setLinkedinId("");
       setFacebookId("");
+      setRemarks("");
     }
   }, [error, success]);
 
@@ -103,6 +104,7 @@ function HomeScreen() {
         cohort,
         linkedinId,
         facebookId,
+remarks,
         paymentStatus,
         paymentBalance,
         createdBy,
@@ -145,7 +147,7 @@ function HomeScreen() {
                   />
                 )}
               </div>
-              <div className="input_div">
+              <div className="input_div mt-[110px]">
                 <label>Full Name</label>
                 <input
                   disabled={loading}
@@ -178,8 +180,6 @@ function HomeScreen() {
                   value={cohort}
                   onChange={(e) => setCohort(e.target.value)}
                 />
-              </div>
-              <div className="select_div">
                 <label>Facebook ID</label>
                 <input
                   disabled={loading}
@@ -188,6 +188,8 @@ function HomeScreen() {
                   value={facebookId}
                   onChange={(e) => setFacebookId(e.target.value)}
                 />
+              </div>
+              <div className="select_div">
                 <label>Linkedin ID</label>
                 <input
                   disabled={loading}
