@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import PrintIcon from "@mui/icons-material/Print";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteDeveloper,

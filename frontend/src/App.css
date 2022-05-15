@@ -14,8 +14,8 @@ input {
   background: transparent !important;
 }
 
-a{
-  color:black;
+a {
+  color: black;
 }
 
 .dashboard_icon {
@@ -192,7 +192,7 @@ a{
   margin-bottom: 10px;
 }
 
-.input_div select{
+.input_div select {
   width: 390px;
   display: flex;
   flex-direction: column;
@@ -205,7 +205,7 @@ a{
   padding: 5px;
   font-size: 17px;
   border-radius: 3px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .input_div label {
@@ -240,7 +240,7 @@ a{
   padding: 5px;
   font-size: 17px;
   border-radius: 3px;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 .select_div input {
@@ -281,7 +281,7 @@ a{
   background: green;
   color: white;
   width: 580px;
-  margin-left:40px;
+  margin-left: 40px;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -385,7 +385,7 @@ textarea {
   margin: 10px 0;
   width: 400px;
 }
-.edit_wrapper input ~ label{
+.edit_wrapper input ~ label {
   margin: 10px 0px !important;
 }
 
@@ -433,9 +433,8 @@ textarea {
   margin: 10px 0;
 }
 
-.edit_wrapper select:nth-child(2){
+.edit_wrapper select:nth-child(2) {
   margin-bottom: 40px;
-
 }
 
 .edit_wrapper .camera {
@@ -568,7 +567,7 @@ textarea {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-   transition: all 0.4s ease !important;
+  transition: all 0.4s ease !important;
   transition-delay: 0.4s !important;
 }
 
@@ -578,14 +577,13 @@ textarea {
   align-items: center;
 }
 
-.flex_div2 h2{
+.flex_div2 h2 {
   font-size: 17px;
   font-weight: 600;
-  margin-top:-5px;
+  margin-top: -5px;
   border-bottom: 1px solid lightgray;
-  margin-bottom:20px;
-  color:green;
-
+  margin-bottom: 20px;
+  color: green;
 }
 .row_div {
   display: flex;
@@ -620,50 +618,97 @@ textarea {
   text-align: center;
 }
 
-
 /* create admin screen  */
-.update_container{
+.update_container {
   position: absolute;
-  bottom:-160px;
+  bottom: -160px;
   display: flex;
   flex-direction: column;
-  left:55%;
-  width:570px;
-  height:330px;
+  left: 55%;
+  width: 570px;
+  height: 330px;
 }
 
-.update_container h2{
+.update_container h2 {
   font-size: 17px;
   font-weight: 600;
   margin-top: 10px;
   text-align: center;
-  color:green;
+  color: green;
 }
 
-.update_container input{
-  height:35px;
-  width:530px;
-  margin:10px 20px;
-  border-radius:3px;
-  border:1px solid black;
+.update_container input {
+  height: 35px;
+  width: 530px;
+  margin: 10px 20px;
+  border-radius: 3px;
+  border: 1px solid black;
   padding: 5px;
-  outline:none;
+  outline: none;
 }
 
-.update_container button{
-  width:530px;
-  margin:15px 20px;
-  border-radius:3px;
+.update_container button {
+  width: 530px;
+  margin: 15px 20px;
+  border-radius: 3px;
   padding: 5px;
   background-color: green;
-  color:white;
+  color: white;
   font-weight: 600;
   font-size: 13px;
-  height:35px;
+  height: 35px;
   text-align: center;
 }
 
-.update_container input::placeholder{
-  color:rgb(43, 42, 42);
+.update_container input::placeholder {
+  color: rgb(43, 42, 42);
 }
 
+/* print modal styling */
+.print_modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  transition: all 0.4s ease !important;
+  transition-delay: 0.4s !important;
+  z-index: 999;
+}
+
+.print_close {
+  font-size: 12px;
+  font-weight: bold;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: rgb(158, 6, 6);
+  color: white;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  line-height: 15px;
+}
+
+.print_close2 {
+  font-size: 12px;
+  font-weight: bold;
+  width: 80px;
+  height: 25px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: green;
+  color: white;
+  position: absolute;
+  right: 40px;
+  top: 10px;
+  line-height: 15px;
+}

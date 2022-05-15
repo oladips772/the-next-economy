@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import CameraAltOutlinedIcon from "@mui/icons-material/CameraAltOutlined";
+import PrintIcon from "@mui/icons-material/Print";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteEntrepreneur,
@@ -13,6 +14,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 import moment from "moment";
+import PrintModal from "../components/PrintModal";
 
 function Edit() {
   const navigate = useNavigate();
@@ -32,6 +34,8 @@ function Edit() {
 
   const [cloudLoading, setCloudLoading] = useState(false);
   const [showModal, setModal] = useState(false);
+  const [showPrint, setPrint] = useState(false);
+
   const dispatch = useDispatch();
   let params = useParams();
   const entrepreneurId = params.id;
@@ -130,6 +134,10 @@ function Edit() {
     dispatch(listEntrepreneur(entrepreneurId));
   }, [dispatch, entrepreneurId]);
 
+  const closePrint = () => {
+    setPrint(!showPrint);
+  };
+
   useEffect(() => {
     if (entrepreneur) {
       setName(entrepreneur.name);
@@ -147,6 +155,7 @@ function Edit() {
 
   return (
     <div>
+      {showPrint && <PrintModal closePrint={closePrint} />}
       {showModal && (
         <DeleteModal
           close={close}
@@ -163,10 +172,15 @@ function Edit() {
           <img src="/images/loader2.png" alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
-            <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-              Profile
-            </h1>
-            <div></div>
+            <div className="flex justify-between w-full items-center">
+              <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+                Profile
+              </h1>
+              <PrintIcon
+                className=" text-green-600 h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
+                onClick={() => setPrint(!showPrint)}
+              />
+            </div>
             {/*  */}
             <div className="edit_container shadow">
               <div className="edit_wrapper">
