@@ -59,9 +59,11 @@ function CreateAdmin() {
   };
 
   const DELETE = (id) => {
-    dispatch(deleteAdmin(id));
-    toast.success("admin deleted successfully");
-    window.location.reload();
+    if (window.confirm("are you sure you want to delete this admin?")) {
+      dispatch(deleteAdmin(id));
+      toast.success("admin deleted successfully");
+      window.location.reload();
+    }
   };
 
   const UPDATE = () => {

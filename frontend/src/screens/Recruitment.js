@@ -19,7 +19,7 @@ function HomeScreen() {
   const [bussiness, setBussiness] = useState("Employmentability");
   const [linkedinId, setLinkedinId] = useState("");
   const [facebookId, setFacebookId] = useState("");
-  const [status, setStatus] = useState("Registered");
+  const [status, setStatus] = useState("Still in business");
   const dispatch = useDispatch();
   const entrepreneurCreate = useSelector((state) => state.entrepreneurCreate);
   const { loading, success, error } = entrepreneurCreate;
@@ -185,8 +185,8 @@ function HomeScreen() {
                   value={status}
                   disabled={loading}
                 >
-                  <option value="Registered">Registered</option>
-                  <option value="Not Registered">Not Registered</option>
+                  <option value="Still in business">Still in business</option>
+                  <option value="Not in business">Not in business</option>
                 </select>
               </div>
               <div className="select_div">

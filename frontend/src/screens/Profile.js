@@ -30,7 +30,7 @@ function Edit() {
   const [facebookId, setFacebookId] = useState("");
   const [image, setImage] = useState("");
   const [entrepreneurImage, setEntrepreneurImage] = useState("");
-  const [status, setStatus] = useState("Registered");
+  const [status, setStatus] = useState("Still in business");
 
   const [cloudLoading, setCloudLoading] = useState(false);
   const [showModal, setModal] = useState(false);
@@ -268,8 +268,8 @@ function Edit() {
                     value={status}
                     disabled={loading}
                   >
-                    <option value="Registered">Registered</option>
-                    <option value="Not Registered">Not Registered</option>
+                    <option value="Still in business">Still in business</option>
+                    <option value="Not in business">Not in business </option>
                   </select>
                   <label className="font-semibold">Biography</label>
                   <textarea
