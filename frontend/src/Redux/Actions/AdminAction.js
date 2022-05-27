@@ -19,6 +19,9 @@ import {
   ADMIN_UPDATE_REQUEST,
   ADMIN_UPDATE_SUCCESS,
   ADMIN_UPDATE_FAIL,
+  ADMIN_UPDATE_PASSWORD,
+  ADMIN_PASSWORD_SUCCESS,
+  ADMIN_PASSWORD_FAIL,
 } from "../Constants/AdminConstant";
 import axios from "axios";
 
@@ -197,6 +200,25 @@ export const AdminUpdate = (user) => async (dispatch, getState) => {
     }
     dispatch({
       type: ADMIN_UPDATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+
+// ? admin password update function
+export const AdminPasswordUpdate = (email,password) => async (dispatch) => {
+  try {
+    dispatch({ type: ADMIN_UPDATE_PASSWORD });
+    const { data } = await axios.put(`/api/admins/updatePassword`, email , password);
+    dispatch({ type: ADMIN_PASSWORD_SUCCESS, payload: data });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    dispatch({
+      type: ADMIN_PASSWORD_FAIL,
       payload: message,
     });
   }

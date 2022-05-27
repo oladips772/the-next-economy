@@ -17,6 +17,9 @@ import {
   ADMIN_UPDATE_REQUEST,
   ADMIN_UPDATE_SUCCESS,
   ADMIN_UPDATE_FAIL,
+  ADMIN_UPDATE_PASSWORD,
+  ADMIN_PASSWORD_SUCCESS,
+  ADMIN_PASSWORD_FAIL,
 } from "../Constants/AdminConstant";
 
 // ? admin list reducer
@@ -97,6 +100,19 @@ export const adminUpdateReducer = (state = {}, action) => {
     case ADMIN_UPDATE_SUCCESS:
       return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+export const adminUpdatePassword = (state = {}, action) => {
+  switch (action.type) {
+    case ADMIN_UPDATE_PASSWORD:
+      return { loading: true };
+    case ADMIN_PASSWORD_SUCCESS:
+      return { loading: false, success: true };
+    case ADMIN_PASSWORD_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

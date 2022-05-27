@@ -13,6 +13,7 @@ import {
   adminDetailsReducer,
   adminLoginReducer,
   adminsListReducer,
+  adminUpdatePassword,
   adminUpdateReducer,
 } from "./Reducers/AdminReducer";
 import {
@@ -36,6 +37,7 @@ const reducer = combineReducers({
   developerDetails: developerDetailsReducer,
   developerCreate: developerCreateReducer,
   developerUpdate: developerUpdateReducer,
+  adminUpdatePassword:adminUpdatePassword,
 });
 
 const adminInfoFromLocalStorage = localStorage.getItem("adminInfo")

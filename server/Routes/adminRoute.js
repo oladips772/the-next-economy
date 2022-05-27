@@ -131,6 +131,43 @@ adminRouter.put(
   })
 );
 
+// ? admin profile
+adminRouter.put(
+  "/updatePassword",
+  asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+    const admin = await Admin.findOne({ email });
+    if (!admin.masterAdmin) {
+      res.status(401);
+      throw new Error(
+        "sorry, you can't reset your password , contact a master admin!"
+      );
+    }
+    if (email && password) {
+      if (admin) {
+        admin.password = req.body.password;
+        const updatedAdmin = await admin.save();
+        res.json({
+          _id: updatedAdmin._id,
+          name: updatedAdmin.name,
+          email: updatedAdmin.email,
+          isAdmin: updatedAdmin.isAdmin,
+          masterAdmin: updatedAdmin.masterAdmin,
+          password: updatedAdmin.password,
+          createdAt: updatedAdmin.createdAt,
+          token: generateToken(updatedAdmin._id),
+        });
+      } else {
+        res.status(401);
+        throw new Error("admin not found");
+      }
+    } else {
+      res.status(401);
+      throw new Error("password and email are required for a change password");
+    }
+  })
+);
+
 // ? admin delete
 adminRouter.delete(
   "/:id",
