@@ -301,6 +301,7 @@ function Edit() {
                   )}
                   <label className="font-semibold mb-[6px]">Remarks</label>
                   <textarea
+                    disabled={updateLoading}
                     value={remarks}
                     onChange={(e) => setRemarks(e.target.value)}
                   ></textarea>

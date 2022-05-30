@@ -63,6 +63,7 @@ function HomeScreen() {
       console.log(uploadRes.data);
     } catch (err) {
       console.log(err);
+      err && toast.error(`${err.message}, reselect the image please`);
     }
     setCloudLoading(false);
   };
@@ -94,23 +95,35 @@ function HomeScreen() {
   const createDeveloper = (e) => {
     e.preventDefault();
     if (!image) return;
-    dispatch(
-      DeveloperCreate(
-        name,
-        email,
-        image,
-        phone,
-        gender,
-        cohort,
-        linkedinId,
-        facebookId,
-remarks,
-        paymentStatus,
-        paymentBalance,
-        createdBy,
-        updatedBy
-      )
-    );
+    if (
+      name.trim() &&
+      email.trim() &&
+      image.trim() &&
+      cohort.trim() &&
+      remarks.trim() &&
+      linkedinId.trim() &&
+      facebookId.trim()
+    ) {
+      dispatch(
+        DeveloperCreate(
+          name,
+          email,
+          image,
+          phone,
+          gender,
+          cohort,
+          linkedinId,
+          facebookId,
+          remarks,
+          paymentStatus,
+          paymentBalance,
+          createdBy,
+          updatedBy
+        )
+      );
+    } else {
+      toast.error("remove whitespaces from each fields");
+    }
   };
 
   return (
@@ -200,6 +213,7 @@ remarks,
                 />
                 <label>Remarks</label>
                 <textarea
+                  disabled={loading}
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
                 ></textarea>

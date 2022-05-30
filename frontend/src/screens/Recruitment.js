@@ -62,6 +62,7 @@ function HomeScreen() {
       console.log(uploadRes.data);
     } catch (err) {
       console.log(err);
+      err && toast.error(`${err.message}, reselect the image please`);
     }
     setCloudLoading(false);
   };
@@ -94,22 +95,34 @@ function HomeScreen() {
   const createEntreprenuer = (e) => {
     e.preventDefault();
     if (!image) return;
-    dispatch(
-      EntrepreneurCreate(
-        name,
-        email,
-        image,
-        phone,
-        year,
-        bussiness,
-        bio,
-        linkedinId,
-        facebookId,
-        status,
-        createdBy,
-        updatedBy
-      )
-    );
+    if (
+      name.trim() &&
+      email.trim() &&
+      image.trim() &&
+      bussiness.trim() &&
+      bio.trim() &&
+      linkedinId.trim() &&
+      facebookId.trim()
+    ) {
+      dispatch(
+        EntrepreneurCreate(
+          name,
+          email,
+          image,
+          phone,
+          year,
+          bussiness,
+          bio,
+          linkedinId,
+          facebookId,
+          status,
+          createdBy,
+          updatedBy
+        )
+      );
+    } else {
+      toast.error("remove whitespace from each fields");
+    }
   };
 
   return (

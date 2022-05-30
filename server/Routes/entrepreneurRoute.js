@@ -141,7 +141,6 @@ entrepreneurRouter.put(
         createdAt: updatedEntrepreneur.createdAt,
       });
     } else {
-                
     }
   })
 );

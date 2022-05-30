@@ -7,19 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { listDevelopers } from "../Redux/Actions/DeveloperAction";
 
-
 function HomeScreen() {
   const dispatch = useDispatch();
   const entrepreneurList = useSelector((state) => state.entrepreneurList);
   const { entrepreneurs, loading } = entrepreneurList;
-   const developerList = useSelector((state) => state.developerList);
-   const {developers} = developerList;
+  const developerList = useSelector((state) => state.developerList);
+  const { developers } = developerList;
 
   useEffect(() => {
     dispatch(listEntrepreneurs());
-    dispatch(listDevelopers())
+    dispatch(listDevelopers());
   }, [dispatch]);
-
 
   return (
     <div>
@@ -29,7 +27,7 @@ function HomeScreen() {
           <h1 className="text-[24px] mb-6 font-semibold text-green-600">
             Dashboard
           </h1>
-          <HomeHeader entrepreneurs={entrepreneurs} developers={developers}/>
+          <HomeHeader entrepreneurs={entrepreneurs} developers={developers} />
           <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading} />
         </div>
       </div>

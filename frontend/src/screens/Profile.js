@@ -266,7 +266,7 @@ function Edit() {
                   <select
                     onChange={(e) => setStatus(e.target.value)}
                     value={status}
-                    disabled={loading}
+                    disabled={updateLoading}
                   >
                     <option value="Still in business">Still in business</option>
                     <option value="Not in business">Not in business </option>
@@ -362,6 +362,7 @@ function Edit() {
                     <>
                       {!showModal && (
                         <button
+                          disabled={updateLoading}
                           className="mt-6 delete-btn"
                           onClick={() => setModal(!showModal)}
                         >

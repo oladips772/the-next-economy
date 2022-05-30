@@ -1,7 +1,7 @@
 /** @format */
 import React from "react";
 import { staffs } from "../data/staffs";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function HomeScreenStaffs({ entrepreneurs, loading }) {
   return (
@@ -17,27 +17,38 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
       {loading ? (
         <img src="/images/loader2.png" alt="" className="ml-[250px]" />
       ) : (
-        <div className="">
-          {entrepreneurs?.slice(0, 6).map((staff) => (
-            <div className="" key={staff?._id}>
-              <Link
-                to={`Profile/${staff._id}`}
-                className="flex justify-between mx-4 items-center my-2 py-2"
-              >
-                <div className="flex items-center">
-                  <img
-                    src={staff?.image}
-                    alt=""
-                    className="h-10 w-10 object-contain rounded-full mr-2"
-                  />
-                  <p className="text-sm font-semibold">{staff?.name}</p>
+        <>
+          {entrepreneurs?.length >= 1 ? (
+            <div className="">
+              {entrepreneurs?.slice(0, 6).map((staff) => (
+                <div className="" key={staff?._id}>
+                  <Link
+                    to={`Profile/${staff._id}`}
+                    className="flex justify-between mx-4 items-center my-2 py-2"
+                  >
+                    <div className="flex items-center">
+                      <img
+                        src={staff?.image}
+                        alt=""
+                        className="h-10 w-10 object-contain rounded-full mr-2"
+                      />
+                      <p className="text-sm font-semibold">{staff?.name}</p>
+                    </div>
+                    <p className="text-sm font-semibold">{staff?.phone}</p>
+                    <p className="text-sm font-semibold">{staff?.email}</p>
+                  </Link>
                 </div>
-                <p className="text-sm font-semibold">{staff?.phone}</p>
-                <p className="text-sm font-semibold">{staff?.email}</p>
-              </Link>
+              ))}
             </div>
-          ))}
-        </div>
+          ) : (
+            <div className="ml-[160px] pb-[100px] mt-[100px]">
+              <h3>You have no entrepreneurs yet</h3>
+              <NavLink to="/New_Entrepreneur" className="text-green-600">
+                click here to create entrepreneurs
+              </NavLink>
+            </div>
+          )}
+        </>
       )}
     </div>
   );
