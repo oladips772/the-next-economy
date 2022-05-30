@@ -67,6 +67,7 @@ function Login() {
           >
             {`${loading ? "Login you in..." : "Login"}`}
           </button>
+          <NavLink to="/Update_Password" className="text-center text-green-400 mt-2">forgot password ? </NavLink>
         </div>
       </div>
     </div>

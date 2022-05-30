@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 const entrepreneurRouter = express.Router();
 const Entrepreneur = require("../Models/enterpreneurModel");
 
-// ? get entrepreneurs from server route  
+// ? get entrepreneurs from server route
 entrepreneurRouter.get(
   "/",
   asyncHandler(async (req, res) => {
@@ -38,7 +38,17 @@ entrepreneurRouter.post(
       throw new Error("entrepreneur already exist");
     }
 
-    if (!name || !email || !image || !phone || !year || !bussiness || !bio || !linkedinId || !facebookId) {
+    if (
+      !name ||
+      !email ||
+      !image ||
+      !phone ||
+      !year ||
+      !bussiness ||
+      !bio ||
+      !linkedinId ||
+      !facebookId
+    ) {
       throw new Error("please fill all fields");
     }
 
@@ -106,8 +116,10 @@ entrepreneurRouter.put(
         (entrepreneur.year = req.body.year || entrepreneur.year),
         (entrepreneur.bussiness = req.body.bussiness || entrepreneur.bussiness),
         (entrepreneur.bio = req.body.bio || entrepreneur.bio),
-        (entrepreneur.linkedinId = req.body.linkedinId || entrepreneur.linkedinId),
-        (entrepreneur.facebookId = req.body.facebookId || entrepreneur.facebookId),
+        (entrepreneur.linkedinId =
+          req.body.linkedinId || entrepreneur.linkedinId),
+        (entrepreneur.facebookId =
+          req.body.facebookId || entrepreneur.facebookId),
         (entrepreneur.status = req.body.status || entrepreneur.status),
         (entrepreneur.createdBy = req.body.createdBy || entrepreneur.createdBy),
         (entrepreneur.updatedBy = req.body.updatedBy || entrepreneur.updatedBy);
@@ -129,7 +141,7 @@ entrepreneurRouter.put(
         createdAt: updatedEntrepreneur.createdAt,
       });
     } else {
-      throw new Error("entrepreneur not found");
+                
     }
   })
 );

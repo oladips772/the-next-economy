@@ -2,8 +2,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
-const { admins } = require("./data/admins");
-const { entrepreneurs } = require("./data/entrepreneurs");
 const cors = require("cors");
 const { connectDatabase } = require("./config/MongoDb");
 const ImportData = require("./DataImport");
@@ -11,6 +9,7 @@ const entrepreneurRouter = require("./Routes/entrepreneurRoute");
 const adminRouter = require("./Routes/adminRoute");
 const developerRouter = require("./Routes/developerRoute");
 const { notFound, errorHandler } = require("./Middleware/Error");
+
 
 const PORT = process.env.PORT || 4000;
 const app = express();
@@ -42,15 +41,15 @@ app.use(errorHandler);
 
 
 //? get admin by id
-app.get("/api/admins/:id", (req, res) => {
-  const { id } = req.params;
-  const admin = admins.find((admin) => admin.id === parseInt(id));
-  if (!admin) {
-    res.status(404).json({ msg: "admin not found" });
-  } else {
-    res.json(admin);
-  }
-});
+// app.get("/api/admins/:id", (req, res) => {
+//   const { id } = req.params;
+//   const admin = admins.find((admin) => admin.id === parseInt(id));
+//   if (!admin) {
+//     res.status(404).json({ msg: "admin not found" });
+//   } else {
+//     res.json(admin);
+//   }
+// });
 
 
 //? get entrepreneur by id

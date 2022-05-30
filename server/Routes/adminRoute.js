@@ -137,7 +137,7 @@ adminRouter.put(
   asyncHandler(async (req, res) => {
     const { email, password } = req.body;
     const admin = await Admin.findOne({ email });
-    if (!admin.masterAdmin) {
+    if (admin && admin?.masterAdmin !== true) {
       res.status(401);
       throw new Error(
         "sorry, you can't reset your password , contact a master admin!"

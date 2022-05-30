@@ -210,7 +210,7 @@ export const AdminUpdate = (user) => async (dispatch, getState) => {
 export const AdminPasswordUpdate = (email,password) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_UPDATE_PASSWORD });
-    const { data } = await axios.put(`/api/admins/updatePassword`, email , password);
+    const { data } = await axios.put(`/api/admins/updatePassword`, {email,password});
     dispatch({ type: ADMIN_PASSWORD_SUCCESS, payload: data });
   } catch (error) {
     const message =

@@ -1,11 +1,12 @@
 /** @format */
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AdminPasswordUpdate } from "../Redux/Actions/AdminAction";
 import toast from "react-hot-toast";
 
-function Login() {
+function PasswordUpdateScreen() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,13 +18,16 @@ function Login() {
 
   useEffect(() => {
     if (success) {
+      toast.success("password updated succesfully");
       navigate("/Login");
+      window.location.reload();
     }
   }, [success]);
 
   useEffect(() => {
     if (error) {
       toast.error(error);
+      window.location.reload();
     }
   }, [error]);
 
@@ -80,10 +84,13 @@ function Login() {
           >
             {`${loading ? "Updating..." : "Update"}`}
           </button>
+          <NavLink to="/Login" className="text-center text-green-400 mt-2">
+            back to login{" "}
+          </NavLink>
         </div>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default PasswordUpdateScreen;

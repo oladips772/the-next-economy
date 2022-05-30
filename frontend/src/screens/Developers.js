@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { listDevelopers } from "../Redux/Actions/DeveloperAction";
-
+import { NavLink } from "react-router-dom";
 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
@@ -40,7 +40,7 @@ function Entreprenuers() {
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4">
           <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-        Developers
+            Developers
           </h1>
           <div className="search_container">
             <input
@@ -53,7 +53,16 @@ function Entreprenuers() {
           </div>
           {/*  */}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            <User2 data={search(developers)} />
+            {developers?.length >= 1 ? (
+              <User2 data={search(developers)} />
+            ) : (
+              <div className="ml-[360px] pb-[300px] mt-[200px]">
+                <h3>You have no developers yet</h3>
+                <NavLink to="/CreateDevelopers" className="text-green-600">
+                  click here to create developers
+                </NavLink>
+              </div>
+            )}
             {loading && (
               <img src="/images/loader2.png" alt="" className="loading_image" />
             )}

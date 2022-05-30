@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { Toaster, toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
+import { NavLink } from "react-router-dom";
 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
@@ -53,7 +54,16 @@ function Entreprenuers() {
           </div>
           {/*  */}
           <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            <User data={search(entrepreneurs)} />
+            {entrepreneurs?.length >= 1 ? (
+              <User data={search(entrepreneurs)} />
+            ) : (
+              <div className="ml-[360px] pb-[300px] mt-[200px]">
+                <h3>You have no entrepreneurs yet</h3>
+                <NavLink to="/New_Entrepreneur" className="text-green-600">
+                  click here to create entrepreneurs
+                </NavLink>
+              </div>
+            )}
             {loading && (
               <img src="/images/loader2.png" alt="" className="loading_image" />
             )}
