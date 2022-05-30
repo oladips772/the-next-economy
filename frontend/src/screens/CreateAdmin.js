@@ -43,7 +43,13 @@ function CreateAdmin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(AdminCreate(name, email, password));
+    if (password.length < 6) {
+      toast.error("Password should be atleast 6 characters");
+    } else if (name.trim() && email.trim() && password.trim()) {
+      dispatch(AdminCreate(name, email, password));
+    } else {
+      toast.error("Please remove white spaces from fields");
+    }
   };
 
   const ENABLE = (id) => {
@@ -70,14 +76,18 @@ function CreateAdmin() {
     if (adminPassword != confirmPassword) {
       toast.error("passwords do not match!");
     } else {
-      dispatch(
-        AdminUpdate({
-          id: admin._id,
-          adminName,
-          adminEmail,
-          adminPassword,
-        })
-      );
+      if (confirmPassword.length < 6) {
+        toast.error("Password should be atleast 6 characters");
+      } else {
+        dispatch(
+          AdminUpdate({
+            id: admin._id,
+            adminName,
+            adminEmail,
+            adminPassword,
+          })
+        );
+      }
     }
   };
 
