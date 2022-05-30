@@ -24,12 +24,13 @@ import {
   ADMIN_PASSWORD_FAIL,
 } from "../Constants/AdminConstant";
 import axios from "axios";
+import URL from "../../url";
 
 // ? get all admins action
 export const listAdmins = () => async (dispatch) => {
   try {
     dispatch({ type: ADMINS_LIST_REQUEST });
-    const { data } = await axios.get(`/api/admins`);
+    const { data } = await axios.get(`${URL}/api/admins`);
     dispatch({ type: ADMINS_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -52,7 +53,7 @@ export const AdminLogin = (email, password) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/admins/login`,
+      `${URL}/api/admins/login`,
       { email, password },
       config
     );
@@ -79,7 +80,7 @@ export const AdminCreate = (name, email, password) => async (dispatch) => {
       },
     };
     const { data } = await axios.post(
-      `/api/admins/register`,
+      `${URL}/api/admins/register`,
       { name, email, password },
       config
     );
@@ -104,7 +105,7 @@ export const AdminLogout = () => async (dispatch) => {
 // ? admin delete action
 export const deleteAdmin = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.delete(`/api/admins/${id}`);
+    const { data } = await axios.delete(`${URL}/api/admins/${id}`);
     dispatch({
       type: ADMIN_DELETE,
       payload: data,
@@ -117,7 +118,7 @@ export const deleteAdmin = (id) => async (dispatch) => {
 // ? admin disable action
 export const disableAdmin = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.put(`/api/admins/disable/${id}`);
+    const { data } = await axios.put(`${URL}/api/admins/disable/${id}`);
     dispatch({
       type: ADMIN_DISABLE,
       payload: data,
@@ -130,7 +131,7 @@ export const disableAdmin = (id) => async (dispatch) => {
 // ? admin disable action
 export const enableAdmin = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.put(`/api/admins/enable/${id}`);
+    const { data } = await axios.put(`${URL}/api/admins/enable/${id}`);
     dispatch({
       type: ADMIN_ENABLE,
       payload: data,
@@ -153,7 +154,7 @@ export const getAdminDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${adminInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/admins/${id}`, config);
+    const { data } = await axios.get(`${URL}/api/admins/${id}`, config);
     dispatch({ type: ADMIN_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     const message =
@@ -185,7 +186,7 @@ export const AdminUpdate = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${adminInfo.token}`,
       },
     };
-    const { data } = await axios.put(`/api/admins/profile`, user, config);
+    const { data } = await axios.put(`${URL}/api/admins/profile`, user, config);
     dispatch({ type: ADMIN_UPDATE_SUCCESS, payload: data });
     dispatch({ type: ADMIN_LOGIN_SUCCESS, payload: data });
     localStorage.setItem("adminInfo", JSON.stringify(data));
@@ -210,7 +211,10 @@ export const AdminUpdate = (user) => async (dispatch, getState) => {
 export const AdminPasswordUpdate = (email,password) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_UPDATE_PASSWORD });
-    const { data } = await axios.put(`/api/admins/updatePassword`, {email,password});
+    const { data } = await axios.put(`${URL}/api/admins/updatePassword`, {
+      email,
+      password,
+    });
     dispatch({ type: ADMIN_PASSWORD_SUCCESS, payload: data });
   } catch (error) {
     const message =

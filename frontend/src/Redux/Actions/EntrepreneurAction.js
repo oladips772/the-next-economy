@@ -15,6 +15,8 @@ import {
   ENTREPRENEUR_UPDATE_FAIL,
   ENTREPRENEUR_DELETE,
 } from "../Constants/EntrepreneurConstant";
+import URL from "../../url";
+
 
 // ? list entrepreneurs actions
 export const listEntrepreneurs = () => async (dispatch) => {
@@ -22,7 +24,7 @@ export const listEntrepreneurs = () => async (dispatch) => {
     dispatch({
       type: ENTREPRENEURS_LIST_REQUEST,
     });
-    const { data } = await axios.get(`/api/entrepreneurs`);
+    const { data } = await axios.get(`${URL}/api/entrepreneurs`);
     dispatch({
       type: ENTREPRENEURS_LIST_SUCCESS,
       payload: data,
@@ -63,7 +65,7 @@ export const EntrepreneurCreate =
         },
       };
       const { data } = await axios.post(
-        `/api/entrepreneurs/create`,
+        `${URL}/api/entrepreneurs/create`,
         {
           name,
           email,
@@ -98,7 +100,7 @@ export const listEntrepreneur = (id) => async (dispatch) => {
     dispatch({
       type: ENTREPRENEUR_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/entrepreneurs/${id}`);
+    const { data } = await axios.get(`${URL}/api/entrepreneurs/${id}`);
     dispatch({
       type: ENTREPRENEUR_DETAILS_SUCCESS,
       payload: data,
@@ -143,7 +145,7 @@ export const updateEntrepreneur =
       };
 
       const { data } = await axios.put(
-        `/api/entrepreneurs/profile/${id}`,
+        `${URL}/api/entrepreneurs/profile/${id}`,
         {
           name,
           email,
@@ -177,7 +179,7 @@ export const updateEntrepreneur =
 // ? entrepreneur delete action
 export const deleteEntrepreneur = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.delete(`/api/entrepreneurs/${id}`);
+    const { data } = await axios.delete(`${URL}/api/entrepreneurs/${id}`);
     dispatch({
       type: ENTREPRENEUR_DELETE,
       payload: data,

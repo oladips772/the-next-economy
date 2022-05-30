@@ -15,6 +15,8 @@ import {
   DEVELOPER_UPDATE_FAIL,
   DEVELOPER_DELETE,
 } from "../Constants/DeveloperConstant";
+import URL from "../../url";
+
 
 // ? list developers actions
 export const listDevelopers = () => async (dispatch) => {
@@ -22,7 +24,7 @@ export const listDevelopers = () => async (dispatch) => {
     dispatch({
       type: DEVELOPERS_LIST_REQUEST,
     });
-    const { data } = await axios.get(`/api/developers`);
+    const { data } = await axios.get(`${URL}/api/developers`);
     dispatch({
       type: DEVELOPERS_LIST_SUCCESS,
       payload: data,
@@ -64,7 +66,7 @@ export const DeveloperCreate =
         },
       };
       const { data } = await axios.post(
-        `/api/developers/create`,
+        `${URL}/api/developers/create`,
         {
           name,
           email,
@@ -101,7 +103,7 @@ export const listDeveloper = (id) => async (dispatch) => {
     dispatch({
       type: DEVELOPER_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/developers/${id}`);
+    const { data } = await axios.get(`${URL}/api/developers/${id}`);
     dispatch({
       type: DEVELOPER_DETAILS_SUCCESS,
       payload: data,
@@ -148,7 +150,7 @@ export const updateDeveloper =
       };
 
       const { data } = await axios.put(
-        `/api/developers/profile/${id}`,
+        `${URL}/api/developers/profile/${id}`,
         {
           name,
           email,
@@ -184,7 +186,7 @@ export const updateDeveloper =
 // ? delete developer action
 export const deleteDeveloper = (id) => async (dispatch) => {
   try {
-    const { data } = await axios.delete(`/api/developers/${id}`);
+    const { data } = await axios.delete(`${URL}/api/developers/${id}`);
     dispatch({
       type: DEVELOPER_DELETE,
       payload: data,
