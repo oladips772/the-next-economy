@@ -63,12 +63,13 @@ function Edit() {
     };
   };
 
-  function DELETE(id) {
-    dispatch(deleteEntrepreneur(id));
-    setModal(!showModal);
-    toast.success("Entrepreneur Deleted");
-    navigate("/Entrepreneurs");
-  }
+  const DELETE = async (id) => {
+    dispatch(deleteEntrepreneur(id)).then(() => {
+      setModal(!showModal);
+      toast.success("Entrepreneur Deleted");
+      navigate("/Entrepreneurs");
+    });
+  };
 
   function close() {
     setModal(!showModal);

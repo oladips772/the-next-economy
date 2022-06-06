@@ -1,6 +1,5 @@
 /** @format */
 import React from "react";
-import { staffs } from "../data/staffs";
 import { NavLink, Link } from "react-router-dom";
 
 function HomeScreenStaffs({ entrepreneurs, loading }) {

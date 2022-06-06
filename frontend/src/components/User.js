@@ -25,7 +25,11 @@ function User({ data }) {
                 <p className="mr-[10px] w-[160px]">{person?.name}</p>
               </td>{" "}
               <td className="ml-8 mr-6 text-gray-800">
-                <a href={`mailto:${person?.email}`} target="_blank">
+                <a
+                  href={`mailto:${person?.email}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {person?.email}
                 </a>
               </td>

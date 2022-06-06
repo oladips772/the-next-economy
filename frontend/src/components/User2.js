@@ -24,12 +24,16 @@ function User({ data }) {
                 {person?.name}
               </td>{" "}
               <td className="ml-8 mr-6 text-gray-800">
-                <a href={`mailto:${person?.email}`} target="_blank">
+                <a
+                  href={`mailto:${person?.email}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {person?.email}
                 </a>
               </td>
               <td>{person?.phone}</td>
-              <td className="w-[480px]" >{person?.cohort}</td>
+              <td className="w-[480px]">{person?.cohort}</td>
               <td>
                 <NavLink
                   to={`/DevProfile/${person?._id}`}

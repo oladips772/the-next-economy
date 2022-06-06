@@ -100,7 +100,6 @@ function HomeScreen() {
       email.trim() &&
       image.trim() &&
       cohort.trim() &&
-      remarks.trim() &&
       linkedinId.trim() &&
       facebookId.trim()
     ) {

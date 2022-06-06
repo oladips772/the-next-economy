@@ -52,28 +52,31 @@ function CreateAdmin() {
     }
   };
 
-  const ENABLE = (id) => {
-    dispatch(enableAdmin(id));
-    toast.success("admin enabled successfully");
-    window.location.reload();
-  };
-
-  const DISABLE = (id) => {
-    dispatch(disableAdmin(id));
-    toast.success("admin disabled successfully");
-    window.location.reload();
-  };
-
-  const DELETE = (id) => {
-    if (window.confirm("are you sure you want to delete this admin?")) {
-      dispatch(deleteAdmin(id));
-      toast.success("admin deleted successfully");
+  const ENABLE = async (id) => {
+    dispatch(enableAdmin(id)).then(() => {
+      toast.success("admin enabled successfully");
       window.location.reload();
+    });
+  };
+
+  const DISABLE = async (id) => {
+    dispatch(disableAdmin(id)).then(() => {
+      toast.success("admin disabled successfully");
+      window.location.reload();
+    });
+  };
+
+  const DELETE = async (id) => {
+    if (window.confirm("are you sure you want to delete this admin?")) {
+      dispatch(deleteAdmin(id)).then(() => {
+        toast.success("admin deleted successfully");
+        window.location.reload();
+      });
     }
   };
 
   const UPDATE = () => {
-    if (adminPassword != confirmPassword) {
+    if (adminPassword !== confirmPassword) {
       toast.error("passwords do not match!");
     } else {
       if (confirmPassword.length < 6) {
@@ -110,7 +113,7 @@ function CreateAdmin() {
       setAdminName(adminInfo.name);
       setAdminEmail(adminInfo.email);
     }
-  }, [dispatch, adminInfo]);
+  }, [dispatch, adminInfo,navigate]);
 
   useEffect(() => {
     if (error) {
@@ -231,7 +234,7 @@ function CreateAdmin() {
             </>
           )}
           {adminsLoading && (
-            <img src="/images/loader2.png" className="ml-[250px]" />
+            <img src="/images/loader2.png" className="ml-[250px]" alt="loader"/>
           )}
         </div>
       </div>

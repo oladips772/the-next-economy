@@ -80,7 +80,6 @@ export const DeveloperCreate =
           paymentStatus,
           paymentBalance,
           createdBy,
-          createdBy,
           updatedBy,
         },
         config

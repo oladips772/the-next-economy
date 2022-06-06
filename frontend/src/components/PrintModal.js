@@ -31,6 +31,7 @@ function PrintModal({
       <div className="print_modal_content p-5 ml-[30px] mr-[30px]">
         <img
           src={image}
+          alt={`${name}`}
           className="w-[150px] h-[150px] rounded-full border border-gray-400 object-contain mb-4 ml-[640px]"
         />
         <div className="flex items-center my-6 mt-[30px]">

@@ -63,12 +63,13 @@ function Edit() {
     };
   };
 
-  function DELETE(id) {
-    dispatch(deleteDeveloper(id));
-    setModal(!showModal);
-    toast.success("Developer Deleted");
-    navigate("/Developers");
-  }
+  const DELETE = async (id) => {
+    dispatch(deleteDeveloper(id)).then(() => {
+      setModal(!showModal);
+      toast.success("Developer Deleted");
+      navigate("/Developers");
+    });
+  };
 
   function close() {
     setModal(!showModal);
