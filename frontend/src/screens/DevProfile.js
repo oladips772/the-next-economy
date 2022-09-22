@@ -15,6 +15,7 @@ import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 import PrintModal2 from "../components/PrintModal2";
 import moment from "moment";
+import loader from "../images/loader2.png";
 
 function Edit() {
   let params = useParams();
@@ -192,7 +193,7 @@ function Edit() {
         <Sidebar />
         {error && toast.error(error)}
         {loading ? (
-          <img src="/images/loader2.png" alt="" className="loading_image" />
+          <img src={loader} alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
             <div className="flex justify-between w-full items-center">

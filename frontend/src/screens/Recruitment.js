@@ -234,7 +234,7 @@ function HomeScreen() {
                     disabled={loading}
                   >
                     <option value="Employmentability">Employmentability</option>
-                    <option value="Entreprenuership">Entreprenuership</option>
+                    <option value="Entreprenuership">Entrepreneurship</option>
                     <option value="Fin Tech">
                       Fin Tech (Financial Technology)
                     </option>

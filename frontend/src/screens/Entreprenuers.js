@@ -7,6 +7,7 @@ import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { Toaster, toast } from "react-hot-toast";
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
+import loader from "../images/loader2.png";
 
 function Entreprenuers() {
   const [query, setQuery] = useState("");
@@ -64,9 +65,7 @@ function Entreprenuers() {
                 </NavLink>
               </div>
             )}
-            {loading && (
-              <img src="/images/loader2.png" alt="" className="loading_image" />
-            )}
+            {loading && <img src={loader} alt="" className="loading_image" />}
           </div>
         </div>
       </div>

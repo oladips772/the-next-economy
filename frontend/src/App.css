@@ -680,6 +680,10 @@ textarea {
   overflow-y: scroll;
 }
 
+.print_modal_container::-webkit-scrollbar{
+  display: none;
+}
+
 .print_close {
   font-size: 12px;
   font-weight: bold;

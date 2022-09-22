@@ -15,6 +15,7 @@ import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 import moment from "moment";
 import PrintModal from "../components/PrintModal";
+import loader from "../images/loader2.png";
 
 function Edit() {
   const navigate = useNavigate();
@@ -184,7 +185,7 @@ function Edit() {
         <Sidebar />
         {error && toast.error(error)}
         {loading ? (
-          <img src="/images/loader2.png" alt="" className="loading_image" />
+          <img src={loader} alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
             <div className="flex justify-between w-full items-center">
@@ -286,7 +287,7 @@ function Edit() {
                   >
                     <option value={bussiness}>{bussiness}</option>
                     <option value="Employmentability">Employmentability</option>
-                    <option value="Entreprenuership">Entreprenuership</option>
+                    <option value="Entreprenuership">Entrepreneurship</option>
                     <option value="Fin Tech">
                       Fin Tech (Financial Technology)
                     </option>
