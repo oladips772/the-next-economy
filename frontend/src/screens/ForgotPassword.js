@@ -1,16 +1,28 @@
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+/** @format */
+
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+import URL from "../url";
 
 function ForgotPassword() {
-    const [email,setEmail] =  useState("");
-    const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    const SendLink = () => {
-        
+  const SendLink = async () => {
+    try {
+      const { data } = await axios.post(`${URL}/api/admins/forgot-password`, {
+        email,
+      });
+      console.log(data);
+      toast.success("reset link sent successfully");
+    } catch (err) {
+      toast.error(err.response.data.error);
+      console.log(err.response.data.error);
     }
-    
+  };
+
   return (
     <div>
       <div className="bg-black h-[100vh] flex justify-center items-center">
@@ -29,7 +41,7 @@ function ForgotPassword() {
               placeholder="Email"
               className="border-green-300 border-[1px] outline-none p-2 w-[400px] my-2 rounded text-white bg-black"
             />
-        
+
             <button
               disabled={loading}
               className={`text-white ${
@@ -41,10 +53,7 @@ function ForgotPassword() {
             >
               {`${loading ? "Sending.." : "Send Reset Link"}`}
             </button>
-            <NavLink
-              to="/Login"
-              className="text-center text-green-400 mt-2"
-            >
+            <NavLink to="/Login" className="text-center text-green-400 mt-2">
               back to login{" "}
             </NavLink>
           </div>
@@ -54,4 +63,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword
+export default ForgotPassword;

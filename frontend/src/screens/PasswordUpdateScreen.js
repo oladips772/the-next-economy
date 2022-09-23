@@ -1,20 +1,49 @@
 /** @format */
-import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { AdminPasswordUpdate } from "../Redux/Actions/AdminAction";
 import toast from "react-hot-toast";
+import queryString from "query-string";
+import axios from "axios";
+import URL from "../url";
 
 function PasswordUpdateScreen() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [invalidUser, setInvalidUser] = useState(false);
+  const [verifyLoading, setVerifyLoading] = useState(true);
+  const { token, id } = queryString.parse(location.search);
 
   const dispatch = useDispatch();
   const adminUpdatePassword = useSelector((state) => state.adminUpdatePassword);
   const { loading, error, success } = adminUpdatePassword;
+
+  const isVerifyToken = async () => {
+    try {
+      const { data } = await axios.post(
+        `${URL}/api/admins/verify-token?token=${token}&id=${id}`
+      );
+      console.log(data);
+      setVerifyLoading(false);
+    } catch (err) {
+      console.log(err);
+      if (err?.response?.data) {
+        const { data } = err?.response;
+        console.log(data);
+        if (!data.success) return setInvalidUser(true);
+        return console.log(err.response.data);
+      }
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    isVerifyToken();
+  }, []);
 
   useEffect(() => {
     if (success) {
@@ -39,6 +68,16 @@ function PasswordUpdateScreen() {
       dispatch(AdminPasswordUpdate(email, password));
     }
   };
+
+  if (invalidUser) {
+    return (
+      <div className="h-[100vh] bg-black flex justify-center items-center">
+        <div>
+          <h1 className="text-white text-[600]">Invalid Token</h1>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-black h-[100vh] flex justify-center items-center">
