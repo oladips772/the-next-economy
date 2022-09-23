@@ -13,6 +13,7 @@ import DevProfile from "./screens/DevProfile";
 import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./PrivateRoute";
 import PasswordUpdateScreen from "./screens/PasswordUpdateScreen";
+import ForgotPassword from "./screens/ForgotPassword";
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
           />{" "}
           <Route path="/Login" element={<Login />} />{" "}
           <Route path="/Update_Password" element={<PasswordUpdateScreen />} />{" "}
+          <Route path="/Forgot_Password" element={<ForgotPassword />} />{" "}
           <Route
             path="/Profile/:id"
             element={

@@ -84,9 +84,6 @@ function PasswordUpdateScreen() {
           >
             {`${loading ? "Updating..." : "Update"}`}
           </button>
-          <NavLink to="/Login" className="text-center text-green-400 mt-2">
-            back to login{" "}
-          </NavLink>
         </div>
       </div>
     </div>
