@@ -28,10 +28,10 @@ function PasswordUpdateScreen() {
         `${URL}/api/admins/verify-token?token=${token}&id=${id}`
       );
       console.log(data);
-      setVerifyLoading(false);
     } catch (err) {
       console.log(err);
       if (err?.response?.data) {
+        setInvalidUser(true);
         const { data } = err?.response;
         console.log(data);
         if (!data.success) return setInvalidUser(true);
@@ -39,6 +39,7 @@ function PasswordUpdateScreen() {
       }
       console.log(err);
     }
+    setVerifyLoading(false);
   };
 
   useEffect(() => {
@@ -49,7 +50,6 @@ function PasswordUpdateScreen() {
     if (success) {
       toast.success("password updated succesfully");
       navigate("/Login");
-      window.location.reload();
     }
   }, [success]);
 
@@ -65,7 +65,7 @@ function PasswordUpdateScreen() {
     if (confirmPassword !== password) {
       toast.error("passwords do not match !");
     } else {
-      dispatch(AdminPasswordUpdate(email, password));
+      dispatch(AdminPasswordUpdate(password, token, id));
     }
   };
 
@@ -74,6 +74,18 @@ function PasswordUpdateScreen() {
       <div className="h-[100vh] bg-black flex justify-center items-center">
         <div>
           <h1 className="text-white text-[600]">Invalid Token</h1>
+        </div>
+      </div>
+    );
+  }
+
+  if (verifyLoading) {
+    return (
+      <div className="h-[100vh] bg-black flex justify-center items-center">
+        <div>
+          <h1 className="text-white text-[600]">
+            Verifying Token ... Please Wait.
+          </h1>
         </div>
       </div>
     );

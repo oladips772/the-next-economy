@@ -206,13 +206,11 @@ export const AdminUpdate = (user) => async (dispatch, getState) => {
   }
 };
 
-
 // ? admin password update function
-export const AdminPasswordUpdate = (email,password) => async (dispatch) => {
+export const AdminPasswordUpdate = (password,token,id) => async (dispatch) => {
   try {
     dispatch({ type: ADMIN_UPDATE_PASSWORD });
-    const { data } = await axios.put(`${URL}/api/admins/updatePassword`, {
-      email,
+    const { data } = await axios.put(`${URL}/api/admins/updatePassword?token=${token}&id=${id}`, {
       password,
     });
     dispatch({ type: ADMIN_PASSWORD_SUCCESS, payload: data });

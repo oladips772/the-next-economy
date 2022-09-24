@@ -1,5 +1,4 @@
 /** @format */
-
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
@@ -11,16 +10,19 @@ function ForgotPassword() {
   const [loading, setLoading] = useState(false);
 
   const SendLink = async () => {
+    setLoading(true)
     try {
       const { data } = await axios.post(`${URL}/api/admins/forgot-password`, {
         email,
       });
+      setEmail("")
       console.log(data);
       toast.success("reset link sent successfully");
     } catch (err) {
       toast.error(err.response.data.error);
-      console.log(err.response.data.error);
     }
+    setLoading(false)
+
   };
 
   return (
