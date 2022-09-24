@@ -109,10 +109,11 @@ function Edit() {
     }
     if (success) {
       toast.success("profile updated successfully");
-      window.location.reload();
+    dispatch(listDeveloper(developerId));
     }
   }, [errorUpdate, success]);
 
+  // ? create image url with cloudinary
   const handleCreate = async () => {
     if (!selectedImage) return;
     setCloudLoading(true);
@@ -355,7 +356,7 @@ function Edit() {
                 </div>
               </div>
               {/*  */}
-              <div className="display_container shadow">
+              <div className="display_container shadow p-2">
                 <div className="top_info">
                   <img src={developer.image} alt="" />
                   <div className="top_info_side">

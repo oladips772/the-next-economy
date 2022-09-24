@@ -13,6 +13,7 @@ import {
 } from "../Redux/Actions/AdminAction";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import loader from "../images/loader2.png";
 
 function CreateAdmin() {
   const navigate = useNavigate();
@@ -55,14 +56,14 @@ function CreateAdmin() {
   const ENABLE = async (id) => {
     dispatch(enableAdmin(id)).then(() => {
       toast.success("admin enabled successfully");
-      window.location.reload();
+      dispatch(listAdmins());
     });
   };
 
   const DISABLE = async (id) => {
     dispatch(disableAdmin(id)).then(() => {
       toast.success("admin disabled successfully");
-      window.location.reload();
+      dispatch(listAdmins());
     });
   };
 
@@ -113,18 +114,20 @@ function CreateAdmin() {
       setAdminName(adminInfo.name);
       setAdminEmail(adminInfo.email);
     }
-  }, [dispatch, adminInfo,navigate]);
+  }, [dispatch, adminInfo, navigate]);
 
   useEffect(() => {
     if (error) {
       toast.error(error);
       window.location.reload();
+
     } else if (success) {
       toast.success("admin created succesfully");
       setName("");
       setEmail("");
       setPassword("");
       window.location.reload();
+
     }
   }, [error, success]);
 
@@ -234,7 +237,7 @@ function CreateAdmin() {
             </>
           )}
           {adminsLoading && (
-            <img src="/images/loader2.png" className="ml-[250px]" alt="loader"/>
+            <img src={loader} className="ml-[250px]" alt="loader" />
           )}
         </div>
       </div>
