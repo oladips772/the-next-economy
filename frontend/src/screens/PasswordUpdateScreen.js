@@ -99,15 +99,7 @@ function PasswordUpdateScreen() {
             src="http://blackinnovationsafrica.com/wp-content/uploads/2020/02/logo.png"
             className="object-contain -mt-[200px] h-[55px] mb-4"
             alt=""
-          />
-          <input
-            disabled={loading}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="text"
-            placeholder="Email"
-            className="border-green-300 border-[1px] outline-none p-2 w-[400px] my-2 rounded text-white bg-black"
-          />
+          />{" "}
           <input
             disabled={loading}
             value={password}
