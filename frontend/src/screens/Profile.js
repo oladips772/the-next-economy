@@ -99,10 +99,12 @@ function Edit() {
   useEffect(() => {
     if (errorUpdate) {
       toast.error(errorUpdate);
+      dispatch({ type: "ENTREPRENEUR_UPDATE_RESET" });
     }
     if (success) {
       toast.success("profile updated successfully");
-      window.location.reload();
+      dispatch(listEntrepreneur(entrepreneurId));
+      dispatch({ type: "ENTREPRENEUR_UPDATE_RESET" });
     }
   }, [errorUpdate, success]);
 

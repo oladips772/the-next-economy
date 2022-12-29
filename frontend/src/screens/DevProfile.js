@@ -110,6 +110,7 @@ function Edit() {
     }
     if (success) {
       toast.success("profile updated successfully");
+      dispatch(listDeveloper(developerId));
       dispatch({ type: "DEVELOPER_UPDATE_RESET" });
       dispatch(listDeveloper(developerId));
     }

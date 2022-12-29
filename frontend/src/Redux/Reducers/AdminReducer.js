@@ -71,6 +71,8 @@ export const adminCreateReducer = (state = {}, action) => {
       return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_CREATE_FAIL:
       return { loading: false, error: action.payload };
+    case "ADMIN_CREATE_RESET":
+      return { loading: false, error: null, success: false };
     default:
       return state;
   }

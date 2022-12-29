@@ -77,6 +77,8 @@ export const entrepreneurCreateReducer = (state = {}, action) => {
       return { loading: false, success: true, entreprenuer: action.payload };
     case ENTREPRENEUR_CREATE_FAIL:
       return { loading: false, error: action.payload };
+    case "ENTREPRENEUR_CREATE_RESET":
+      return { loading: false, error: null, success: false };
     default:
       return state;
   }
@@ -91,6 +93,8 @@ export const entrepreneurUpdateReducer = (state = {}, action) => {
       return { loading: false, success: true, entreprenuer: action.payload };
     case ENTREPRENEUR_UPDATE_FAIL:
       return { loading: false, error: action.payload };
+    case "ENTREPRENEUR_UPDATE_RESET":
+      return { loading: false, error: null, success: false };
     default:
       return state;
   }

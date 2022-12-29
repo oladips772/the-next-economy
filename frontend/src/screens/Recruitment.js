@@ -76,9 +76,10 @@ function HomeScreen() {
   useEffect(() => {
     if (error) {
       toast.error(error);
+      dispatch({ type: "ENTREPRENEUR_CREATE_RESET" });
     } else if (success) {
-      window.location.reload();
       toast.success("created succesfully");
+      dispatch({ type: "ENTREPRENEUR_CREATE_RESET" });
       setSelectedImage("");
       setImage(null);
       setName("");
@@ -94,7 +95,14 @@ function HomeScreen() {
 
   const createEntreprenuer = (e) => {
     e.preventDefault();
-    if (!image) return;
+    if (!image) return toast.error("please select a profile photo");
+    if (!name.trim()) return toast.error("Full name is required");
+    if (!email.trim()) return toast.error("Email is required");
+    if (!bussiness.trim()) return toast.error("Business is required");
+    if (!bio.trim()) return toast.error("Bio is required");
+    if (!linkedinId.trim()) return toast.error("linked in url is required");
+    if (!facebookId.trim()) return toast.error("facebook url is required");
+    if (!phone.trim()) return toast.error("phone number url is required");
     if (
       name.trim() &&
       email.trim() &&

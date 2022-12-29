@@ -44,12 +44,20 @@ function CreateAdmin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (password.length < 6) {
-      toast.error("Password should be atleast 6 characters");
-    } else if (name.trim() && email.trim() && password.trim()) {
+    if (!name.trim()) {
+      return toast.error("admin name is required");
+    }
+    if (!email.trim()) {
+      return toast.error("admin email is required");
+    }
+    if (!password.trim()) {
+      return toast.error("admin password is required");
+    }
+    if (name.trim() && email.trim() && password.trim()) {
       dispatch(AdminCreate(name, email, password));
-    } else {
-      toast.error("Please remove white spaces from fields");
+    }
+    if (password.length < 6) {
+      toast.error("Password should be at least 6 characters");
     }
   };
 
@@ -71,7 +79,7 @@ function CreateAdmin() {
     if (window.confirm("are you sure you want to delete this admin?")) {
       dispatch(deleteAdmin(id)).then(() => {
         toast.success("admin deleted successfully");
-        window.location.reload();
+        dispatch(listAdmins());
       });
     }
   };
@@ -119,15 +127,14 @@ function CreateAdmin() {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      window.location.reload();
-
+      dispatch({ type: "ADMIN_CREATE_RESET" });
     } else if (success) {
       toast.success("admin created succesfully");
+      dispatch({ type: "ADMIN_CREATE_RESET" });
       setName("");
       setEmail("");
       setPassword("");
-      window.location.reload();
-
+      dispatch(listAdmins());
     }
   }, [error, success]);
 
