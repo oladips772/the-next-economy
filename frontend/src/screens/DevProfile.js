@@ -106,10 +106,12 @@ function Edit() {
   useEffect(() => {
     if (errorUpdate) {
       toast.error(errorUpdate);
+      dispatch({ type: "DEVELOPER_UPDATE_RESET" });
     }
     if (success) {
       toast.success("profile updated successfully");
-    dispatch(listDeveloper(developerId));
+      dispatch({ type: "DEVELOPER_UPDATE_RESET" });
+      dispatch(listDeveloper(developerId));
     }
   }, [errorUpdate, success]);
 

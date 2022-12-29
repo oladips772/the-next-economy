@@ -16,9 +16,19 @@ function Sidebar() {
   const navigate = useNavigate();
   const adminLogin = useSelector((state) => state.adminLogin);
   const { adminInfo } = adminLogin;
-
   const status = navigator.onLine;
   const [systemStatus, setSystemStatus] = useState(status);
+
+  const getStatus = () => {
+    if (navigator.onLine) {
+      setSystemStatus(true);
+    } else {
+      if (!navigator.onLine) {
+        setSystemStatus(false);
+      }
+    }
+  };
+
   const dispatch = useDispatch();
 
   const LOGOUT = (e) => {
@@ -28,8 +38,10 @@ function Sidebar() {
   };
 
   useEffect(() => {
-    setSystemStatus(status);
-  }, [status]);
+    setInterval(() => {
+      getStatus();
+    }, [100]);
+  }, []);
 
   return (
     <div className="h-[100vh] bg-black w-[220px] fixed sidebar">

@@ -77,9 +77,10 @@ function HomeScreen() {
   useEffect(() => {
     if (error) {
       toast.error(error);
+      dispatch({ type: "DEVELOPER_CREATE_RESET" });
     } else if (success) {
-      window.location.reload();
-      toast.success("created succesfully");
+      dispatch({ type: "DEVELOPER_CREATE_RESET" });
+      toast.success("created successfully");
       setSelectedImage("");
       setImage(null);
       setName("");
@@ -94,35 +95,30 @@ function HomeScreen() {
 
   const createDeveloper = (e) => {
     e.preventDefault();
-    if (!image) return;
-    if (
-      name.trim() &&
-      email.trim() &&
-      image.trim() &&
-      cohort.trim() &&
-      linkedinId.trim() &&
-      facebookId.trim()
-    ) {
-      dispatch(
-        DeveloperCreate(
-          name,
-          email,
-          image,
-          phone,
-          gender,
-          cohort,
-          linkedinId,
-          facebookId,
-          remarks,
-          paymentStatus,
-          paymentBalance,
-          createdBy,
-          updatedBy
-        )
-      );
-    } else {
-      toast.error("remove whitespaces from each fields");
-    }
+    if (!image) return toast.error("please select a profile photo");
+    if (!name.trim()) return toast.error("Full name is required");
+    if (!cohort.trim()) return toast.error("Cohort is required");
+    if (!linkedinId.trim()) return toast.error("linked in url is required");
+    if (!facebookId.trim()) return toast.error("facebook url is required");
+    if (!phone.trim()) return toast.error("phone number url is required");
+
+    dispatch(
+      DeveloperCreate(
+        name,
+        email,
+        image,
+        phone,
+        gender,
+        cohort,
+        linkedinId,
+        facebookId,
+        remarks,
+        paymentStatus,
+        paymentBalance,
+        createdBy,
+        updatedBy
+      )
+    );
   };
 
   return (

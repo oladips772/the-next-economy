@@ -71,6 +71,8 @@ export const developerCreateReducer = (state = {}, action) => {
       return { loading: false, success: true, developer: action.payload };
     case DEVELOPER_CREATE_FAIL:
       return { loading: false, error: action.payload };
+    case "DEVELOPER_CREATE_RESET":
+      return { loading: false, error: null, success: false };
     default:
       return state;
   }
@@ -85,6 +87,8 @@ export const developerUpdateReducer = (state = {}, action) => {
       return { loading: false, success: true, developer: action.payload };
     case DEVELOPER_UPDATE_FAIL:
       return { loading: false, error: action.payload };
+    case "DEVELOPER_UPDATE_RESET":
+      return { loading: false, error: null, success: false };
     default:
       return state;
   }
