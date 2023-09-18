@@ -125,8 +125,8 @@ function HomeScreen() {
     <div>
       <div className="flex justify-between">
         <Sidebar />
-        <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+        <div className="ml-[220px] mt-4 mb-4 ">
+          <h1 className="text-[20px] mb-6 ml-6 font-[500] text-green-600">
             Create New Developers
           </h1>
           {/*  */}

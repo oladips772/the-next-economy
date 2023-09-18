@@ -143,7 +143,7 @@ function CreateAdmin() {
       <Sidebar />
       <div className="flex justify-between mb-[480px]">
         <div className="ml-[250px] mt-4 mb-4 h-[100%] p-2">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+          <h1 className="text-[20px] mb-6 font-[500] text-green-600">
             NEW ADMIN
           </h1>
           <div className="">
@@ -188,23 +188,21 @@ function CreateAdmin() {
           {/* admins div */}
         </div>
         {/* admins div */}
-        <div className="mt-4 mb-4 ml-[70px] w-[570px]  rounded h-[100%]">
-          <h1 className="mb-4 font-semibold text-green-600 p-4">
-            ADMIN ACCOUNTS
-          </h1>
+        <div className="mt-4 mb-4 ml-[70px] w-[500px]  rounded h-[100%]">
+          <h1 className="mb-4 font-[500] text-green-600 p-4">ADMIN ACCOUNTS</h1>
           <div className="flex items-center mx-6 justify-between border-b border-gray-200">
-            <p className="font-bold">Name</p>
-            <p className="font-bold">Email</p>
-            <p className="font-bold">Actions</p>
+            <p className="font-[500]">Name</p>
+            <p className="font-[500]">Email</p>
+            <p className="font-[500]">Actions</p>
           </div>
           {!adminsLoading && (
             <>
               {admins?.map((admin) => (
                 <div className="flex items-center mx-6 justify-between mt-1  p-2 border-b border-gray-200">
-                  <span className="font-[500] text-gray-900">
+                  <span className="font-[400] text-gray-900">
                     {admin?.name}
                   </span>
-                  <span className="font-[500] text-gray-900">
+                  <span className="font-[400] text-gray-900">
                     {admin?.email}
                   </span>
                   <div className="flex items-center space-x-6">

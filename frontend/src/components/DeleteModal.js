@@ -1,7 +1,6 @@
 /** @format */
 
-function DeleteModal({ onClick, close, image, name ,text}) {
-
+function DeleteModal({ onClick, close, image, name, text }) {
   return (
     <div className="modal_container">
       <div className="modal_content">
@@ -15,8 +14,12 @@ function DeleteModal({ onClick, close, image, name ,text}) {
           <p className="font-semibold">{name}</p>
         </div>
         <div className="row_div">
-          <p className="close_btn" onClick={close}>CANCEL</p>
-          <p className="delete_btn" onClick={onClick}>DELETE</p>
+          <p className="close_btn" onClick={close}>
+            CANCEL
+          </p>
+          <p className="delete_btn" onClick={onClick}>
+            DELETE
+          </p>
         </div>
       </div>
     </div>

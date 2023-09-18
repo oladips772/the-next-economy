@@ -137,9 +137,9 @@ function HomeScreen() {
     <div>
       <div className="flex justify-between">
         <Sidebar />
-        <div className="ml-[250px] mt-4 mb-4 w-full">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600 p-4">
-            Create New Entrepreneur
+        <div className="ml-[200px] mb-4 w-full">
+          <h1 className="text-[20px] mb-6 ml-4 font-[500] text-green-600 p-4 border border-b border-gray-400">
+            New Entrepreneur
           </h1>
           {/*  */}
           <div className="form_container shadow -mt-[100px]">
@@ -241,57 +241,8 @@ function HomeScreen() {
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
                   >
-                    <option value="Employmentability">Employmentability</option>
-                    <option value="Entreprenuership">Entrepreneurship</option>
-                    <option value="Fin Tech">
-                      Fin Tech (Financial Technology)
-                    </option>
-                    <option value="Med Tech">
-                      Med Tech (Medical Technology)
-                    </option>
-                    <option value="Ed Tech">
-                      Ed Tech (Educational Technology)
-                    </option>
-                    <option value="Legal Tech">
-                      Legal Tech (Legal Technology)
-                    </option>
-                    <option value="Ad Tech">
-                      Ad Tech (Advertising Technology)
-                    </option>
-                    <option value="Reg Tech">
-                      Reg Tech (Regulatory Technology)
-                    </option>
-                    <option value="Clean Tech">
-                      Clean Tech (Clean Technology)
-                    </option>
-                    <option value="Fem Tech">
-                      Fem Tech (Femal Technology)
-                    </option>
-                    <option value="Health Tech">
-                      Health Tech (Health Technology)
-                    </option>
-                    <option value="Yester Tech">
-                      Yester Tech (Retro Technology)
-                    </option>
-                    <option value="Prop Tech">
-                      Prop Tech (Property Technology)
-                    </option>
-                    <option value="Insure Tech">
-                      Insure Tech (Insurance Technology)
-                    </option>
-                    <option value="Wealth Tech">
-                      Wealth Tech (Wealth Technology)
-                    </option>
-                    <option value="Food Tech">
-                      Food Tech (Food Technology)
-                    </option>
-                    <option value="Bio Tech">Bio Tech (Bio Technology)</option>
-                    <option value="Art Tech">
-                      Art Tech (Artistic Technology)
-                    </option>
-                    <option value="Mark Tech">
-                      Mark Tech (Marketing Technology)
-                    </option>
+                    <option value="Employability">Employability</option>
+                    <option value="Entrepreneurship">Entrepreneurship</option>
                   </select>
                 </div>
               </div>

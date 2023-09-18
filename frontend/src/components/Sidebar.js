@@ -64,8 +64,8 @@ function Sidebar() {
               };
             }}
           >
-            <GridViewOutlinedIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">DASHBOARD</p>
+            <GridViewOutlinedIcon className="mx-4 text-[12px]" />
+            <p className="text-[12px] font-semibold">DASHBOARD</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -79,8 +79,8 @@ function Sidebar() {
               };
             }}
           >
-            <PersonAddAltOutlinedIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">ADD ENTREPRENEUR</p>
+            <PersonAddAltOutlinedIcon className="mx-4 text-[12px]" />
+            <p className="text-[12px] font-semibold">ADD ENTREPRENEUR</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -94,8 +94,8 @@ function Sidebar() {
               };
             }}
           >
-            <PeopleAltOutlinedIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">ENTREPRENEURS</p>
+            <PeopleAltOutlinedIcon className="mx-4 text-[12px]" />
+            <p className="text-[12px] font-semibold">ENTREPRENEURS</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -109,8 +109,8 @@ function Sidebar() {
               };
             }}
           >
-            <AddCircleOutlineIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">CREATE DEVS</p>
+            <AddCircleOutlineIcon className="mx-4 text-[12px]" />
+            <p className="text-[12px] font-semibold">CREATE DEVS</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -124,8 +124,8 @@ function Sidebar() {
               };
             }}
           >
-            <AndroidIcon className="mx-4 text-lg" />
-            <p className="text-[13px] font-semibold">FULLSTACK DEVS</p>
+            <AndroidIcon className="mx-4 text-[12px]" />
+            <p className="text-[12px] font-semibold">FULLSTACK DEVS</p>
           </NavLink>
         </div>
         {adminInfo?.masterAdmin && (
@@ -140,8 +140,8 @@ function Sidebar() {
                 };
               }}
             >
-              <AdminPanelSettingsIcon className="mx-4 text-lg" />
-              <p className="text-[13px] font-semibold">NEW ADMIN</p>
+              <AdminPanelSettingsIcon className="mx-4 text-[12px]" />
+              <p className="text-[12px] font-semibold">NEW ADMIN</p>
             </NavLink>
           </div>
         )}
@@ -155,14 +155,14 @@ function Sidebar() {
         <p className="text-white text-sm font-semibold">LOG OUT</p>
       </div>
       <div className="absolute bottom-2 flex items-center mx-2">
-        <p className="text-white text-[11px] font-bold">SYSTEM STATUS : </p>
+        <p className="text-white text-[10px] font-[600]">SYSTEM STATUS : </p>
         <span
-          className={`h-2 w-2 rounded-full ml-4 ${
+          className={`h-2 w-2 rounded-full ml-4 -mt-[1px] ${
             systemStatus ? "bg-green-400" : "bg-red-600"
           }`}
         ></span>
         <span
-          className={` ml-1 text-[11px] font-bold ${
+          className={` ml-1 text-[10px] font-[600] ${
             systemStatus ? "text-green-400" : "text-red-500"
           }`}
         >

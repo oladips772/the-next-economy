@@ -39,8 +39,8 @@ function Entreprenuers() {
     <div>
       <div className="flex justify-between">
         <Sidebar />
-        <div className="ml-[250px] mt-4 mb-4">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
+        <div className="ml-[250px] mt-4 mb-4 w-[80%]">
+          <h1 className="text-[20px] mb-6 font-[500] text-green-600">
             Developers
           </h1>
           <div className="search_container">
@@ -53,19 +53,22 @@ function Entreprenuers() {
             />
           </div>
           {/*  */}
-          <div className="mt-8 w-[1100px] bg-white shadow rounded">
-            {developers?.length >= 1 ? (
-              <User2 data={search(developers)} />
-            ) : (
-              <div className="ml-[360px] pb-[300px] mt-[200px]">
-                <h3>You have no developers yet</h3>
-                <NavLink to="/CreateDevelopers" className="text-green-600">
-                  click here to create developers
-                </NavLink>
-              </div>
-            )}
-            {loading && <img src={loader} alt="" className="loading_image" />}
-          </div>
+          {loading ? (
+            <img src={loader} alt="" className="loading_image" />
+          ) : (
+            <div className="mt-8 mr-6 bg-white shadow rounded">
+              {developers?.length >= 1 ? (
+                <User2 data={search(developers)} />
+              ) : (
+                <div className="ml-[360px] pb-[300px] mt-[200px]">
+                  <h3>You have no developers yet</h3>
+                  <NavLink to="/CreateDevelopers" className="text-green-600">
+                    click here to create developers
+                  </NavLink>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
