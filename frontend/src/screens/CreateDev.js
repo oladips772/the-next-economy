@@ -97,10 +97,11 @@ function HomeScreen() {
     e.preventDefault();
     if (!image) return toast.error("please select a profile photo");
     if (!name.trim()) return toast.error("Full name is required");
+    if (!email.trim()) return toast.error("Email is required");
+    if (!phone) return toast.error("Phone is required");
     if (!cohort.trim()) return toast.error("Cohort is required");
-    if (!linkedinId.trim()) return toast.error("linked in url is required");
     if (!facebookId.trim()) return toast.error("facebook url is required");
-    if (!phone.trim()) return toast.error("phone number url is required");
+    if (!linkedinId.trim()) return toast.error("linked in url is required");
 
     dispatch(
       DeveloperCreate(

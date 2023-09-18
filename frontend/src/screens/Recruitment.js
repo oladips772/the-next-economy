@@ -98,11 +98,12 @@ function HomeScreen() {
     if (!image) return toast.error("please select a profile photo");
     if (!name.trim()) return toast.error("Full name is required");
     if (!email.trim()) return toast.error("Email is required");
-    if (!bussiness.trim()) return toast.error("Business is required");
-    if (!bio.trim()) return toast.error("Bio is required");
+    if (!phone.trim()) return toast.error("phone number url is required");
     if (!linkedinId.trim()) return toast.error("linked in url is required");
     if (!facebookId.trim()) return toast.error("facebook url is required");
-    if (!phone.trim()) return toast.error("phone number url is required");
+    if (!bussiness.trim()) return toast.error("Business is required");
+    if (!year) return toast.error("year is required");
+    if (!bio.trim()) return toast.error("Bio is required");
     if (
       name.trim() &&
       email.trim() &&

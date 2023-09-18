@@ -42,7 +42,7 @@ function User({ data }) {
             </h3>
             <h3>
               <NavLink
-                to={`/Profile/${person?._id}`}
+                to={`/DevProfile/${person?._id}`}
                 className="w-[80px] p-[4px] mx-4 bg-green-700 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
               >
                 <span className="text-[12px] font-semibold text-white">

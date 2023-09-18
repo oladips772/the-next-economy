@@ -17,7 +17,6 @@ import {
 } from "../Constants/DeveloperConstant";
 import URL from "../../url";
 
-
 // ? list developers actions
 export const listDevelopers = () => async (dispatch) => {
   try {

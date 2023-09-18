@@ -10,19 +10,18 @@ function ForgotPassword() {
   const [loading, setLoading] = useState(false);
 
   const SendLink = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
       const { data } = await axios.post(`${URL}/api/admins/forgot-password`, {
         email,
       });
-      setEmail("")
+      setEmail("");
       console.log(data);
       toast.success("reset link sent successfully");
     } catch (err) {
       toast.error(err.response.data.error);
     }
-    setLoading(false)
-
+    setLoading(false);
   };
 
   return (
