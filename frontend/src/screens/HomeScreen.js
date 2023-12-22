@@ -22,11 +22,13 @@ function HomeScreen() {
   return (
     <div>
       <div className="flex justify-between">
-        <Sidebar />
-        <div className="ml-[250px] mt-4 mb-4">
-          <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-            Dashboard
-          </h1>
+        <div className="flex-[1]">
+          <Sidebar />
+        </div>
+        <div className="flex-[4.5] mt-4 mb-4">
+          <div className="p-4 rounded-lg  bg-green-600 mr-4 mb-4">
+            <h1 className="text-[20px] font-[500] text-white">Dashboard</h1>
+          </div>
           <HomeHeader entrepreneurs={entrepreneurs} developers={developers} />
           <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading} />
         </div>

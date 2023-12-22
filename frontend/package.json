@@ -1,5 +1,6 @@
 {
   "name": "blackinnovationsafricaportal",
+  "homepage": "https://blackinnovationsafrica.com/alumni",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
