@@ -14,11 +14,14 @@ import { Toaster } from "react-hot-toast";
 import PrivateRoute from "./PrivateRoute";
 import PasswordUpdateScreen from "./screens/PasswordUpdateScreen";
 import ForgotPassword from "./screens/ForgotPassword";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function App() {
   return (
     <div className="App">
-      <Toaster
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Toaster
         toastOptions={{
           className: "",
           style: {
@@ -103,6 +106,8 @@ function App() {
           />{" "}
         </Routes>
       </BrowserRouter>
+      </LocalizationProvider>
+      
     </div>
   );
 }
