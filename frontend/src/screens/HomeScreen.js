@@ -12,7 +12,7 @@ function HomeScreen() {
   const entrepreneurList = useSelector((state) => state.entrepreneurList);
   const { entrepreneurs, loading } = entrepreneurList;
   const developerList = useSelector((state) => state.developerList);
-  const { developers } = developerList;
+  const { developers, loading: developerLoading } = developerList;
 
   useEffect(() => {
     dispatch(listEntrepreneurs());
@@ -26,10 +26,15 @@ function HomeScreen() {
           <Sidebar />
         </div>
         <div className="flex-[4.5] mt-4 mb-4">
-          <div className="p-4 rounded-lg  bg-green-600 mr-4 mb-4">
-            <h1 className="text-[20px] font-[500] text-white">Dashboard</h1>
+          <div className="p-[14px] rounded-[6px]  bg-green-600 mr-4 mb-4">
+            <h1 className="text-[18px] font-[500] text-white">Dashboard</h1>
           </div>
-          <HomeHeader entrepreneurs={entrepreneurs} developers={developers} />
+          <HomeHeader
+            entrepreneurs={entrepreneurs}
+            loading={loading}
+            developerLoading={developerLoading}
+            developers={developers}
+          />
           <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading} />
         </div>
       </div>

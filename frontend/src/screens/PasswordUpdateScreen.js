@@ -11,7 +11,6 @@ import URL from "../url";
 function PasswordUpdateScreen() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [invalidUser, setInvalidUser] = useState(false);
