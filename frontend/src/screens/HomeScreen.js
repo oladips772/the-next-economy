@@ -13,6 +13,9 @@ function HomeScreen() {
   const { entrepreneurs, loading } = entrepreneurList;
   const developerList = useSelector((state) => state.developerList);
   const { developers, loading: developerLoading } = developerList;
+  const { communities, loading: communitiesLoading } = useSelector(
+    (state) => state.getCommunities
+  );
 
   useEffect(() => {
     dispatch(listEntrepreneurs());
@@ -41,6 +44,5 @@ function HomeScreen() {
     </div>
   );
 }
-            // <HiOutlineUserGroup className="text-white" size={23} />;
 
 export default HomeScreen;
