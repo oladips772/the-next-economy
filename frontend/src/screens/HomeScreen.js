@@ -6,6 +6,8 @@ import HomeScreenStaffs from "../components/HomeScreenStaffs";
 import { useDispatch, useSelector } from "react-redux";
 import { listEntrepreneurs } from "../Redux/Actions/EntrepreneurAction";
 import { listDevelopers } from "../Redux/Actions/DeveloperAction";
+import { GetCommunities } from "../Redux/Actions/CommunityAction";
+import { GetPrograms } from "../Redux/Actions/ProgramAction";
 
 function HomeScreen() {
   const dispatch = useDispatch();
@@ -16,10 +18,14 @@ function HomeScreen() {
   const { communities, loading: communitiesLoading } = useSelector(
     (state) => state.getCommunities
   );
-
+  const { programsLoading, programs } = useSelector(
+    (state) => state.getPrograms
+  );
   useEffect(() => {
     dispatch(listEntrepreneurs());
     dispatch(listDevelopers());
+    dispatch(GetCommunities());
+    dispatch(GetPrograms());
   }, [dispatch]);
 
   return (
@@ -33,10 +39,14 @@ function HomeScreen() {
             <h1 className="text-[18px] font-[500] text-white">Dashboard</h1>
           </div>
           <HomeHeader
+            programsLoading={programsLoading}
+            programs={programs}
             entrepreneurs={entrepreneurs}
             loading={loading}
             developerLoading={developerLoading}
             developers={developers}
+            communities={communities}
+            communityLoading={communitiesLoading}
           />
           <HomeScreenStaffs entrepreneurs={entrepreneurs} loading={loading} />
         </div>

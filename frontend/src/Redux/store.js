@@ -23,6 +23,7 @@ import {
   developerUpdateReducer,
 } from "./Reducers/DeveloperReducer";
 import { getCommunitiesReducer } from "./Reducers/CommunityReducer";
+import { getProgramsReducer } from "./Reducers/ProgramsReducer";
 
 const reducer = combineReducers({
   entrepreneurList: entrepreneurListReducer,
@@ -40,6 +41,7 @@ const reducer = combineReducers({
   developerUpdate: developerUpdateReducer,
   adminUpdatePassword: adminUpdatePassword,
   getCommunities: getCommunitiesReducer,
+  getPrograms: getProgramsReducer,
 });
 
 const adminInfoFromLocalStorage = localStorage.getItem("adminInfo")
