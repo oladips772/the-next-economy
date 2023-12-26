@@ -137,15 +137,20 @@ function HomeScreen() {
   return (
     <div>
       <div className="flex justify-between">
-        <Sidebar />
-        <div className="ml-[200px] mb-4 w-full">
-          <h1 className="text-[20px] mb-6 ml-4 font-[500] text-green-600 p-4 border border-b border-gray-400">
-            New Entrepreneur
-          </h1>
+        <div className="flex-1">
+          <Sidebar />
+        </div>
+        <div className="flex-[4.5] mb-4">
+          <div className="p-[14px] rounded-[6px] bg-green-600 mr-4 mt-3">
+            <h1 className="text-[18px] font-[500] text-white">
+              New Entrepreneur
+            </h1>
+          </div>
+
           {/*  */}
-          <div className="form_container shadow -mt-[100px]">
-            <div className="flex_div -mt-6 ">
-              <div className="image_div">
+          <div className="form_container">
+            <div className="flex justify-around w-full">
+              <div className="image_div mt-4">
                 <img
                   src={`${
                     selectedImage
@@ -168,41 +173,45 @@ function HomeScreen() {
                   />
                 )}
               </div>
-              <div className="input_div mt-[120px]">
-                <label>Full Name</label>
+              <div className="flex flex-col mt-4">
                 <input
+                  placeholder="Name"
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label>Email</label>
                 <input
+                  placeholder="Email"
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Phone</label>
                 <input
+                  placeholder="Phone number"
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                <label>Linkedin ID</label>
                 <input
+                  placeholder="Linkedin"
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
                   value={linkedinId}
                   onChange={(e) => setLinkedinId(e.target.value)}
                 />
-                <label>Status</label>
+                {/* <label>Status</label> */}
                 <select
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   onChange={(e) => setStatus(e.target.value)}
                   value={status}
                   disabled={loading}
@@ -211,33 +220,33 @@ function HomeScreen() {
                   <option value="Not in business">Not in business</option>
                 </select>
               </div>
-              <div className="select_div">
-                <label>Facebook ID</label>
+              <div className="flex flex-col mt-4">
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
+                  placeholder="Facebook "
                   type="text"
                   value={facebookId}
                   onChange={(e) => setFacebookId(e.target.value)}
                 />
-                <label>Year</label>
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
+                  placeholder="Year"
                   type="number"
                   value={year}
                   onChange={(e) => setYear(e.target.value)}
                 />
-                <label>Bio</label>
                 <textarea
+                  className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>
-                <label>Bussiness Sector</label>
                 <div className="overflow_man">
                   <select
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     value={bussiness}
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
@@ -252,7 +261,9 @@ function HomeScreen() {
               <button
                 disabled={loading}
                 onClick={createEntreprenuer}
-                className={`${loading && "animate-pulse font-semibold"}`}
+                className={`${
+                  loading && "animate-pulse font-semibold"
+                } h-[46px] mt-24 bg-green-600 w-[67%] rounded mr-3 ml-4 text-white uppercase font-[500]`}
               >{`${loading ? "Creating..." : "Create"}`}</button>
             )}
             {cloudLoading && (
@@ -260,7 +271,7 @@ function HomeScreen() {
                 style={{ cursor: "not-allowed" }}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
-                }`}
+                } h-[46px] mt-24 bg-green-600 w-[97%] rounded mr-3 ml-4 text-white uppercase font-[500]`}
               >
                 {`${cloudLoading && "processing image please wait"}`}
               </button>
