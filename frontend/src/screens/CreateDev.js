@@ -126,14 +126,14 @@ function HomeScreen() {
     <div>
       <div className="flex justify-between">
         <Sidebar />
-        <div className="ml-[220px] mt-4 mb-4 ">
-          <h1 className="text-[20px] mb-6 ml-6 font-[500] text-green-600">
-            Create New Developers
+        <div className="ml-[220px] mt-4 mb-4 w-full">
+          <h1 className="text-[17px] ml-6 font-[500] text-white p-3 rounded bg-green-600 mr-6">
+            New Developer
           </h1>
           {/*  */}
-          <div className="form_container shadow -mt-[100px]">
-            <div className="flex_div">
-              <div className="image_div">
+          <div className="w-full flex flex-col">
+            <div className="flex justify-around w-full">
+              <div className="image_div mt-4 ">
                 <img
                   src={`${
                     selectedImage
@@ -156,66 +156,70 @@ function HomeScreen() {
                   />
                 )}
               </div>
-              <div className="input_div mt-[110px]">
-                <label>Full Name</label>
+              <div className="flex flex-col mt-4">
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
+                  placeholder="Name"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
-                <label>Email</label>
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
+                  placeholder="Email"
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-                <label>Phone</label>
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
+                  placeholder="Phone number"
                   type="number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
-                <label>Cohort</label>
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
+                  placeholder="Cohort"
                   type="text"
                   value={cohort}
                   onChange={(e) => setCohort(e.target.value)}
                 />
-                <label>Facebook ID</label>
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
+                  placeholder="Facebook url"
                   value={facebookId}
                   onChange={(e) => setFacebookId(e.target.value)}
                 />
               </div>
-              <div className="select_div">
-                <label>Linkedin ID</label>
+              <div className="flex flex-col mt-4">
                 <input
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
+                  placeholder="Linkedin url"
                   type="text"
                   value={linkedinId}
                   onChange={(e) => setLinkedinId(e.target.value)}
                 />
-                <label>Remarks</label>
                 <textarea
+                  placeholder="Remarks"
+                  className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
                 ></textarea>
-                <label>Payment Status</label>
                 <select
-                  className="mb-2"
+                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   onChange={(e) => setPaymentStatus(e.target.value)}
                   disabled={loading}
                 >
@@ -227,6 +231,7 @@ function HomeScreen() {
                   <>
                     <label className="">Payment Balance</label>
                     <input
+                      className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                       disabled={loading}
                       required
                       type="number"
@@ -236,9 +241,9 @@ function HomeScreen() {
                     />
                   </>
                 )}
-                <label>Gender</label>
-                <div className="overflow_man">
+                <div>
                   <select
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setGender(e.target.value)}
                     disabled={loading}
                   >
@@ -252,15 +257,17 @@ function HomeScreen() {
               <button
                 disabled={loading}
                 onClick={createDeveloper}
-                className={`${loading && "animate-pulse font-semibold"}`}
-              >{`${loading ? "Creating..." : "Create"}`}</button>
+                className={`${
+                  loading && "animate-pulse font-semibold"
+                }  bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
+              >{`${loading ? "Creating..." : "Create"} `}</button>
             )}
             {cloudLoading && (
               <button
                 style={{ cursor: "not-allowed" }}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
-                }`}
+                } bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
               >
                 {`${cloudLoading && "processing image please wait"}`}
               </button>

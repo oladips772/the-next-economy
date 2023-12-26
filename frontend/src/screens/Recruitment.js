@@ -240,7 +240,7 @@ function HomeScreen() {
                 <textarea
                   className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
-                  required
+                  placeholder="Bio"
                   value={bio}
                   onChange={(e) => setBio(e.target.value)}
                 ></textarea>

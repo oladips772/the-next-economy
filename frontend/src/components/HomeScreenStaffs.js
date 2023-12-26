@@ -10,12 +10,12 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
         Some of your Entrepreneurs
       </h1>
       <div className="grid grid-cols-6 gap-2 justify-between items-center mx-4 border-b-[1px] border-gray-200 mb-4 pb-2">
-        <h3 className="font-[500]">Name</h3>
-        <h3 className="font-[500]">Email</h3>
-        <h3 className="font-[500]">Phone</h3>
-        <h3 className="font-[500]">Year</h3>
-        <h3 className="font-[500]">Business</h3>
-        <h3 className="font-[500]">Action</h3>
+        <h3 className="font-[400]">Name</h3>
+        <h3 className="font-[400]">Email</h3>
+        <h3 className="font-[400]">Phone</h3>
+        <h3 className="font-[400]">Year</h3>
+        <h3 className="font-[400]">Business</h3>
+        <h3 className="font-[400]">Action</h3>
       </div>
       {loading ? (
         <img src="/images/loader2.png" alt="" className="ml-[250px]" />
