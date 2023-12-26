@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
 import loader from "../images/loader2.png";
 
+
 function Entreprenuers() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();

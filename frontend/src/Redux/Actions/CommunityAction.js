@@ -42,4 +42,28 @@ const GetCommunities = () => async (dispatch) => {
   }
 };
 
-export { GetCommunities, CreateCommunity };
+// ? update
+const UpdateCommunity =
+  (id, name, description, whatsappChannel, numberOfMembers) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: "UPDATE_COMMUNITY_REQUEST" });
+      const { data } = await axios.put(`${URL}/api/communities/${id}`, {
+        name,
+        description,
+        whatsappChannel,
+        numberOfMembers,
+      });
+      dispatch({ type: "UPDATE_COMMUNITY_SUCCESS", payload: data });
+    } catch (error) {
+      dispatch({
+        type: "UPDATE_COMMUNITY_FAIL",
+        payload:
+          error.response && error.response.data.error
+            ? error.response.data.error
+            : error.error,
+      });
+    }
+  };
+
+export { GetCommunities, CreateCommunity, UpdateCommunity };
