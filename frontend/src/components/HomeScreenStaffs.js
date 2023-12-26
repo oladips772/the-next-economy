@@ -54,7 +54,7 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
                   <h3 className="">{staff?.bussiness}</h3>
                   <h3>
                     <NavLink
-                      to={`/Profile/${staff?._id}`}
+                      to={`/Entrepreneurs/Profile/${staff?._id}`}
                       className="w-[80px] px-[18px] py-[4px] mx-4 bg-green-600 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
                     >
                       <span className="text-[12px] font-[500] text-white">

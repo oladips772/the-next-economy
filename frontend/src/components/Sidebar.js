@@ -11,6 +11,8 @@ import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useDispatch } from "react-redux";
 import { AdminLogout } from "../Redux/Actions/AdminAction";
 import { useSelector } from "react-redux";
+import { HiOutlineUserGroup } from "react-icons/hi2";
+import { IoCalendarNumberOutline } from "react-icons/io5";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -37,22 +39,15 @@ function Sidebar() {
     navigate("/Login");
   };
 
-  useEffect(() => {
-    setInterval(() => {
-      getStatus();
-    }, [100]);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     getStatus();
+  //   }, [100]);
+  // }, []);
 
   return (
-    <div className="h-[100vh] bg-black w-[220px] fixed sidebar">
-      <div className="text-center justify-center img_div">
-        <img
-          src="http://blackinnovationsafrica.com/wp-content/uploads/2020/02/logo.png"
-          className="object-contain ml-6 mt-4"
-          alt=""
-        />
-      </div>
-      <div className="mt-6">
+    <div className="h-[100vh] bg-gray-800 w-[220px] fixed sidebar">
+      <div className="mt-3 overflow-y-scroll h-[87%]">
         <div className="my-4 hover:text-green-500">
           <NavLink
             to="/"
@@ -64,10 +59,13 @@ function Sidebar() {
               };
             }}
           >
-            <GridViewOutlinedIcon className="mx-4 text-[12px]" />
-            <p className="text-[12px] font-semibold">DASHBOARD</p>
+            <GridViewOutlinedIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500]">DASHBOARD</p>
           </NavLink>
         </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Entrepreneurs
+        </p>
         <div className="my-4">
           <NavLink
             to="/New_Entrepreneur"
@@ -79,8 +77,8 @@ function Sidebar() {
               };
             }}
           >
-            <PersonAddAltOutlinedIcon className="mx-4 text-[12px]" />
-            <p className="text-[12px] font-semibold">ADD ENTREPRENEUR</p>
+            <PersonAddAltOutlinedIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500]">ADD ENTREPRENEUR</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -94,10 +92,13 @@ function Sidebar() {
               };
             }}
           >
-            <PeopleAltOutlinedIcon className="mx-4 text-[12px]" />
-            <p className="text-[12px] font-semibold">ENTREPRENEURS</p>
+            <PeopleAltOutlinedIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500]">ENTREPRENEURS</p>
           </NavLink>
         </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Developers
+        </p>
         <div className="my-4">
           <NavLink
             to="/CreateDevelopers"
@@ -109,8 +110,8 @@ function Sidebar() {
               };
             }}
           >
-            <AddCircleOutlineIcon className="mx-4 text-[12px]" />
-            <p className="text-[12px] font-semibold">CREATE DEVS</p>
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500]">CREATE DEVS</p>
           </NavLink>
         </div>
         <div className="my-4">
@@ -124,12 +125,179 @@ function Sidebar() {
               };
             }}
           >
-            <AndroidIcon className="mx-4 text-[12px]" />
-            <p className="text-[12px] font-semibold">FULLSTACK DEVS</p>
+            <AndroidIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500]">FULLSTACK DEVS</p>
           </NavLink>
         </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Communities
+        </p>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500] uppercase">new community</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <HiOutlineUserGroup className=" ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">communities</p>
+          </NavLink>
+        </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Programs
+        </p>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500] uppercase">new program</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <IoCalendarNumberOutline className="ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">programs</p>
+          </NavLink>
+        </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Business
+        </p>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500] uppercase">new business</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <HiOutlineUserGroup className=" ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">businesses</p>
+          </NavLink>
+        </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Events
+        </p>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500] uppercase">new event</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <IoCalendarNumberOutline className="ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">events</p>
+          </NavLink>
+        </div>
+        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+          Staffs
+        </p>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
+            <p className="text-[12px] font-[500] uppercase">new staff</p>
+          </NavLink>
+        </div>
+        <div className="my-4">
+          <NavLink
+            to="/Developers"
+            className="flex items-center"
+            style={({ isActive }) => {
+              return {
+                color: isActive ? "rgb(40, 211, 40)" : "white",
+                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+              };
+            }}
+          >
+            <IoCalendarNumberOutline className="ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">staffs</p>
+          </NavLink>
+        </div>
+
         {adminInfo?.masterAdmin && (
           <div className="my-4">
+            <p className="text-white ml-4 mr-[10px] text-[12px] mb-2">Admins</p>
             <NavLink
               to="/CreateAdmin"
               className="flex items-center"
@@ -140,19 +308,32 @@ function Sidebar() {
                 };
               }}
             >
-              <AdminPanelSettingsIcon className="mx-4 text-[12px]" />
-              <p className="text-[12px] font-semibold">NEW ADMIN</p>
+              <AdminPanelSettingsIcon className="ml-4 mr-[10px] text-[12px]" />
+              <p className="text-[12px] font-[500]">NEW ADMIN</p>
+            </NavLink>
+            <NavLink
+              to="/CreateAdmin"
+              className="flex items-center mt-3"
+              style={({ isActive }) => {
+                return {
+                  color: isActive ? "rgb(40, 211, 40)" : "white",
+                  borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+                };
+              }}
+            >
+              <AdminPanelSettingsIcon className="ml-4 mr-[10px] text-[12px]" />
+              <p className="text-[12px] font-[500]">ADMINS</p>
             </NavLink>
           </div>
         )}
       </div>
-      {/*  */}
+      {/* logout and system status */}
       <div
-        className="absolute bottom-10 flex items-center mx-2 cursor-pointer"
+        className="absolute bottom-[35px] flex items-center mx-2 cursor-pointer"
         onClick={LOGOUT}
       >
-        <LogoutIcon className="rotate-180 text-white mr-2 text-sm" />
-        <p className="text-white text-sm font-semibold">LOG OUT</p>
+        <LogoutIcon className="rotate-180 text-white mr-2 text-[10px]" />
+        <p className="text-white text-sm font-[500]">LOG OUT</p>
       </div>
       <div className="absolute bottom-2 flex items-center mx-2">
         <p className="text-white text-[10px] font-[600]">SYSTEM STATUS : </p>

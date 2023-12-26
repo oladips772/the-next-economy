@@ -360,7 +360,6 @@ table tr td {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
   width: 100%;
   padding: 10px;
   margin-left: 30px;
@@ -408,13 +407,13 @@ textarea {
   align-items: center;
 }
 
-.edit_image_div img {
+/* .edit_image_div img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: contain;
   border: 1px solid lightgray;
-}
+} */
 
 .edit_image_div input {
   display: none;
@@ -680,7 +679,7 @@ textarea {
   overflow-y: scroll;
 }
 
-.print_modal_container::-webkit-scrollbar{
+.print_modal_container::-webkit-scrollbar {
   display: none;
 }
 

@@ -16,6 +16,7 @@ import DeleteModal from "../components/DeleteModal";
 import moment from "moment";
 import PrintModal from "../components/PrintModal";
 import loader from "../images/loader2.png";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Edit() {
   const navigate = useNavigate();
@@ -184,90 +185,93 @@ function Edit() {
         />
       )}
       <div className="flex justify-between">
-        <Sidebar />
+        <div className="flex-1">
+          <Sidebar />
+        </div>
         {error && toast.error(error)}
         {loading ? (
           <img src={loader} alt="" className="loading_image" />
         ) : (
-          <div className="ml-[250px] mt-4 mb-4 w-full">
-            <div className="flex justify-between w-full items-center">
-              <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-                Profile
+          <div className="flex-[4.5] mt-4 mb-4 w-full">
+            <div className="flex justify-between items-center bg-green-600 rounded p-[14px] mr-6 mb-3">
+              <h1 className="text-[17px]  font-[400] text-white flex items-center">
+                Profile <MdKeyboardDoubleArrowRight /> {entrepreneur?.name}
               </h1>
               <PrintIcon
-                className=" text-green-600 h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
+                className=" text-white h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
                 onClick={() => setPrint(!showPrint)}
               />
             </div>
             {/*  */}
-            <div className="edit_container shadow">
-              <div className="edit_wrapper">
-                <div className="edit_image_div">
-                  <img
-                    src={`${selectedImage ? selectedImage : entrepreneurImage}`}
-                    alt=""
-                    className=""
+            <div className="flex items-start">
+              {/* image div */}
+              <div className="mx-2 flex flex-col items-center justify-center">
+                <img
+                  src={`${selectedImage ? selectedImage : entrepreneurImage}`}
+                  alt=""
+                  className="h-[130px] w-[130px] object-cover rounded"
+                />
+                <input
+                  type="file"
+                  ref={filePicker}
+                  hidden
+                  onChange={handleChange}
+                />
+                {!updateLoading && (
+                  <CameraAltOutlinedIcon
+                    className="text-green-600 cursor-pointer mt-2 text-lg"
+                    onClick={() => filePicker.current.click()}
                   />
+                )}
+              </div>
+              <div className="flex items-start w-full justify-around">
+                <div className="flex flex-col">
                   <input
-                    type="file"
-                    ref={filePicker}
-                    hidden
-                    onChange={handleChange}
-                  />
-                  {!updateLoading && (
-                    <CameraAltOutlinedIcon
-                      className="camera"
-                      onClick={() => filePicker.current.click()}
-                    />
-                  )}
-                </div>
-                <div className="">
-                  <label className="font-semibold">Full Name</label>
-                  <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                  <label className="font-semibold">Email</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label className="font-semibold">Phone</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
-                </div>
-                <div className="">
-                  <label className="font-semibold">Year</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
                   />
-                  <label className="font-semibold">Linkedin ID</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={linkedinId}
                     onChange={(e) => setLinkedinId(e.target.value)}
                   />
-                  <label className="font-semibold">Facebook ID</label>
+                </div>
+                <div className="flex flex-col">
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
                   />
-                  <label className="font-semibold">Status</label>
                   <select
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setStatus(e.target.value)}
                     value={status}
                     disabled={updateLoading}
@@ -275,15 +279,15 @@ function Edit() {
                     <option value="Still in business">Still in business</option>
                     <option value="Not in business">Not in business </option>
                   </select>
-                  <label className="font-semibold">Biography</label>
                   <textarea
+                    className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
-                  <label className="font-semibold">Bussiness Sector</label>
                   <select
-                    className="mb-[40px]"
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    // className="mb-[40px]"
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={updateLoading}
                   >
@@ -291,93 +295,45 @@ function Edit() {
                     <option value="Employability">Employability</option>
                     <option value="Entrepreneurship">Entrepreneurship</option>
                   </select>
-                  {cloudLoading && (
+                </div>
+              </div>
+            </div>
+            {/* buttons div */}
+
+            <div className="flex flex-col mr-6 mt-28">
+              {cloudLoading && (
+                <button
+                  className={`${
+                    cloudLoading && "animate-pulse text-sm mt-4"
+                  } h-[46px] bg-green-600 text-white rounded uppercase font-[500]`}
+                >
+                  {`${cloudLoading && "processing image please wait"}`}
+                </button>
+              )}
+              {!cloudLoading && (
+                <button
+                  onClick={handleUpdate}
+                  disabled={updateLoading}
+                  className={`${
+                    updateLoading ? "animate-pulse mt-4" : "text-sm mt-[20px]"
+                  } h-[46px] bg-green-600 text-white rounded uppercase font-[500]`}
+                >
+                  {`${updateLoading ? "Updating..." : "Update"}`}
+                </button>
+              )}
+              {adminInfo?.masterAdmin && (
+                <>
+                  {!showModal && (
                     <button
-                      className={`${
-                        cloudLoading && "animate-pulse text-sm mt-4"
-                      }`}
-                    >
-                      {`${cloudLoading && "processing image please wait"}`}
-                    </button>
-                  )}
-                  {!cloudLoading && (
-                    <button
-                      onClick={handleUpdate}
                       disabled={updateLoading}
-                      className={`${
-                        updateLoading
-                          ? "animate-pulse mt-4"
-                          : "text-sm mt-[20px]"
-                      }`}
+                      className="mt-4 delete-btn h-[46px] bg-red-600 text-white font-[500]"
+                      onClick={() => setModal(!showModal)}
                     >
-                      {`${updateLoading ? "Updating..." : "Update"}`}
+                      DELETE ENTREPRENEUR
                     </button>
                   )}
-                  {adminInfo?.masterAdmin && (
-                    <>
-                      {!showModal && (
-                        <button
-                          disabled={updateLoading}
-                          className="mt-6 delete-btn"
-                          onClick={() => setModal(!showModal)}
-                        >
-                          DELETE ENTREPRENEUR
-                        </button>
-                      )}
-                    </>
-                  )}
-                </div>
-              </div>
-              {/*  */}
-              <div className="display_container shadow">
-                <div className="top_info">
-                  <img src={entrepreneur.image} alt="" />
-                  <div className="top_info_side">
-                    <span>Full Name</span>
-                    <p>{entrepreneur.name}</p>
-                    <span>Email</span>
-                    <p>
-                      <a href={`mailto:${entrepreneur.email}`} target="_blank">
-                        {entrepreneur.email}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                <div className="bottom_info">
-                  <span>Bussiness</span>
-                  <p>{entrepreneur.bussiness}</p>
-                  <span>Phone</span>
-                  <p>{entrepreneur.phone}</p>
-                  <span>Status</span>
-                  <p>{entrepreneur?.status}</p>
-                </div>
-                {adminInfo.masterAdmin && (
-                  <>
-                    <div className="flex items-center mt-4  w-full ml-2">
-                      <h2 className="font-[600] text-[13px]">CREATED BY : </h2>
-                      <p className="font-[500] text-[14px]  ml-[4px]">
-                        {entrepreneur?.createdBy === adminInfo.name
-                          ? "you"
-                          : entrepreneur?.createdBy}{" "}
-                        on {""}
-                        {moment(entrepreneur?.createdAt).format("LL")}
-                      </p>
-                    </div>
-                    <div className="flex items-center mt-1 w-full ml-2">
-                      <h2 className="0 font-[600] text-[13px]">
-                        LASTLY UPDATED BY :{" "}
-                      </h2>
-                      <p className="font-[500] text-[14px]  ml-[4px]">
-                        {entrepreneur?.updatedBy === adminInfo.name
-                          ? "you"
-                          : entrepreneur?.updatedBy}{" "}
-                        on {""}
-                        {moment(entrepreneur?.updatedAt).format("LL")}
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
+                </>
+              )}
             </div>
           </div>
         )}

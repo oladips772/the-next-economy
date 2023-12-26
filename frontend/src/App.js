@@ -22,92 +22,91 @@ function App() {
     <div className="App">
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <Toaster
-        toastOptions={{
-          className: "",
-          style: {
-            color: "white",
-            background: "green",
-            border: "2px solid lightgreen",
-          },
-        }}
-      />
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            exact
-            element={
-              <PrivateRoute>
-                <HomeScreen />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/New_Entrepreneur"
-            element={
-              <PrivateRoute>
-                {" "}
-                <Recruitment />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route
-            path="/Entrepreneurs"
-            element={
-              <PrivateRoute>
-                <Entreprenuers />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route
-            path="/CreateDevelopers"
-            element={
-              <PrivateRoute>
-                {" "}
-                <CreateDev />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route
-            path="/Developers"
-            element={
-              <PrivateRoute>
-                <Developers />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route
-            path="/DevProfile/:id"
-            element={
-              <PrivateRoute>
-                <DevProfile />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route path="/Login" element={<Login />} />{" "}
-          <Route path="/Update_Password" element={<PasswordUpdateScreen />} />{" "}
-          <Route path="/Forgot_Password" element={<ForgotPassword />} />{" "}
-          <Route
-            path="/Profile/:id"
-            element={
-              <PrivateRoute>
-                <Profile />{" "}
-              </PrivateRoute>
-            }
-          />{" "}
-          <Route
-            path="/CreateAdmin"
-            element={
-              <PrivateRoute>
-                {" "}
-                <CreateAdmin />
-              </PrivateRoute>
-            }
-          />{" "}
-        </Routes>
-      </BrowserRouter>
+          toastOptions={{
+            className: "",
+            style: {
+              color: "white",
+              background: "green",
+              border: "2px solid lightgreen",
+            },
+          }}
+        />
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              exact
+              element={
+                <PrivateRoute>
+                  <HomeScreen />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/New_Entrepreneur"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <Recruitment />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Entrepreneurs"
+              element={
+                <PrivateRoute>
+                  <Entreprenuers />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/CreateDevelopers"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <CreateDev />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Developers"
+              element={
+                <PrivateRoute>
+                  <Developers />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/DevProfile/:id"
+              element={
+                <PrivateRoute>
+                  <DevProfile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route path="/Login" element={<Login />} />{" "}
+            <Route path="/Update_Password" element={<PasswordUpdateScreen />} />{" "}
+            <Route path="/Forgot_Password" element={<ForgotPassword />} />{" "}
+            <Route
+              path="/Entrepreneurs/Profile/:id"
+              element={
+                <PrivateRoute>
+                  <Profile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/CreateAdmin"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <CreateAdmin />
+                </PrivateRoute>
+              }
+            />{" "}
+          </Routes>
+        </BrowserRouter>
       </LocalizationProvider>
-      
     </div>
   );
 }
