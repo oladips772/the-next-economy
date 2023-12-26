@@ -1,13 +1,52 @@
 /** @format */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
+import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { CreateCommunity } from "../Redux/Actions/CommunityAction";
 
 function NewCommunity() {
-  const loading = false;
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [whatsappChannel, setWhatsappChannel] = useState("");
   const [numberOfMembers, setNumberOfMembers] = useState("");
+  const { loading, success, error } = useSelector(
+    (state) => state.createCommunity
+  );
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch({ type: "CREATE_COMMUNITY_RESET" });
+    } else if (success) {
+      toast.success("Community created successfully");
+      setName("");
+      setDescription("");
+      setWhatsappChannel("");
+      setNumberOfMembers("");
+      dispatch({ type: "CREATE_COMMUNITY_RESET" });
+    }
+  }, [success, error, dispatch]);
+
+  const create = () => {
+    if (!name.trim()) {
+      return toast.error("Community name is required");
+    }
+    if (!description.trim()) {
+      return toast.error("Community description is required");
+    }
+    if (!whatsappChannel.trim()) {
+      return toast.error("Whatsapp channel link is required");
+    }
+    if (!numberOfMembers) {
+      return toast.error("Number of members is required");
+    }
+
+    dispatch(
+      CreateCommunity(name, description, whatsappChannel, numberOfMembers)
+    );
+  };
 
   return (
     <div className="flex justify-between">
@@ -58,11 +97,12 @@ function NewCommunity() {
         </div>
 
         <button
+          onClick={create}
           className={`${
             loading && "animate-pulse text-[12px] font-semibold"
           } bg-green-600 h-[46px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
         >
-          CREATE
+          {loading ? "creating.." : "CREATE"}
         </button>
       </div>
     </div>
