@@ -77,7 +77,7 @@ function App() {
               }
             />{" "}
             <Route
-              path="/DevProfile/:id"
+              path="/Developers/DevProfile/:id"
               element={
                 <PrivateRoute>
                   <DevProfile />{" "}

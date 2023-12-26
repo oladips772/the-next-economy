@@ -16,6 +16,7 @@ import DeleteModal from "../components/DeleteModal";
 import PrintModal2 from "../components/PrintModal2";
 import moment from "moment";
 import loader from "../images/loader2.png";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 function Edit() {
   let params = useParams();
@@ -200,24 +201,23 @@ function Edit() {
           <img src={loader} alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
-            <div className="flex justify-between w-full items-center">
-              <h1 className="text-[24px] mb-6 font-semibold text-green-600">
-                Dev Profile
+            <div className="flex justify-between items-center bg-green-600 rounded p-[14px] mr-6 mb-3">
+              <h1 className="text-[17px]  font-[400] text-white flex items-center">
+                Profile <MdKeyboardDoubleArrowRight /> {developer?.name}
               </h1>
               <PrintIcon
-                className=" text-green-600 h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
+                className=" text-white h-12 w-12 mr-6 rounded-full cursor-pointer text-2xl"
                 onClick={() => setPrint(!showPrint)}
               />
             </div>
-            <div></div>
             {/*  */}
-            <div className="edit_container shadow">
-              <div className="edit_wrapper">
-                <div className="edit_image_div">
+            <div className="flex flex-col">
+              <div className="flex items-start justify-around w-full">
+                <div className="edit_image_div mt-2">
                   <img
                     src={`${selectedImage ? selectedImage : developerImage}`}
                     alt=""
-                    className=""
+                    className="h-[120px] w-[120px] object-cover rounded"
                   />
                   <input
                     type="file"
@@ -227,62 +227,58 @@ function Edit() {
                   />
                   {!updateLoading && (
                     <CameraAltOutlinedIcon
-                      className="camera"
+                      className="camera mt-2 text-green-600"
                       onClick={() => filePicker.current.click()}
                     />
                   )}
                 </div>
-                <div className="">
-                  <label className="font-semibold">Full Name</label>
+                <div className="flex flex-col">
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
-                  <label className="font-semibold">Email</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <label className="font-semibold">Phone</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
-                </div>
-                <div className="">
-                  <label className="font-semibold">Cohort</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={cohort}
                     onChange={(e) => setCohort(e.target.value)}
                   />
-                  <label className="font-semibold">Linked ID</label>
                   <input
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={linkedinId}
                     onChange={(e) => setLinkedinId(e.target.value)}
                   />
-                  <label className="font-semibold">Facebook ID</label>
                   <input
-                    className="mb-4"
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
                   />
-                  <label className="font-semibold mb-[6px]">
-                    Payment Status
-                  </label>
+                </div>
+                <div className="flex flex-col">
                   <select
-                    className="mt-[4px]"
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     value={paymentStatus}
                     onChange={(e) => setPaymentStatus(e.target.value)}
                     disabled={loading}
@@ -293,10 +289,9 @@ function Edit() {
                   </select>
                   {paymentStatus === "Partly Paid" && (
                     <>
-                      <label className="font-semibold my-4">
-                        Payment Balance
-                      </label>
+                      <label className="mt-2 text-sm">Payment Balance</label>
                       <input
+                        className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                         disabled={loading}
                         required
                         type="number"
@@ -305,16 +300,15 @@ function Edit() {
                       />
                     </>
                   )}
-                  <label className="font-semibold mb-[6px]">Remarks</label>
                   <textarea
+                    placeholder="Remarks"
+                    className="h-[133px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     value={remarks}
                     onChange={(e) => setRemarks(e.target.value)}
                   ></textarea>
-
-                  <label className="font-semibold">Gender</label>
                   <select
-                    className="mt-[5px]"
+                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setGender(e.target.value)}
                     disabled={updateLoading}
                   >
@@ -322,98 +316,43 @@ function Edit() {
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                   </select>
-                  {cloudLoading && (
-                    <button
-                      className={`${
-                        cloudLoading && "animate-pulse text-sm mt-[40px]"
-                      }`}
-                    >
-                      {`${cloudLoading && "processing image please wait"}`}
-                    </button>
-                  )}
-                  {!cloudLoading && (
-                    <button
-                      onClick={handleUpdate}
-                      disabled={updateLoading}
-                      className={`${
-                        updateLoading
-                          ? "animate-pulse mt-[40px]"
-                          : "text-sm mt-[40px]"
-                      }`}
-                    >
-                      {`${updateLoading ? "Updating..." : "Update"}`}
-                    </button>
-                  )}
-                  {adminInfo?.masterAdmin && (
-                    <>
-                      {!showModal && (
-                        <button
-                          className="mt-6 delete-btn"
-                          onClick={() => setModal(!showModal)}
-                        >
-                          DELETE DEVELOPER
-                        </button>
-                      )}
-                    </>
-                  )}
                 </div>
               </div>
+              {cloudLoading && (
+                <button
+                  className={`${
+                    cloudLoading && "animate-pulse text-sm mt-[40px]"
+                  } bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
+                >
+                  {`${cloudLoading && "processing image please wait"}`}
+                </button>
+              )}
+              {!cloudLoading && (
+                <button
+                  onClick={handleUpdate}
+                  disabled={updateLoading}
+                  className={`${
+                    updateLoading
+                      ? "animate-pulse mt-[40px]"
+                      : "text-sm mt-[40px]"
+                  } bg-green-600 h-[46px] w-[81%] ml-[17%] mt-8 text-white font-[500] uppercase rounded`}
+                >
+                  {`${updateLoading ? "Updating..." : "Update"}`}
+                </button>
+              )}
+              {adminInfo?.masterAdmin && (
+                <>
+                  {!showModal && (
+                    <button
+                      className="mt-4 delete-btn  h-[46px] w-[81%] ml-[17%] text-white font-[500] uppercase rounded"
+                      onClick={() => setModal(!showModal)}
+                    >
+                      DELETE DEVELOPER
+                    </button>
+                  )}
+                </>
+              )}
               {/*  */}
-              <div className="display_container shadow p-2">
-                <div className="top_info">
-                  <img src={developer.image} alt="" />
-                  <div className="top_info_side">
-                    <span>Full Name</span>
-                    <p>{developer.name}</p>
-                    <span>Email</span>
-                    <p>
-                      <a href={`mailto:${developer.email}`} target="_blank">
-                        {developer.email}
-                      </a>
-                    </p>
-                  </div>
-                </div>
-                <div className="bottom_info">
-                  <span>Cohort</span>
-                  <p>{developer.cohort}</p>
-                  <span>Phone</span>
-                  <p>{developer.phone}</p>
-                  <span>Payment Status</span>
-                  <p>{developer.paymentStatus}</p>
-                  {developer.paymentBalance && (
-                    <>
-                      <span>Payment Balance</span>
-                      <p>NGN {developer.paymentBalance},000</p>
-                    </>
-                  )}
-                </div>
-                {adminInfo.masterAdmin && (
-                  <>
-                    <div className="flex items-center mt-4  w-full ml-2">
-                      <h2 className="font-[600] text-[13px]">CREATED BY : </h2>
-                      <p className="font-[500] text-[14px]  ml-[4px]">
-                        {developer?.createdBy === adminInfo.name
-                          ? "you"
-                          : developer?.createdBy}{" "}
-                        on {""}
-                        {moment(developer?.createdAt).format("LL")}
-                      </p>
-                    </div>
-                    <div className="flex items-center mt-1 w-full ml-2">
-                      <h2 className="0 font-[600] text-[13px]">
-                        LASTLY UPDATED BY :{" "}
-                      </h2>
-                      <p className="font-[500] text-[14px]  ml-[4px]">
-                        {developer?.updatedBy === adminInfo.name
-                          ? "you"
-                          : developer?.updatedBy}{" "}
-                        on {""}
-                        {moment(developer?.updatedAt).format("LL")}
-                      </p>
-                    </div>
-                  </>
-                )}
-              </div>
             </div>
           </div>
         )}

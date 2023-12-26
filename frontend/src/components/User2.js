@@ -6,11 +6,11 @@ function User({ data }) {
     <div>
       <div>
         <div className="grid grid-cols-5 gap-2 pt-4 pb-4 pl-6 border-b border-slate-300">
-          <h3 className="font-[500]">Name</h3>
-          <h3 className="font-[500]">Email</h3>
-          <h3 className="font-[500]">Phone</h3>
-          <h3 className="font-[500]">Cohort</h3>
-          <h3 className="font-[500]">Action</h3>
+          <h3 className="font-[400]">Name</h3>
+          <h3 className="font-[400]">Email</h3>
+          <h3 className="font-[400]">Phone</h3>
+          <h3 className="font-[400]">Cohort</h3>
+          <h3 className="font-[400]">Action</h3>
         </div>
         {data.map((person) => (
           <div
@@ -42,8 +42,8 @@ function User({ data }) {
             </h3>
             <h3>
               <NavLink
-                to={`/DevProfile/${person?._id}`}
-                className="w-[80px] p-[4px] mx-4 bg-green-700 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
+                to={`/Developers/DevProfile/${person?._id}`}
+                className="w-[80px] py-[4px] px-[12px] mx-4 bg-green-600 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
               >
                 <span className="text-[12px] font-semibold text-white">
                   VIEW

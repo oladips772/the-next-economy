@@ -40,18 +40,19 @@ function Entreprenuers() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-[80%]">
-          <h1 className="text-[20px] mb-6 font-[500] text-green-600">
-            Developers
-          </h1>
-          <div className="search_container">
-            <input
-              type="search"
-              className=""
-              placeholder="Search by Name , Email , Phone , Cohort"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
+          <div className="bg-green-600 p-3 flex items-center justify-between rounded">
+            <h1 className="text-[17px]  font-[500] text-white">Developers</h1>
+            <div className="">
+              <input
+                type="search"
+                className="h-[38px] p-3 w-[300px] text-white rounded-[25px] placeholder:text-gray-200 text-[15px] border border-gray-200"
+                placeholder="Search by Name , Email.."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+              />
+            </div>
           </div>
+
           {/*  */}
           {loading ? (
             <img src={loader} alt="" className="loading_image" />
