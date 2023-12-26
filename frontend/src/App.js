@@ -16,6 +16,12 @@ import PasswordUpdateScreen from "./screens/PasswordUpdateScreen";
 import ForgotPassword from "./screens/ForgotPassword";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import NewCommunity from "./screens/NewCommunity";
+import Communities from "./screens/Communities";
+import CommunityProfile from "./screens/CommunityProfile";
+import NewProgram from "./screens/NewProgram";
+import Programs from "./screens/Programs";
+import ProgramProfile from "./screens/ProgramProfile";
 
 function App() {
   return (
@@ -92,6 +98,54 @@ function App() {
               element={
                 <PrivateRoute>
                   <Profile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/NewCommunity"
+              element={
+                <PrivateRoute>
+                  <NewCommunity />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Communities"
+              element={
+                <PrivateRoute>
+                  <Communities />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Communities/Profile/:id"
+              element={
+                <PrivateRoute>
+                  <CommunityProfile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/NewProgram"
+              element={
+                <PrivateRoute>
+                  <NewProgram />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Programs"
+              element={
+                <PrivateRoute>
+                  <Programs />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Programs/Profile/:id"
+              element={
+                <PrivateRoute>
+                  <ProgramProfile />{" "}
                 </PrivateRoute>
               }
             />{" "}

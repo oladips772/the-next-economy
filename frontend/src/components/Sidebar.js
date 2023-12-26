@@ -134,7 +134,7 @@ function Sidebar() {
         </p>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/NewCommunity"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -149,7 +149,7 @@ function Sidebar() {
         </div>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/Communities"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -167,7 +167,7 @@ function Sidebar() {
         </p>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/NewProgram"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -182,7 +182,7 @@ function Sidebar() {
         </div>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/Programs"
             className="flex items-center"
             style={({ isActive }) => {
               return {
