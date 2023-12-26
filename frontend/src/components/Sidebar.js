@@ -196,44 +196,11 @@ function Sidebar() {
           </NavLink>
         </div>
         <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
-          Business
-        </p>
-        <div className="my-4">
-          <NavLink
-            to="/Developers"
-            className="flex items-center"
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "rgb(40, 211, 40)" : "white",
-                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
-              };
-            }}
-          >
-            <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
-            <p className="text-[12px] font-[500] uppercase">new business</p>
-          </NavLink>
-        </div>
-        <div className="my-4">
-          <NavLink
-            to="/Developers"
-            className="flex items-center"
-            style={({ isActive }) => {
-              return {
-                color: isActive ? "rgb(40, 211, 40)" : "white",
-                borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
-              };
-            }}
-          >
-            <HiOutlineUserGroup className=" ml-4 mr-[10px]" size={23} />
-            <p className="text-[12px] font-[500] uppercase">businesses</p>
-          </NavLink>
-        </div>
-        <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
           Events
         </p>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/NewEvent"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -248,7 +215,7 @@ function Sidebar() {
         </div>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/Events"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -262,11 +229,11 @@ function Sidebar() {
           </NavLink>
         </div>
         <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
-          Staffs
+          Business
         </p>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/NewBusiness"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -276,12 +243,12 @@ function Sidebar() {
             }}
           >
             <AddCircleOutlineIcon className="ml-4 mr-[10px] text-[12px]" />
-            <p className="text-[12px] font-[500] uppercase">new staff</p>
+            <p className="text-[12px] font-[500] uppercase">new business</p>
           </NavLink>
         </div>
         <div className="my-4">
           <NavLink
-            to="/Developers"
+            to="/Businesses"
             className="flex items-center"
             style={({ isActive }) => {
               return {
@@ -290,8 +257,8 @@ function Sidebar() {
               };
             }}
           >
-            <IoCalendarNumberOutline className="ml-4 mr-[10px]" size={23} />
-            <p className="text-[12px] font-[500] uppercase">staffs</p>
+            <HiOutlineUserGroup className=" ml-4 mr-[10px]" size={23} />
+            <p className="text-[12px] font-[500] uppercase">businesses</p>
           </NavLink>
         </div>
 

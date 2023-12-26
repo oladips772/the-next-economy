@@ -22,6 +22,12 @@ import CommunityProfile from "./screens/CommunityProfile";
 import NewProgram from "./screens/NewProgram";
 import Programs from "./screens/Programs";
 import ProgramProfile from "./screens/ProgramProfile";
+import NewBusiness from "./screens/NewBusiness";
+import Businesses from "./screens/Businesses";
+import BusinessProfile from "./screens/BusinessProfile";
+import NewEvent from "./screens/NewEvent";
+import Events from "./screens/Events";
+import EventProfile from "./screens/EventProfile";
 
 function App() {
   return (
@@ -146,6 +152,54 @@ function App() {
               element={
                 <PrivateRoute>
                   <ProgramProfile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/NewBusiness"
+              element={
+                <PrivateRoute>
+                  <NewBusiness />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Businesses"
+              element={
+                <PrivateRoute>
+                  <Businesses />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Businesses/Profile/:id"
+              element={
+                <PrivateRoute>
+                  <BusinessProfile />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/NewEvent"
+              element={
+                <PrivateRoute>
+                  <NewEvent />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Events"
+              element={
+                <PrivateRoute>
+                  <Events />{" "}
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Events/Profile/:id"
+              element={
+                <PrivateRoute>
+                  <EventProfile />{" "}
                 </PrivateRoute>
               }
             />{" "}
