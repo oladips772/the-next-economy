@@ -1,4 +1,33 @@
 /** @format */
+// ? create community reducer
+const createCommunityReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "CREATE_COMMUNITY_REQUEST":
+      return {
+        loading: true,
+      };
+    case "CREATE_COMMUNITY_SUCCESS":
+      return {
+        loading: false,
+        success: true,
+      };
+    case "CREATE_COMMUNITY_FAIL":
+      return {
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    case "CREATE_COMMUNITY_RESET":
+      return {
+        loading: false,
+        success: false,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
 // ? get all communities reducer
 const getCommunitiesReducer = (state = { communities: [] }, action) => {
   switch (action.type) {
@@ -22,4 +51,4 @@ const getCommunitiesReducer = (state = { communities: [] }, action) => {
   }
 };
 
-export { getCommunitiesReducer };
+export { getCommunitiesReducer, createCommunityReducer };
