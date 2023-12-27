@@ -35,9 +35,7 @@ function Communities() {
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-[80%]">
           <div className="bg-green-600 p-3 flex items-center justify-between rounded">
-            <h1 className="text-[17px]  font-[500] text-white">
-              Communities
-            </h1>
+            <h1 className="text-[17px]  font-[500] text-white">Communities</h1>
             <div className="">
               <input
                 type="search"
