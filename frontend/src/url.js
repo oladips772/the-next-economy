@@ -1,3 +1,4 @@
+/** @format */
 
-const URL = process.env.REACT_APP_SERVER_URL
+const URL = "https://smoggy-shrug-newt.cyclic.app";
 export default URL;
