@@ -5,7 +5,7 @@ function User({ data }) {
   return (
     <div>
       <div>
-        <div className="grid grid-cols-5 gap-2 pt-4 pb-4 pl-6 border-b border-slate-300">
+        <div className="grid grid-cols-5 gap-2 bg-[#182237] text-gray-200 pt-4 pb-4 pl-6 border-b border-slate-300">
           <h3 className="font-[400]">Name</h3>
           <h3 className="font-[400]">Email</h3>
           <h3 className="font-[400]">Phone</h3>
@@ -15,7 +15,7 @@ function User({ data }) {
         {data.map((person) => (
           <div
             key={person?._id}
-            className="grid grid-cols-5 gap-2 py-[10px] my-[4px] border-b border-gray-300"
+            className="grid grid-cols-5 gap-2 py-[10px] items-center text-gray-200 my-[4px] border-b border-gray-300"
           >
             <h3 className="flex items-center">
               <img
@@ -25,11 +25,12 @@ function User({ data }) {
               />
               <p className="">{person?.name}</p>
             </h3>{" "}
-            <h3 className=" text-gray-800">
+            <h3 className="">
               <a
                 href={`mailto:${person?.email}`}
                 target="_blank"
                 rel="noreferrer"
+                className="text-gray-200"
               >
                 {person?.email?.slice(0, 14)}
                 {person?.email?.length > 14 && ".."}

@@ -127,11 +127,11 @@ function HomeScreen() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[220px] mt-4 mb-4 w-full">
-          <h1 className="text-[17px] ml-6 font-[500] text-white p-3 rounded bg-green-600 mr-6">
+          <h1 className="text-[16px] ml-6 font-[400] text-white p-4 rounded bg-[#182237] mr-6">
             New Developer
           </h1>
           {/*  */}
-          <div className="w-full flex flex-col">
+          <div className="mt-3 flex flex-col bg-[#182237] mr-6 ml-6">
             <div className="flex justify-around w-full">
               <div className="image_div mt-4 ">
                 <img
@@ -158,7 +158,7 @@ function HomeScreen() {
               </div>
               <div className="flex flex-col mt-4">
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   placeholder="Name"
@@ -167,7 +167,7 @@ function HomeScreen() {
                   onChange={(e) => setName(e.target.value)}
                 />
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   placeholder="Email"
                   type="text"
@@ -175,7 +175,7 @@ function HomeScreen() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   placeholder="Phone number"
@@ -184,7 +184,7 @@ function HomeScreen() {
                   onChange={(e) => setPhone(e.target.value)}
                 />
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   placeholder="Cohort"
@@ -193,7 +193,7 @@ function HomeScreen() {
                   onChange={(e) => setCohort(e.target.value)}
                 />
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
@@ -204,7 +204,7 @@ function HomeScreen() {
               </div>
               <div className="flex flex-col mt-4">
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   placeholder="Linkedin url"
                   type="text"
@@ -213,13 +213,13 @@ function HomeScreen() {
                 />
                 <textarea
                   placeholder="Remarks"
-                  className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[103px] resize-none border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   value={remarks}
                   onChange={(e) => setRemarks(e.target.value)}
                 ></textarea>
                 <select
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   onChange={(e) => setPaymentStatus(e.target.value)}
                   disabled={loading}
                 >
@@ -229,9 +229,11 @@ function HomeScreen() {
                 </select>
                 {paymentStatus === "Partly Paid" && (
                   <>
-                    <label className="">Payment Balance</label>
+                    <label className="text-[12px] text-gray-200 mt-1">
+                      Payment Balance
+                    </label>
                     <input
-                      className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                      className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                       disabled={loading}
                       required
                       type="number"
@@ -243,7 +245,7 @@ function HomeScreen() {
                 )}
                 <div>
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setGender(e.target.value)}
                     disabled={loading}
                   >
@@ -259,7 +261,7 @@ function HomeScreen() {
                 onClick={createDeveloper}
                 className={`${
                   loading && "animate-pulse font-semibold"
-                }  bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
+                }  bg-green-600 h-[43px] text-[13px] mb-6 w-[81.5%] ml-[17.5%] mt-8 text-white font-[500] uppercase rounded`}
               >{`${loading ? "Creating..." : "Create"} `}</button>
             )}
             {cloudLoading && (
@@ -267,7 +269,7 @@ function HomeScreen() {
                 style={{ cursor: "not-allowed" }}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
-                } bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
+                } bg-green-600 h-[43px] text-[13px] mb-46 w-[81.5%] ml-[17.5%] mt-8 text-white font-[500] uppercase rounded`}
               >
                 {`${cloudLoading && "processing image please wait"}`}
               </button>

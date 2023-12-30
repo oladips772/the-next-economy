@@ -8,11 +8,12 @@ import toast from "react-hot-toast";
 import loader from "../images/loader2.png";
 
 function CommunityProfile() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   let params = useParams();
   const communityId = params.id;
   const [getLoading, setGetLoading] = useState(true);
   const [updateLoading, setUpdateLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
   const [community, setCommunity] = useState(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -49,21 +50,31 @@ function CommunityProfile() {
   const update = async () => {
     setUpdateLoading(true);
     try {
-      await axios.put(
-        `${URL}/api/communities/${communityId}`,
-        {
-          name,
-          description,
-          whatsappChannel,
-          numberOfMembers,
-        }
-      );
+      await axios.put(`${URL}/api/communities/${communityId}`, {
+        name,
+        description,
+        whatsappChannel,
+        numberOfMembers,
+      });
       toast.success("Updated successfully");
-      navigate("/Communities")
+      navigate("/Communities");
     } catch (error) {
       toast.error(error?.response?.data?.error);
     }
     setUpdateLoading(false);
+  };
+
+  // ? delete
+  const Delete = async () => {
+    setDeleteLoading(true);
+    try {
+      await axios.delete(`${URL}/api/communities/${communityId}`);
+      toast.success("Deleted successfully");
+      navigate("/Communities");
+    } catch (error) {
+      toast.error(error?.response?.data?.error);
+    }
+    setDeleteLoading(false);
   };
 
   return (
@@ -76,13 +87,13 @@ function CommunityProfile() {
         <img src={loader} alt="" className="loading_image" />
       ) : (
         <div className="mt-4 mb-4 flex-4">
-          <div className="p-[14px] rounded-[6px] w-[1100px]  bg-green-600 mr-4 mb-4">
-            <h1 className="text-[18px] font-[500] text-white">Community</h1>
+          <div className="p-[16px] rounded-[6px] w-[1100px] bg-[#182237] mr-4 mb-4">
+            <h1 className="text-[16px] font-[400] text-white">Community</h1>
           </div>
           {/*  */}
           <div className="flex flex-col mt-4">
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               required
               placeholder="Community name"
               type="text"
@@ -90,14 +101,14 @@ function CommunityProfile() {
               onChange={(e) => setName(e.target.value)}
             />
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               placeholder="Community description"
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               required
               placeholder="Whatsapp channel link"
               type="text"
@@ -105,7 +116,7 @@ function CommunityProfile() {
               onChange={(e) => setWhatsappChannel(e.target.value)}
             />
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               required
               placeholder="Number of members"
               type="number"
@@ -117,10 +128,18 @@ function CommunityProfile() {
           <button
             onClick={update}
             className={`${
-              updateLoading && "animate-pulse text-[12px] font-semibold"
-            } bg-green-600 h-[46px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
+              updateLoading && "animate-pulse text-[13px] font-semibold"
+            } bg-green-500 text-[13px] h-[43px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
           >
             {updateLoading ? "updating.." : "update"}
+          </button>
+          <button
+            onClick={Delete}
+            className={`${
+              deleteLoading && "animate-pulse text-[13px] font-semibold"
+            } bg-red-600 text-[13px] h-[43px] w-[98%] mt-4 text-white font-[500] uppercase rounded`}
+          >
+            {deleteLoading ? "deleting.." : "delete"}
           </button>
         </div>
       )}

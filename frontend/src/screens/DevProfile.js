@@ -14,7 +14,6 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import DeleteModal from "../components/DeleteModal";
 import PrintModal2 from "../components/PrintModal2";
-import moment from "moment";
 import loader from "../images/loader2.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
@@ -201,8 +200,8 @@ function Edit() {
           <img src={loader} alt="" className="loading_image" />
         ) : (
           <div className="ml-[250px] mt-4 mb-4 w-full">
-            <div className="flex justify-between items-center bg-green-600 rounded p-[14px] mr-6 mb-3">
-              <h1 className="text-[17px]  font-[400] text-white flex items-center">
+            <div className="flex justify-between items-center bg-[#182237] rounded p-[16px] mr-6 mb-3">
+              <h1 className="text-[16px]  font-[400] text-white flex items-center">
                 Profile <MdKeyboardDoubleArrowRight /> {developer?.name}
               </h1>
               <PrintIcon
@@ -234,42 +233,42 @@ function Edit() {
                 </div>
                 <div className="flex flex-col">
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={cohort}
                     onChange={(e) => setCohort(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={linkedinId}
                     onChange={(e) => setLinkedinId(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={facebookId}
@@ -278,7 +277,7 @@ function Edit() {
                 </div>
                 <div className="flex flex-col">
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     value={paymentStatus}
                     onChange={(e) => setPaymentStatus(e.target.value)}
                     disabled={loading}
@@ -289,9 +288,11 @@ function Edit() {
                   </select>
                   {paymentStatus === "Partly Paid" && (
                     <>
-                      <label className="mt-2 text-sm">Payment Balance</label>
+                      <label className="mt-2 text-[12px] text-gray-200">
+                        Payment Balance
+                      </label>
                       <input
-                        className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                        className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                         disabled={loading}
                         required
                         type="number"
@@ -302,17 +303,17 @@ function Edit() {
                   )}
                   <textarea
                     placeholder="Remarks"
-                    className="h-[133px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[133px] resize-none border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     value={remarks}
                     onChange={(e) => setRemarks(e.target.value)}
                   ></textarea>
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    value={gender}
+                    className="h-[43px] border-[1.8px] bg-transparent border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setGender(e.target.value)}
                     disabled={updateLoading}
                   >
-                    <option value={gender}>{gender}</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                   </select>
@@ -322,7 +323,7 @@ function Edit() {
                 <button
                   className={`${
                     cloudLoading && "animate-pulse text-sm mt-[40px]"
-                  } bg-green-600 h-[46px] w-[79%] ml-[19%] mt-8 text-white font-[500] uppercase rounded`}
+                  } bg-green-600 h-[43px] w-[79%] ml-[19%] text-[13px] mt-8 text-white font-[500] uppercase rounded`}
                 >
                   {`${cloudLoading && "processing image please wait"}`}
                 </button>
@@ -335,7 +336,7 @@ function Edit() {
                     updateLoading
                       ? "animate-pulse mt-[40px]"
                       : "text-sm mt-[40px]"
-                  } bg-green-600 h-[46px] w-[81%] ml-[17%] mt-8 text-white font-[500] uppercase rounded`}
+                  } bg-green-600 h-[43px] w-[81%] ml-[17%] text-[13px] mt-8 text-white font-[500] uppercase rounded`}
                 >
                   {`${updateLoading ? "Updating..." : "Update"}`}
                 </button>
@@ -344,7 +345,7 @@ function Edit() {
                 <>
                   {!showModal && (
                     <button
-                      className="mt-4 delete-btn  h-[46px] w-[81%] ml-[17%] text-white font-[500] uppercase rounded"
+                      className="mt-4 delete-btn  h-[43px]  text-[13px] w-[81%] ml-[17%] text-white font-[500] uppercase rounded"
                       onClick={() => setModal(!showModal)}
                     >
                       DELETE DEVELOPER

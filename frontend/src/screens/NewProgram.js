@@ -60,13 +60,13 @@ function NewProgram() {
         <Sidebar />
       </div>
       <div className="mt-4 mb-4 flex-4">
-        <div className="p-[14px] rounded-[6px] w-[1100px]  bg-green-600 mr-4 mb-4">
-          <h1 className="text-[18px] font-[500] text-white">New Program</h1>
+        <div className="p-[16px] rounded-[6px] w-[1100px] bg-[#182237] mr-4 mb-4">
+          <h1 className="text-[16px] font-[400] text-white">New Program</h1>
         </div>
         {/*  */}
         <div className="flex flex-col mt-4">
           <input
-            className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+            className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
             required
             placeholder="Program name"
             type="text"
@@ -74,37 +74,55 @@ function NewProgram() {
             onChange={(e) => setName(e.target.value)}
           />
           <input
-            className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+            className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
             placeholder="Program description"
             type="text"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
           <input
-            className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+            className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
             required
             placeholder="Number of beneficiaries"
             type="number"
             value={numberOfIntakes}
             onChange={(e) => setNumberOfIntakes(e.target.value)}
           />
-          <div className="my-2 flex items-center space-x-3 w-[98%] mb-2">
+          <div className="my-2 flex items-center space-x-3 w-[98%] mb-2 text-gray-200">
             <DatePicker
+              sx={{
+                color: "#bbdefb",
+                borderRadius: 2,
+                borderWidth: 1,
+                borderColor: "#2196f3",
+                border: "1px solid",
+                backgroundColor: "#182237",
+                height: 60,
+              }}
               label="Start Date"
-              className="h-[43px] w-[300px]"
+              className="h-[43px] w-[300px] border border-gray-200 text-[#fff]"
               onChange={(newValue) => setStartDate(newValue)}
             />
             <DatePicker
+              sx={{
+                color: "#bbdefb",
+                borderRadius: 2,
+                borderWidth: 1,
+                borderColor: "#2196f3",
+                border: "1px solid",
+                backgroundColor: "#182237",
+                height: 60,
+              }}
               label="End Date"
               className="h-[43px] w-[300px]"
               onChange={(newValue) => setEndDate(newValue)}
             />
           </div>
-          <label htmlFor="" className="mt-3 text-sm text-gray-700">
+          <label htmlFor="" className="mt-3 text-sm text-gray-200">
             Status
           </label>
           <select
-            className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded mb-2"
+            className="h-[43px] border-[1.8px] border-gray-200 bg-transparent text-gray-200 w-[98%] outline-1 p-2 rounded mb-2"
             onChange={(e) => setStatus(e.target.value)}
           >
             <option value="Not Started">Not Started</option>
@@ -116,8 +134,8 @@ function NewProgram() {
         <button
           onClick={create}
           className={`${
-            loading && "animate-pulse text-[12px] font-semibold"
-          } bg-green-600 h-[46px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
+            loading && "animate-pulse text-[13px] font-semibold"
+          } bg-green-500 h-[43px] text-[13px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
         >
           {loading ? "creating.." : "CREATE"}
         </button>

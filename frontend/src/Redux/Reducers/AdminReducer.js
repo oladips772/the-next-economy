@@ -103,6 +103,8 @@ export const adminUpdateReducer = (state = {}, action) => {
       return { loading: false, success: true, adminInfo: action.payload };
     case ADMIN_UPDATE_FAIL:
       return { loading: false, error: action.payload };
+    case "ADMIN_UPDATE_RESET":
+      return { loading: false, error: null,success:null };
     default:
       return state;
   }

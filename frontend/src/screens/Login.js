@@ -18,7 +18,7 @@ function Login() {
     if (adminInfo) {
       navigate("/");
     }
-  }, [adminInfo]);
+  }, [adminInfo,navigate]);
 
   useEffect(() => {
     if (error) {
@@ -32,7 +32,7 @@ function Login() {
   };
 
   return (
-    <div className="bg-black h-[100vh] flex justify-center items-center">
+    <div className="bg-[#182237] h-[100vh] flex justify-center items-center">
       <div className="">
         <div className="flex flex-col">
           <img
@@ -54,7 +54,7 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
-            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white bg-black"
+            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white "
           />
           <button
             disabled={loading}

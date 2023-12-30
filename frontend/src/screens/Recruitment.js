@@ -16,7 +16,7 @@ function HomeScreen() {
   const [phone, setPhone] = useState("");
   const [year, setYear] = useState(null);
   const [bio, setBio] = useState("");
-  const [bussiness, setBussiness] = useState("Employmentability");
+  const [bussiness, setBussiness] = useState("Employability");
   const [linkedinId, setLinkedinId] = useState("");
   const [facebookId, setFacebookId] = useState("");
   const [status, setStatus] = useState("Still in business");
@@ -141,14 +141,14 @@ function HomeScreen() {
           <Sidebar />
         </div>
         <div className="flex-[4.5] mb-4">
-          <div className="p-[14px] rounded-[6px] bg-green-600 mr-4 mt-3">
-            <h1 className="text-[18px] font-[500] text-white">
+          <div className="p-[16px] rounded-[6px] bg-[#182237] mr-4 mt-3 mb-4">
+            <h1 className="text-[16px] font-[400] text-white">
               New Entrepreneur
             </h1>
           </div>
 
           {/*  */}
-          <div className="form_container">
+          <div className="form_container ">
             <div className="flex justify-around w-full">
               <div className="image_div mt-4">
                 <img
@@ -176,7 +176,7 @@ function HomeScreen() {
               <div className="flex flex-col mt-4">
                 <input
                   placeholder="Name"
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   type="text"
                   value={name}
@@ -184,7 +184,7 @@ function HomeScreen() {
                 />
                 <input
                   placeholder="Email"
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
@@ -193,7 +193,7 @@ function HomeScreen() {
                 />
                 <input
                   placeholder="Phone number"
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="number"
@@ -202,7 +202,7 @@ function HomeScreen() {
                 />
                 <input
                   placeholder="Linkedin"
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   required
                   type="text"
@@ -211,7 +211,7 @@ function HomeScreen() {
                 />
                 {/* <label>Status</label> */}
                 <select
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 bg-[#182237] text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   onChange={(e) => setStatus(e.target.value)}
                   value={status}
                   disabled={loading}
@@ -222,7 +222,7 @@ function HomeScreen() {
               </div>
               <div className="flex flex-col mt-4">
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   placeholder="Facebook "
                   type="text"
@@ -230,7 +230,7 @@ function HomeScreen() {
                   onChange={(e) => setFacebookId(e.target.value)}
                 />
                 <input
-                  className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[43px] border-[1.8px] border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   placeholder="Year"
                   type="number"
@@ -238,7 +238,7 @@ function HomeScreen() {
                   onChange={(e) => setYear(e.target.value)}
                 />
                 <textarea
-                  className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                  className="h-[103px] resize-none border-[1.8px] bg-[#182237] text-gray-200 border-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                   disabled={loading}
                   placeholder="Bio"
                   value={bio}
@@ -246,7 +246,7 @@ function HomeScreen() {
                 ></textarea>
                 <div className="overflow_man">
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] bg-[#182237] text-gray-200 border-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     value={bussiness}
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={loading}
@@ -263,7 +263,7 @@ function HomeScreen() {
                 onClick={createEntreprenuer}
                 className={`${
                   loading && "animate-pulse font-semibold"
-                } h-[46px] mt-24 bg-green-600 w-[67%] rounded mr-3 ml-4 text-white uppercase font-[500]`}
+                } h-[43px] mt-[60px] bg-green-600 w-[80%] rounded mb-6 ml-[17%] text-white text-[13px] uppercase font-[500]`}
               >{`${loading ? "Creating..." : "Create"}`}</button>
             )}
             {cloudLoading && (
@@ -271,7 +271,7 @@ function HomeScreen() {
                 style={{ cursor: "not-allowed" }}
                 className={`${
                   cloudLoading && "animate-pulse text-[12px] font-semibold"
-                } h-[46px] mt-24 bg-green-600 w-[97%] rounded mr-3 ml-4 text-white uppercase font-[500]`}
+                } h-[43px] mt-[60px] mb-6 bg-green-600 w-[80%] rounded ml-[17%] text-white text-[13px] uppercase font-[500]`}
               >
                 {`${cloudLoading && "processing image please wait"}`}
               </button>

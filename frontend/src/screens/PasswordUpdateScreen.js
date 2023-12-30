@@ -70,7 +70,7 @@ function PasswordUpdateScreen() {
 
   if (invalidUser) {
     return (
-      <div className="h-[100vh] bg-black flex justify-center items-center">
+      <div className="h-[100vh] bg-[#182237] flex justify-center items-center">
         <div>
           <h1 className="text-white text-[600]">Invalid Token</h1>
         </div>
@@ -80,18 +80,16 @@ function PasswordUpdateScreen() {
 
   if (verifyLoading) {
     return (
-      <div className="h-[100vh] bg-black flex justify-center items-center">
+      <div className="h-[100vh] bg-[#182237] flex justify-center items-center">
         <div>
-          <h1 className="text-white text-[600]">
-            Verifying Token ... Please Wait.
-          </h1>
+          <h1 className="text-white">Verifying Token ... Please Wait.</h1>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-black h-[100vh] flex justify-center items-center">
+    <div className="bg-[#182237] h-[100vh] flex justify-center items-center">
       <div className="">
         <div className="flex flex-col">
           <img
@@ -105,7 +103,7 @@ function PasswordUpdateScreen() {
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="Password"
-            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white bg-black"
+            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white "
           />
           <input
             disabled={loading}
@@ -113,7 +111,7 @@ function PasswordUpdateScreen() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             type="password"
             placeholder="Confirm Password"
-            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white bg-black"
+            className="border-green-300 border-[1px] outline-none p-2 w-full my-2 rounded bg-transparent text-white "
           />
           <button
             disabled={loading}

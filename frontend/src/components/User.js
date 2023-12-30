@@ -5,18 +5,18 @@ function User({ data }) {
   return (
     <div>
       <div className="rounded overflow-hidden">
-        <div className="grid grid-cols-6 gap-2 bg-green-600 pt-4 pb-4 pl-6 border-b border-slate-300">
-          <h3 className="font-[400] text-white">Name</h3>
-          <h3 className="font-[400] text-white">Email</h3>
-          <h3 className="font-[400] text-white">Phone</h3>
-          <h3 className="font-[400] text-white">Year</h3>
-          <h3 className="font-[400] text-white">Business</h3>
-          <h3 className="font-[400] text-white">Action</h3>
+        <div className="grid grid-cols-6 gap-2 bg-[#182237] pt-4 pb-4 pl-6 border-b border-slate-400">
+          <h3 className="font-[400] text-gray-200 ">Name</h3>
+          <h3 className="font-[400] text-gray-200 ">Email</h3>
+          <h3 className="font-[400] text-gray-200 ">Phone</h3>
+          <h3 className="font-[400] text-gray-200 ">Year</h3>
+          <h3 className="font-[400] text-gray-200 ">Business</h3>
+          <h3 className="font-[400] text-gray-200 ">Action</h3>
         </div>
         {data.map((person) => (
           <div
             key={person?._id}
-            className="grid grid-cols-6 gap-2 py-[10px] my-[4px] border-b border-gray-300"
+            className="grid grid-cols-6 gap-2 py-[10px] my-[4px] border-b border-gray-400 text-gray-200"
           >
             <h3 className="flex items-center">
               <img
@@ -26,11 +26,12 @@ function User({ data }) {
               />
               <p className="">{person?.name}</p>
             </h3>{" "}
-            <h3 className=" text-gray-800">
+            <h3 className="">
               <a
                 href={`mailto:${person?.email}`}
                 target="_blank"
                 rel="noreferrer"
+                className="text-gray-200"
               >
                 {person?.email?.slice(0, 10)}
                 {person?.email?.length > 10 && ".."}
@@ -45,9 +46,9 @@ function User({ data }) {
             <h3>
               <NavLink
                 to={`/Entrepreneurs/Profile/${person?._id}`}
-                className="w-[80px] px-[12px] py-[4px] mx-4 bg-green-600 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
+                className="w-[80px] px-[12px] py-[4px] mx-4 bg-[#31d831] text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
               >
-                <span className="text-[12px] font-semibold text-white">
+                <span className="text-[12px] font-semibold text-gray-200 ">
                   VIEW
                 </span>
               </NavLink>

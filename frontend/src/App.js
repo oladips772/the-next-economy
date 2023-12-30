@@ -28,6 +28,7 @@ import BusinessProfile from "./screens/BusinessProfile";
 import NewEvent from "./screens/NewEvent";
 import Events from "./screens/Events";
 import EventProfile from "./screens/EventProfile";
+import MyProfile from "./screens/MyProfile";
 
 function App() {
   return (
@@ -209,6 +210,15 @@ function App() {
                 <PrivateRoute>
                   {" "}
                   <CreateAdmin />
+                </PrivateRoute>
+              }
+            />{" "}
+            <Route
+              path="/Myprofile"
+              element={
+                <PrivateRoute>
+                  {" "}
+                  <MyProfile />
                 </PrivateRoute>
               }
             />{" "}

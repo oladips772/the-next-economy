@@ -26,7 +26,7 @@ function ForgotPassword() {
 
   return (
     <div>
-      <div className="bg-black h-[100vh] flex justify-center items-center">
+      <div className="bg-[#182237] h-[100vh] flex justify-center items-center">
         <div className="">
           <div className="flex flex-col">
             <img

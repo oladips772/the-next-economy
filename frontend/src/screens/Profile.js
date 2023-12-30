@@ -107,7 +107,7 @@ function Edit() {
       dispatch(listEntrepreneur(entrepreneurId));
       dispatch({ type: "ENTREPRENEUR_UPDATE_RESET" });
     }
-  }, [errorUpdate, success]);
+  }, [errorUpdate, success,dispatch]);
 
   const handleCreate = async () => {
     if (!selectedImage) return;
@@ -193,8 +193,8 @@ function Edit() {
           <img src={loader} alt="" className="loading_image" />
         ) : (
           <div className="flex-[4.5] mt-4 mb-4 w-full">
-            <div className="flex justify-between items-center bg-green-600 rounded p-[14px] mr-6 mb-3">
-              <h1 className="text-[17px]  font-[400] text-white flex items-center">
+            <div className="flex justify-between items-center bg-[#182237] rounded p-[16px] mr-6 mb-3">
+              <h1 className="text-[16px]  font-[400] text-white flex items-center">
                 Profile <MdKeyboardDoubleArrowRight /> {entrepreneur?.name}
               </h1>
               <PrintIcon
@@ -203,13 +203,13 @@ function Edit() {
               />
             </div>
             {/*  */}
-            <div className="flex items-start">
+            <div className="flex items-start pt-3 bg-[#182237]">
               {/* image div */}
-              <div className="mx-2 flex flex-col items-center justify-center">
+              <div className="mx-4 flex flex-col items-center justify-center">
                 <img
                   src={`${selectedImage ? selectedImage : entrepreneurImage}`}
                   alt=""
-                  className="h-[130px] w-[130px] object-cover rounded"
+                  className="h-[130px] w-[150px] object-cover rounded"
                 />
                 <input
                   type="file"
@@ -227,35 +227,35 @@ function Edit() {
               <div className="flex items-start w-full justify-around">
                 <div className="flex flex-col">
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="number"
                     value={year}
                     onChange={(e) => setYear(e.target.value)}
                   />
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={linkedinId}
@@ -264,14 +264,14 @@ function Edit() {
                 </div>
                 <div className="flex flex-col">
                   <input
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     type="text"
                     value={facebookId}
                     onChange={(e) => setFacebookId(e.target.value)}
                   />
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 bg-transparent text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     onChange={(e) => setStatus(e.target.value)}
                     value={status}
                     disabled={updateLoading}
@@ -280,13 +280,13 @@ function Edit() {
                     <option value="Not in business">Not in business </option>
                   </select>
                   <textarea
-                    className="h-[103px] resize-none border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[103px] resize-none border-[1.8px] bg-transparent border-gray-200 text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     disabled={updateLoading}
                     value={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
                   <select
-                    className="h-[43px] border-[1.8px] border-gray-600 w-[430px] outline-1 p-2 rounded my-2"
+                    className="h-[43px] border-[1.8px] border-gray-200 bg-transparent text-gray-200  w-[430px] outline-1 p-2 rounded my-2"
                     // className="mb-[40px]"
                     onChange={(e) => setBussiness(e.target.value)}
                     disabled={updateLoading}
@@ -299,13 +299,12 @@ function Edit() {
               </div>
             </div>
             {/* buttons div */}
-
-            <div className="flex flex-col mr-6 mt-28">
+            <div className="flex flex-col pt-6 pb-6 bg-[#182237]">
               {cloudLoading && (
                 <button
                   className={`${
                     cloudLoading && "animate-pulse text-sm mt-4"
-                  } h-[46px] bg-green-600 text-white rounded uppercase font-[500]`}
+                  } h-[43px] text-[13px] bg-green-600 text-white rounded uppercase font-[500] w-[81.5%] ml-[16.5%]`}
                 >
                   {`${cloudLoading && "processing image please wait"}`}
                 </button>
@@ -316,7 +315,7 @@ function Edit() {
                   disabled={updateLoading}
                   className={`${
                     updateLoading ? "animate-pulse mt-4" : "text-sm mt-[20px]"
-                  } h-[46px] bg-green-600 text-white rounded uppercase font-[500]`}
+                  } h-[43px] text-[13px] bg-green-600 text-white rounded uppercase font-[500] w-[81.5%] ml-[16.5%]`}
                 >
                   {`${updateLoading ? "Updating..." : "Update"}`}
                 </button>
@@ -326,7 +325,7 @@ function Edit() {
                   {!showModal && (
                     <button
                       disabled={updateLoading}
-                      className="mt-4 delete-btn h-[46px] bg-red-600 text-white font-[500]"
+                      className="mt-4 delete-btn h-[43px] text-[13px] rounded bg-red-600 text-white font-[500] w-[81.5%] ml-[16.5%]"
                       onClick={() => setModal(!showModal)}
                     >
                       DELETE ENTREPRENEUR

@@ -9,6 +9,9 @@
   padding: 0;
   font-family: "Poppins", sans-serif;
 }
+body{
+  background-color: #151c2c;
+}
 
 input {
   background: transparent !important;
@@ -26,7 +29,7 @@ a {
 
 /*  */
 .form_container {
-  background: white;
+  background: #182237;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,7 +121,7 @@ a {
 .input_div option {
   height: 30px !important;
   padding: 5px !important;
-  background: white;
+  /* background: #182237; */
 }
 
 /* search container div in entrepreneur screen */
@@ -256,7 +259,7 @@ textarea {
   outline: none;
   border: 1px solid black;
   border-radius: 5px;
-  background: white;
+  background: transparent;
   margin: 10px 0;
 }
 
@@ -451,45 +454,36 @@ textarea {
   bottom: -160px;
   display: flex;
   flex-direction: column;
-  left: 55%;
+  left: 19%;
   width: 570px;
   height: 330px;
 }
 
 .update_container h2 {
-  font-size: 17px;
-  font-weight: 600;
   margin-top: 10px;
   text-align: center;
-  color: green;
 }
 
 .update_container input {
-  height: 35px;
+  height: 40px;
   width: 530px;
   margin: 10px 20px;
   border-radius: 3px;
-  border: 1px solid black;
-  padding: 5px;
+  padding: 8px;
   outline: none;
 }
 
 .update_container button {
   width: 530px;
-  margin: 15px 20px;
+  margin: 7px 20px;
   border-radius: 3px;
   padding: 5px;
-  background-color: green;
   color: white;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 13px;
-  height: 35px;
   text-align: center;
 }
 
-.update_container input::placeholder {
-  color: rgb(43, 42, 42);
-}
 
 /* print modal styling */
 .print_modal_container {
@@ -543,4 +537,8 @@ textarea {
   right: 40px;
   top: 10px;
   line-height: 15px;
+}
+
+.date_picker{
+  color:white
 }

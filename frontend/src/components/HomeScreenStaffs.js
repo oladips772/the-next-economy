@@ -1,15 +1,14 @@
 /** @format */
-import { DatePicker } from "@mui/x-date-pickers";
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 
 function HomeScreenStaffs({ entrepreneurs, loading }) {
   return (
     <div className=" shadow rounded mr-4 mt-14 overflow-hidden">
-      <h1 className="p-2 text-lg font-[400] text-white bg-green-600 border-b-[1px] border-gray-200 pb-2 mb-4 ">
+      <h1 className="p-3 text-[16px] font-[400] text-gray-200 bg-[#182237] border-b-[1px] border-gray-200 pb-2 mb-4 ">
         Some of your Entrepreneurs
       </h1>
-      <div className="grid grid-cols-6 gap-2 justify-between items-center mx-4 border-b-[1px] border-gray-200 mb-4 pb-2">
+      <div className="grid grid-cols-6 gap-2 justify-between items-center mx-4 border-b-[1px] text-gray-200 border-gray-200 mb-4 pb-2">
         <h3 className="font-[400]">Name</h3>
         <h3 className="font-[400]">Email</h3>
         <h3 className="font-[400]">Phone</h3>
@@ -26,7 +25,7 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
               {entrepreneurs?.slice(0, 6).map((staff) => (
                 <div
                   key={staff?._id}
-                  className="grid grid-cols-6 gap-2 py-[10px] my-[4px] border-b border-gray-300"
+                  className="grid grid-cols-6 gap-2 py-[10px] my-[4px] border-b border-gray-300 text-gray-200"
                 >
                   <h3 className="flex items-center">
                     <img
@@ -36,11 +35,12 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
                     />
                     <p className="">{staff?.name}</p>
                   </h3>{" "}
-                  <h3 className=" text-gray-800">
+                  <h3 className="">
                     <a
                       href={`mailto:${staff?.email}`}
                       target="_blank"
                       rel="noreferrer"
+                      className="text-gray-200"
                     >
                       {staff?.email?.slice(0, 10)}
                       {staff?.email?.length > 10 && ".."}
@@ -55,9 +55,9 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
                   <h3>
                     <NavLink
                       to={`/Entrepreneurs/Profile/${staff?._id}`}
-                      className="w-[80px] px-[18px] py-[4px] mx-4 bg-green-600 text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
+                      className="w-[80px] px-[18px] py-[4px] mx-4 bg-[#31d831] text-sm font-semibold rounded cursor-pointer text-center ml-[50px]"
                     >
-                      <span className="text-[12px] font-[500] text-white">
+                      <span className="text-[12px] font-[500] text-gray-200">
                         VIEW
                       </span>
                     </NavLink>
@@ -66,9 +66,9 @@ function HomeScreenStaffs({ entrepreneurs, loading }) {
               ))}
             </div>
           ) : (
-            <div className="flex items-center justify-center flex-col pb-[100px] mt-[100px]">
+            <div className="flex items-center justify-center flex-col pb-[100px] mt-[100px] text-gray-200">
               <h3>You have no entrepreneurs yet</h3>
-              <NavLink to="/New_Entrepreneur" className="text-green-600">
+              <NavLink to="/New_Entrepreneur" className="text-[lime]">
                 click here to create entrepreneurs
               </NavLink>
             </div>

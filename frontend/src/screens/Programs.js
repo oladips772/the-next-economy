@@ -34,12 +34,12 @@ function Programs() {
       <div className="flex justify-between">
         <Sidebar />
         <div className="ml-[250px] mt-4 mb-4 w-[80%]">
-          <div className="bg-green-600 p-3 flex items-center justify-between rounded">
-            <h1 className="text-[17px]  font-[500] text-white">Programs</h1>
+          <div className="bg-[#182237] p-3 flex items-center justify-between rounded">
+            <h1 className="text-[16px]  font-[400] text-white">Programs</h1>
             <div className="">
               <input
                 type="search"
-                className="h-[38px] p-3 w-[300px] text-white rounded-[25px] placeholder:text-gray-200 text-[15px] border border-gray-200"
+                className="h-[38px] p-3 w-[200px] text-white rounded-[25px] placeholder:text-gray-200 text-[15px] border border-gray-300"
                 placeholder="Search by Name"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
@@ -50,13 +50,13 @@ function Programs() {
           {loading ? (
             <img src={loader} alt="" className="loading_image" />
           ) : (
-            <div className="mt-8 mr-2 bg-white shadow rounded">
+            <div className="mt-8 mr-2 ">
               {programs?.length >= 1 ? (
                 <ProgramsData data={search(programs)} />
               ) : (
                 <div className="ml-[360px] pb-[300px] mt-[200px]">
-                  <h3>You have no programs yet</h3>
-                  <NavLink to="/NewProgram" className="text-green-600">
+                  <h3 className="text-gray-200">You have no programs yet</h3>
+                  <NavLink to="/NewProgram" className="text-[lime]">
                     click here to create programs
                   </NavLink>
                 </div>

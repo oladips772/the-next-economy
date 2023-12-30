@@ -13,6 +13,7 @@ import { AdminLogout } from "../Redux/Actions/AdminAction";
 import { useSelector } from "react-redux";
 import { HiOutlineUserGroup } from "react-icons/hi2";
 import { IoCalendarNumberOutline } from "react-icons/io5";
+import { FaRegUser } from "react-icons/fa6";
 
 function Sidebar() {
   const navigate = useNavigate();
@@ -39,19 +40,19 @@ function Sidebar() {
     navigate("/Login");
   };
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     getStatus();
-  //   }, [100]);
-  // }, []);
+  useEffect(() => {
+    setInterval(() => {
+      getStatus();
+    }, [100]);
+  }, []);
 
   return (
-    <div className="h-[100vh] bg-gray-800 w-[220px] fixed sidebar">
+    <div className="h-[100vh] bg-[#182237] w-[220px] fixed sidebar">
       <div className="mt-3 overflow-y-scroll h-[87%]">
-        <div className="my-4 hover:text-green-500">
+        <div className="my-4 hover:bg-[#182237]">
           <NavLink
             to="/"
-            className="flex items-center hover:text-green-500"
+            className="flex items-center hover:bg-[#182237]"
             style={({ isActive }) => {
               return {
                 color: isActive ? "rgb(40, 211, 40)" : "white",
@@ -261,6 +262,28 @@ function Sidebar() {
             <p className="text-[12px] font-[500] uppercase">businesses</p>
           </NavLink>
         </div>
+        {!adminInfo?.masterAdmin && (
+          <>
+            <p className="text-white ml-4 mr-[10px] text-[12px] -mb-[4px] mt-2">
+              My Profile
+            </p>
+            <div className="my-4">
+              <NavLink
+                to="/Myprofile"
+                className="flex items-center"
+                style={({ isActive }) => {
+                  return {
+                    color: isActive ? "rgb(40, 211, 40)" : "white",
+                    borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
+                  };
+                }}
+              >
+                <FaRegUser className=" ml-4 mr-[10px]" size={15} />
+                <p className="text-[12px] font-[500] uppercase">My Profile</p>
+              </NavLink>
+            </div>
+          </>
+        )}
 
         {adminInfo?.masterAdmin && (
           <div className="my-4">
@@ -277,19 +300,6 @@ function Sidebar() {
             >
               <AdminPanelSettingsIcon className="ml-4 mr-[10px] text-[12px]" />
               <p className="text-[12px] font-[500]">NEW ADMIN</p>
-            </NavLink>
-            <NavLink
-              to="/CreateAdmin"
-              className="flex items-center mt-3"
-              style={({ isActive }) => {
-                return {
-                  color: isActive ? "rgb(40, 211, 40)" : "white",
-                  borderLeft: isActive ? "solid 4px rgb(40, 211, 40)" : "",
-                };
-              }}
-            >
-              <AdminPanelSettingsIcon className="ml-4 mr-[10px] text-[12px]" />
-              <p className="text-[12px] font-[500]">ADMINS</p>
             </NavLink>
           </div>
         )}

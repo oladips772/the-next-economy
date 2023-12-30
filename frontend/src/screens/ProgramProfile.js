@@ -24,6 +24,7 @@ function ProgramProfile() {
   const [newStartDate, setNewStartDate] = useState();
   const [newEndDate, setNewEndDate] = useState();
   const navigate = useNavigate();
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   // ? get program details
   useEffect(() => {
@@ -71,6 +72,19 @@ function ProgramProfile() {
     setUpdateLoading(false);
   };
 
+  // ? delete
+  const Delete = async () => {
+    setDeleteLoading(true);
+    try {
+      await axios.delete(`${URL}/api/programs/${id}`);
+      toast.success("Deleted successfully");
+      navigate("/Programs");
+    } catch (error) {
+      toast.error(error?.response?.data?.error);
+    }
+    setDeleteLoading(false);
+  };
+
   return (
     <div className="flex justify-between">
       <div className="flex-1">
@@ -81,15 +95,15 @@ function ProgramProfile() {
         <img src={loader} alt="" className="loading_image" />
       ) : (
         <div className="mt-4 mb-4 flex-4">
-          <div className="p-[14px] rounded-[6px] w-[1100px]  bg-green-600 mr-4 mb-4">
-            <h1 className="text-[18px] font-[400] text-white">
+          <div className="p-[16px] rounded-[6px] w-[1100px] bg-[#182237] mr-4 mb-4">
+            <h1 className="text-[16px] font-[400] text-white">
               Program Details
             </h1>
           </div>
           {/*  */}
           <div className="flex flex-col mt-4">
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               required
               placeholder="Program name"
               type="text"
@@ -97,14 +111,14 @@ function ProgramProfile() {
               onChange={(e) => setName(e.target.value)}
             />
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               placeholder="Program description"
               type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
             <input
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded my-2"
+              className="h-[43px] border-[1.8px] border-gray-200 text-gray-200 w-[98%] outline-1 p-2 rounded my-2"
               required
               placeholder="Number of beneficiaries"
               type="number"
@@ -113,23 +127,40 @@ function ProgramProfile() {
             />
             <div className="my-2 flex items-center space-x-3 w-[98%] mb-2">
               <DatePicker
-                // value={startDate}
+                sx={{
+                  color: "#bbdefb",
+                  borderRadius: 2,
+                  borderWidth: 1,
+                  borderColor: "#2196f3",
+                  border: "1px solid",
+                  backgroundColor: "#182237",
+                  height: 60,
+                }}
                 label={moment(startDate).format("L")}
-                className="h-[43px] w-[300px]"
+                className="date_picker h-[43px] w-[300px]"
                 onChange={(newValue) => setNewStartDate(newValue)}
               />
               <DatePicker
+                sx={{
+                  color: "#bbdefb",
+                  borderRadius: 2,
+                  borderWidth: 1,
+                  borderColor: "#2196f3",
+                  border: "1px solid",
+                  backgroundColor: "#182237",
+                  height: 60,
+                }}
                 label={moment(endDate).format("L")}
                 className="h-[43px] w-[300px]"
                 onChange={(newValue) => setNewEndDate(newValue)}
               />
             </div>
-            <label htmlFor="" className="mt-3 text-sm text-gray-700">
+            <label htmlFor="" className="mt-3 text-sm text-gray-200">
               Status
             </label>
             <select
               value={status}
-              className="h-[43px] border-[1.8px] border-gray-600 w-[98%] outline-1 p-2 rounded mb-2"
+              className="h-[43px] border-[1.8px] border-gray-200 bg-transparent text-gray-200 w-[98%] outline-1 p-2 rounded mb-2"
               onChange={(e) => setStatus(e.target.value)}
             >
               <option value="Not Started">Not Started</option>
@@ -141,10 +172,18 @@ function ProgramProfile() {
           <button
             onClick={update}
             className={`${
-              updateLoading && "animate-pulse text-[12px] font-semibold"
-            } bg-green-600 h-[46px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
+              updateLoading && "animate-pulse text-[13px] font-semibold"
+            } bg-green-500 h-[43px] text-[13px] w-[98%] mt-8 text-white font-[500] uppercase rounded`}
           >
             {updateLoading ? "updating.." : "update"}
+          </button>
+          <button
+            onClick={Delete}
+            className={`${
+              deleteLoading && "animate-pulse text-[13px] font-semibold"
+            } bg-red-600 h-[43px] text-[13px] w-[98%] mt-4 text-white font-[500] uppercase rounded`}
+          >
+            {deleteLoading ? "deleting.." : "delete"}
           </button>
         </div>
       )}
