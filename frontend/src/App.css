@@ -542,3 +542,7 @@ textarea {
 .date_picker{
   color:white
 }
+
+.date{
+  background-color: white !important;
+}

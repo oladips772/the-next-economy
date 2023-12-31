@@ -91,7 +91,6 @@ function NewProgram() {
           <div className="my-2 flex items-center space-x-3 w-[98%] mb-2 text-gray-200">
             <DatePicker
               sx={{
-                color: "#bbdefb",
                 borderRadius: 2,
                 borderWidth: 1,
                 borderColor: "#2196f3",
@@ -100,12 +99,12 @@ function NewProgram() {
                 height: 60,
               }}
               label="Start Date"
-              className="h-[43px] w-[300px] border border-gray-200 text-[#fff]"
+              className="date h-[43px] w-[300px] border border-gray-200 text-[#fff]"
               onChange={(newValue) => setStartDate(newValue)}
             />
             <DatePicker
               sx={{
-                color: "#bbdefb",
+                color: "#fff",
                 borderRadius: 2,
                 borderWidth: 1,
                 borderColor: "#2196f3",
@@ -114,7 +113,7 @@ function NewProgram() {
                 height: 60,
               }}
               label="End Date"
-              className="h-[43px] w-[300px]"
+              className="date h-[43px] w-[300px]"
               onChange={(newValue) => setEndDate(newValue)}
             />
           </div>

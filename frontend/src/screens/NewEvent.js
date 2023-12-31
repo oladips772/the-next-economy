@@ -106,7 +106,7 @@ function NewEvent() {
                 height: 60,
               }}
               label="Start Date"
-              className="h-[43px] w-[300px]"
+              className="date h-[43px] w-[300px]"
               onChange={(newValue) => setStartDate(newValue)}
             />
             <DatePicker
@@ -120,7 +120,7 @@ function NewEvent() {
                 height: 60,
               }}
               label="End Date"
-              className="h-[43px] w-[300px]"
+              className="date h-[43px] w-[300px]"
               onChange={(newValue) => setEndDate(newValue)}
             />
           </div>

@@ -138,7 +138,7 @@ function EventProfile() {
                   height: 60,
                 }}
                 label={moment(startDate).format("L")}
-                className="h-[43px] w-[300px]"
+                className="date h-[43px] w-[300px]"
                 onChange={(newValue) => setNewStartDate(newValue)}
               />
               <DatePicker
@@ -152,7 +152,7 @@ function EventProfile() {
                   height: 60,
                 }}
                 label={moment(endDate).format("L")}
-                className="h-[43px] w-[300px]"
+                className="date h-[43px] w-[300px]"
                 onChange={(newValue) => setNewEndDate(newValue)}
               />
             </div>
